@@ -1,0 +1,164 @@
+/* Styling for Global Packaging Center */
+/* Global Packaging Mixins */
+@font-face {
+  font-family: "icon-font-5";
+  src: url("../fonts/icon-font-5.eot");
+  src: url("../fonts/icon-font-5.eot?#iefix") format("embedded-opentype"), url("../fonts/icon-font-5.woff") format("woff"), url("../fonts/icon-font-5.ttf") format("truetype"), url("../fonts/icon-font-5.svg#icon-font-5") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+html, body {
+  font-family: helvetica, arial, sans-serif; }
+
+body {
+  background-color: #668EA2;
+  /* Fallback Color */
+  background-image: -webkit-gradient(linear, top, bottom, from(#0C2A4D), to(#668EA2));
+  /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #0C2A4D, #668EA2);
+  /* Chrome 10+, Saf5.1+, iOS 5+ */
+  background-image: -moz-linear-gradient(top, #0C2A4D, #668EA2);
+  /* FF3.6 */
+  background-image: -ms-linear-gradient(top, #0C2A4D, #668EA2);
+  /* IE10 */
+  background-image: -o-linear-gradient(top, #0C2A4D, #668EA2);
+  /* Opera 11.10+ */
+  background-repeat: no-repeat;
+  background-image: linear-gradient(top, #0C2A4D, #668EA2);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#0C2A4D', EndColorStr='#668EA2'); }
+
+header {
+  background-color: #0C2A4D;
+  /* Fallback Color */
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#0C2A4D));
+  /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(left, #000000, #0C2A4D);
+  /* Chrome 10+, Saf5.1+, iOS 5+ */
+  background-image: -moz-linear-gradient(left, #000000, #0C2A4D);
+  /* FF3.6 */
+  background-image: -ms-linear-gradient(left, #000000, #0C2A4D);
+  /* IE10 */
+  background-image: -o-linear-gradient(left, #000000, #0C2A4D);
+  /* Opera 11.10+ */
+  background-image: linear-gradient(left, #000000, #0C2A4D);
+  background-repeat: no-repeat;
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#000000', EndColorStr='#0C2A4D');
+  height: 60px;
+  width: 100%;
+  margin-bottom: 30px; }
+
+.padding-left-0 {
+  padding-left: 0px !important; }
+
+.padding-right-0 {
+  padding-right: 0px !important; }
+
+.margin-top-neg-30 {
+  margin-top: -30px; }
+
+.userNameDiv {
+  color: #f1f1f1;
+  float: right;
+  line-height: 56px; }
+
+.userIcon {
+  font-family: icon-font-5;
+  vertical-align: middle;
+  font-size: 19px; }
+
+.userName {
+  vertical-align: middle;
+  margin: 0 5px 0 7px;
+  font-size: 14px; }
+
+.userArrow {
+  font-family: icon-font-5;
+  vertical-align: middle;
+  font-size: 9px; }
+
+.companyLogo img {
+  width: 55%;
+  margin-top: 5px; }
+
+.successLogo {
+  text-align: center; }
+  .successLogo img {
+    width: 28%;
+    margin-top: 5px; }
+
+.dashboardTitle {
+  color: #ffffff; }
+
+.dashTitle {
+  vertical-align: middle;
+  margin-left: 10px;
+  letter-spacing: 0.5px; }
+
+#dashboard .tableIcon {
+  font-family: icon-font-5;
+  font-size: 20px;
+  padding: 17px;
+  color: rgba(0, 189, 255, 0.5);
+  cursor: pointer;
+  padding-left: 25px; }
+  #dashboard .tableIcon:hover {
+    color: rgba(0, 189, 255, 0.2); }
+#dashboard .graph {
+  width: 100%;
+  height: 400px;
+  background: #000; }
+#dashboard .dashboardBtn {
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  text-align: center;
+  height: 185px;
+  cursor: pointer; }
+  #dashboard .dashboardBtn:hover {
+    color: rgba(255, 255, 255, 0.8); }
+#dashboard .btnHeader {
+  background: #000;
+  padding: 5px;
+  text-transform: uppercase;
+  font-size: 14px; }
+#dashboard .btnIcon {
+  font-family: icon-font-5;
+  font-size: 55px;
+  margin-top: 30px; }
+#dashboard .smallerBtn {
+  font-size: 65px;
+  margin-top: 16px; }
+
+.formContainer {
+  background: #000; }
+  .formContainer .formHeader {
+    background: #00738E;
+    padding: 10px 20px;
+    color: #fff;
+    letter-spacing: 0.5px; }
+  .formContainer form {
+    padding: 40px; }
+    .formContainer form .large-6 {
+      padding-left: 2.9375rem !important;
+      padding-right: 3.9375rem !important; }
+    .formContainer form input {
+      background-color: #c9c9c9;
+      border: none; }
+    .formContainer form select {
+      background-color: #c9c9c9;
+      border: none; }
+    .formContainer form textarea {
+      background-color: #c9c9c9;
+      border: none;
+      height: 120px; }
+  .formContainer .formElement {
+    padding: 10px 0; }
+  .formContainer .btnContainer {
+    clear: both;
+    padding: 50px 62px 20px 47px; }
+    .formContainer .btnContainer button {
+      background: #00738E;
+      padding: 10px;
+      width: 110px; }
+    .formContainer .btnContainer button.submit {
+      float: right; }
+
+/*# sourceMappingURL=style.css.map */

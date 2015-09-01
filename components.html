@@ -1,0 +1,182 @@
+<!-- *********** DASHBOARD PAGE ************ -->
+<div id="dashboard">
+    <div class="row">
+        <div class="dashboardTitle">
+            <span class="userIcon">O</span>
+            <span class="dashTitle">DASHBOARD</span>
+        </div>
+    </div>
+    <div class="row">
+        <table>
+            <thead>
+                <tr>
+                    <th width="100">ID</th>
+                    <th width="400">Package Name</th>
+                    <th width="200">Type</th>
+                    <th width="200">Priority</th>
+                    <th width="200">Category</th>
+                    <th width="100">Status</th>
+                    <th width="50"></th>
+                    <th width="50"></th>
+                    <th width="50"></th>
+                    <th width="50"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1001</td>
+                    <td>adobe_photoshop cs6_1_1_M</td>
+                    <td>MSI</td>
+                    <td>HIGH</td>
+                    <td>DISCOVERY</td>
+                    <td>NEW</td>
+                    <td class="tableIcon">M</td>
+                    <td class="tableIcon">g</td>
+                    <td class="tableIcon">H</td>
+                    <td class="tableIcon">T</td>
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td>adobe_photoshop cs6_1_1_M</td>
+                    <td>MSI</td>
+                    <td>HIGH</td>
+                    <td>DISCOVERY</td>
+                    <td>NEW</td>
+                    <td class="tableIcon" alt="edit">M</td>
+                    <td class="tableIcon" alt="issues">g</td>
+                    <td class="tableIcon" alt="documents">H</td>
+                    <td class="tableIcon" alt="package">T</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="large-6 columns padding-left-0">
+            <div class="graph"></div>
+        </div>
+        <div class="large-6 columns padding-right-0">
+            <div class="row">
+                <div class="large-6 columns">
+                    <div class="dashboardBtn" id="addPackageBtn">
+                        <div class="btnHeader">add package</div>
+                        <div class="btnIcon smallerBtn">d</div>
+                    </div>
+                </div>
+                <div class="large-6 columns">
+                    <div class="dashboardBtn">
+                        <div class="btnHeader">profile</div>
+                        <div class="btnIcon">&#xe001;</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-6 columns">
+                    <div class="dashboardBtn">
+                        <div class="btnHeader">settings</div>
+                        <div class="btnIcon"><</div>
+                    </div>
+                </div>
+                <div class="large-6 columns">
+                    <div class="dashboardBtn">
+                        <div class="btnHeader">logout</div>
+                        <div class="btnIcon">-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row margin-top-neg-30">
+        <div class="large-6 columns padding-left-0">
+            <div class="graph"></div>
+        </div>
+        <div class="large-6 columns padding-right-0">
+            <div class="graph"></div>
+        </div>
+    </div>
+</div>
+<!-- *********** END DASHBOARD PAGE ************ -->
+<!-- *********** ADD PACKAGE PAGE ************ -->
+<div id="addPackage">
+    <div class="row">
+        <div class="dashboardTitle">
+            <span class="userIcon">d</span>
+            <span class="dashTitle">ADD PACKAGE</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="formContainer">
+            <div class="formHeader">NEW PACKAGE</div>
+            <form id="addPackageForm">
+                <div class="large-6 columns">
+                    <div class="formElement">
+                        <label>Vendor:</label>
+                        <input type="text"></input>
+                    </div>
+                    <div class="formElement">
+                        <label>Application ID:</label>
+                        <input type="text"></input>
+                    </div>
+                    <div class="formElement">
+                        <label>Application Name:</label>
+                        <input type="text"></input>
+                    </div>
+                    <div class="formElement">
+                        <label>Application Version:</label>
+                        <input type="text"></input>
+                    </div>
+                    <div class="formElement">
+                        <label>Operating System:</label>
+                        <select>
+                            <option>Text</option>
+                            <option>Text</option>
+                            <option>Text</option>
+                            <option>Text</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="large-6 columns">
+                    <div class="formElement">
+                        <label>Package Type:</label>
+                        <select>
+                            <option>Text</option>
+                            <option>Text</option>
+                            <option>Text</option>
+                            <option>Text</option>
+                        </select>
+                    </div>
+                    <div class="formElement">
+                        <label>Department:</label>
+                        <select>
+                            <option>Text</option>
+                            <option>Text</option>
+                            <option>Text</option>
+                            <option>Text</option>
+                        </select>
+                    </div>
+                    <div class="formElement">
+                        <label>Revision:</label>
+                        <input type="text"></input>
+                    </div>
+                    <div class="formElement">
+                        <label>Priority:</label>
+                        <select>
+                            <option>Text</option>
+                            <option>Text</option>
+                            <option>Text</option>
+                            <option>Text</option>
+                        </select>
+                    </div>
+                    <div class="formElement">
+                        <label>Comments:</label>
+                        <textarea></textarea>
+                    </div>
+                </div>
+                <div class="btnContainer">
+                    <button>CANCEL</button>
+                    <button type="submit" class="submit">SAVE</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- *********** END ADD PACKAGE PAGE ************ -->

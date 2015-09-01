@@ -1,0 +1,349 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "icon-font-5";
+  src:url("fonts/icon-font-5.eot");
+  src:url("fonts/icon-font-5.eot?#iefix") format("embedded-opentype"),
+    url("fonts/icon-font-5.woff") format("woff"),
+    url("fonts/icon-font-5.ttf") format("truetype"),
+    url("fonts/icon-font-5.svg#icon-font-5") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:before {
+  font-family: "icon-font-5" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "icon-font-5" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-add:before {
+  content: "a";
+}
+.icon-add-alt:before {
+  content: "b";
+}
+.icon-add-file:before {
+  content: "c";
+}
+.icon-add-folder:before {
+  content: "d";
+}
+.icon-alarm:before {
+  content: "e";
+}
+.icon-alarms:before {
+  content: "f";
+}
+.icon-alert:before {
+  content: "g";
+}
+.icon-alert-alt:before {
+  content: "h";
+}
+.icon-align-horizontal-center:before {
+  content: "i";
+}
+.icon-align-horizontal-left:before {
+  content: "j";
+}
+.icon-align-horizontal-right:before {
+  content: "k";
+}
+.icon-align-vertical-bottom:before {
+  content: "l";
+}
+.icon-align-vertical-center:before {
+  content: "m";
+}
+.icon-cervon-up:before {
+  content: "n";
+}
+.icon-cervon-right:before {
+  content: "o";
+}
+.icon-cervon-left:before {
+  content: "p";
+}
+.icon-cervon-down:before {
+  content: "q";
+}
+.icon-calendar:before {
+  content: "r";
+}
+.icon-backup:before {
+  content: "s";
+}
+.icon-arrow-up:before {
+  content: "t";
+}
+.icon-arrow-right:before {
+  content: "u";
+}
+.icon-arrow-left:before {
+  content: "v";
+}
+.icon-arrow-down:before {
+  content: "w";
+}
+.icon-annotations-show:before {
+  content: "x";
+}
+.icon-annotation:before {
+  content: "y";
+}
+.icon-align-vertical-top:before {
+  content: "z";
+}
+.icon-close:before {
+  content: "A";
+}
+.icon-close-alt:before {
+  content: "B";
+}
+.icon-close-hover:before {
+  content: "C";
+}
+.icon-colorpicker:before {
+  content: "D";
+}
+.icon-common-library:before {
+  content: "E";
+}
+.icon-controller:before {
+  content: "F";
+}
+.icon-controller-management:before {
+  content: "G";
+}
+.icon-copy:before {
+  content: "H";
+}
+.icon-delete:before {
+  content: "I";
+}
+.icon-document:before {
+  content: "J";
+}
+.icon-download:before {
+  content: "K";
+}
+.icon-duplicate-clone:before {
+  content: "L";
+}
+.icon-edit:before {
+  content: "M";
+}
+.icon-image:before {
+  content: "N";
+}
+.icon-home:before {
+  content: "O";
+}
+.icon-history:before {
+  content: "P";
+}
+.icon-histories:before {
+  content: "Q";
+}
+.icon-graphics:before {
+  content: "R";
+}
+.icon-fullsize:before {
+  content: "S";
+}
+.icon-folder:before {
+  content: "T";
+}
+.icon-file-template:before {
+  content: "U";
+}
+.icon-file-programming:before {
+  content: "V";
+}
+.icon-file-graphic:before {
+  content: "W";
+}
+.icon-eye:before {
+  content: "X";
+}
+.icon-email:before {
+  content: "Y";
+}
+.icon-external-link:before {
+  content: "Z";
+}
+.icon-info:before {
+  content: "0";
+}
+.icon-info-alt:before {
+  content: "1";
+}
+.icon-layers:before {
+  content: "2";
+}
+.icon-left-double-arrow:before {
+  content: "3";
+}
+.icon-link:before {
+  content: "4";
+}
+.icon-list-view:before {
+  content: "5";
+}
+.icon-lock:before {
+  content: "6";
+}
+.icon-navigate-back:before {
+  content: "7";
+}
+.icon-navigation-down:before {
+  content: "8";
+}
+.icon-notifications:before {
+  content: "9";
+}
+.icon-other-users:before {
+  content: "!";
+}
+.icon-paste:before {
+  content: "\"";
+}
+.icon-pen:before {
+  content: "#";
+}
+.icon-search:before {
+  content: "$";
+}
+.icon-saveas:before {
+  content: "%";
+}
+.icon-save:before {
+  content: "&";
+}
+.icon-right-double-arrow:before {
+  content: "'";
+}
+.icon-reset:before {
+  content: "(";
+}
+.icon-rename:before {
+  content: ")";
+}
+.icon-remove:before {
+  content: "*";
+}
+.icon-refresh:before {
+  content: "+";
+}
+.icon-redo:before {
+  content: ",";
+}
+.icon-reboot:before {
+  content: "-";
+}
+.icon-properties:before {
+  content: ".";
+}
+.icon-programming:before {
+  content: "/";
+}
+.icon-print:before {
+  content: ":";
+}
+.icon-server:before {
+  content: ";";
+}
+.icon-services:before {
+  content: "<";
+}
+.icon-settings:before {
+  content: "=";
+}
+.icon-settings-alt:before {
+  content: ">";
+}
+.icon-single-arrow-down:before {
+  content: "?";
+}
+.icon-single-arrow-up:before {
+  content: "@";
+}
+.icon-sound-file:before {
+  content: "[";
+}
+.icon-sound-off:before {
+  content: "]";
+}
+.icon-sound-mute:before {
+  content: "^";
+}
+.icon-sound-on:before {
+  content: "_";
+}
+.icon-styles:before {
+  content: "`";
+}
+.icon-switch:before {
+  content: "{";
+}
+.icon-switch-controller:before {
+  content: "|";
+}
+.icon-zoom-out:before {
+  content: "}";
+}
+.icon-zoom-in:before {
+  content: "~";
+}
+.icon-wiresheet-view:before {
+  content: "\\";
+}
+.icon-view-more:before {
+  content: "\e000";
+}
+.icon-users:before {
+  content: "\e001";
+}
+.icon-user:before {
+  content: "\e002";
+}
+.icon-upload:before {
+  content: "\e003";
+}
+.icon-unlocked:before {
+  content: "\e004";
+}
+.icon-undo:before {
+  content: "\e005";
+}
+.icon-touchscreen:before {
+  content: "\e006";
+}
+.icon-time:before {
+  content: "\e007";
+}
+.icon-tick:before {
+  content: "\e008";
+}
