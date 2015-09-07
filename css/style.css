@@ -77,7 +77,8 @@ header {
 
 .companyLogo img {
   width: 55%;
-  margin-top: 5px; }
+  margin-top: 5px;
+  cursor: pointer; }
 
 .successLogo {
   text-align: center; }
@@ -134,21 +135,21 @@ header {
     padding: 10px 20px;
     color: #fff;
     letter-spacing: 0.5px; }
-  .formContainer form {
+  .formContainer #addPackageForm {
     padding: 40px; }
-    .formContainer form .large-6 {
+    .formContainer #addPackageForm .large-6 {
       padding-left: 2.9375rem !important;
       padding-right: 3.9375rem !important; }
-    .formContainer form input {
-      background-color: #c9c9c9;
+    .formContainer #addPackageForm input {
+      background-color: #ddd;
       border: none; }
-    .formContainer form select {
-      background-color: #c9c9c9;
+    .formContainer #addPackageForm select {
+      background-color: #ddd;
       border: none; }
-    .formContainer form textarea {
-      background-color: #c9c9c9;
+    .formContainer #addPackageForm textarea {
+      background-color: #ddd;
       border: none;
-      height: 120px; }
+      height: 137px; }
   .formContainer .formElement {
     padding: 10px 0; }
   .formContainer .btnContainer {

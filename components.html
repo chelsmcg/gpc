@@ -28,12 +28,12 @@
                     <td>adobe_photoshop cs6_1_1_M</td>
                     <td>MSI</td>
                     <td>HIGH</td>
-                    <td>DISCOVERY</td>
+                    <td id="discoveryBtn">DISCOVERY</td>
                     <td>NEW</td>
-                    <td class="tableIcon">M</td>
-                    <td class="tableIcon">g</td>
-                    <td class="tableIcon">H</td>
-                    <td class="tableIcon">T</td>
+                    <td class="tableIcon" id="editIcon" alt="edit">M</td>
+                    <td class="tableIcon" id="issueIcon" alt="issues">g</td>
+                    <td class="tableIcon" id="docIcon" alt="documents">H</td>
+                    <td class="tableIcon" id="sourceIcon" alt="source">T</td>
                 </tr>
                 <tr>
                     <td>1001</td>
@@ -42,10 +42,10 @@
                     <td>HIGH</td>
                     <td>DISCOVERY</td>
                     <td>NEW</td>
-                    <td class="tableIcon" alt="edit">M</td>
-                    <td class="tableIcon" alt="issues">g</td>
-                    <td class="tableIcon" alt="documents">H</td>
-                    <td class="tableIcon" alt="package">T</td>
+                    <td class="tableIcon" id="editIcon" alt="edit">M</td>
+                    <td class="tableIcon" id="issueIcon" alt="issues">g</td>
+                    <td class="tableIcon" id="docIcon" alt="documents">H</td>
+                    <td class="tableIcon" id="sourceIcon" alt="source">T</td>
                 </tr>
             </tbody>
         </table>
@@ -99,83 +99,69 @@
 <div id="addPackage">
     <div class="row">
         <div class="dashboardTitle">
-            <span class="userIcon">d</span>
+            <span class="userIcon" id="pageIcon">d</span>
             <span class="dashTitle">ADD PACKAGE</span>
         </div>
     </div>
     <div class="row">
         <div class="formContainer">
-            <div class="formHeader">NEW PACKAGE</div>
-            <form id="addPackageForm">
+            <div class="formHeader" id="formText">NEW PACKAGE</div>
+            <div id="addPackageForm">
                 <div class="large-6 columns">
                     <div class="formElement">
                         <label>Vendor:</label>
-                        <input type="text"></input>
+                        <input type="text" id="vendor" required></input>
                     </div>
                     <div class="formElement">
                         <label>Application ID:</label>
-                        <input type="text"></input>
+                        <input type="text" id="appID" required></input>
                     </div>
                     <div class="formElement">
                         <label>Application Name:</label>
-                        <input type="text"></input>
+                        <input type="text" id="appName" required></input>
                     </div>
                     <div class="formElement">
                         <label>Application Version:</label>
-                        <input type="text"></input>
+                        <input type="text" id="appVersion" required></input>
                     </div>
                     <div class="formElement">
                         <label>Operating System:</label>
-                        <select>
-                            <option>Text</option>
-                            <option>Text</option>
-                            <option>Text</option>
-                            <option>Text</option>
+                        <select id="opSystem">
+                            <option>Windows 7</option>
+                            <option>Windows XP SP3</option>
                         </select>
                     </div>
                 </div>
                 <div class="large-6 columns">
                     <div class="formElement">
                         <label>Package Type:</label>
-                        <select>
-                            <option>Text</option>
-                            <option>Text</option>
-                            <option>Text</option>
-                            <option>Text</option>
-                        </select>
-                    </div>
-                    <div class="formElement">
-                        <label>Department:</label>
-                        <select>
-                            <option>Text</option>
-                            <option>Text</option>
-                            <option>Text</option>
-                            <option>Text</option>
+                        <select id="packageType">
+                            <option>APP-V</option>
+                            <option>MSI</option>
                         </select>
                     </div>
                     <div class="formElement">
                         <label>Revision:</label>
-                        <input type="text"></input>
+                        <input type="text" id="revision" required></input>
                     </div>
                     <div class="formElement">
                         <label>Priority:</label>
-                        <select>
-                            <option>Text</option>
-                            <option>Text</option>
-                            <option>Text</option>
-                            <option>Text</option>
+                        <select id="priority">
+                            <option>High</option>
+                            <option>Medium</option>
+                            <option>Low</option>
                         </select>
                     </div>
                     <div class="formElement">
                         <label>Comments:</label>
-                        <textarea></textarea>
+                        <textarea id="comments"></textarea>
                     </div>
                 </div>
                 <div class="btnContainer">
                     <button>CANCEL</button>
-                    <button type="submit" class="submit">SAVE</button>
+                    <button class="submit">SAVE</button>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>

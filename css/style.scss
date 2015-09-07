@@ -69,6 +69,7 @@ header {
 	img {
 		width: 55%;
 		margin-top: 5px;
+		cursor: pointer;
 	}
 }
 
@@ -153,7 +154,7 @@ header {
 		letter-spacing: 0.5px;
 	}
 
-	form {
+	#addPackageForm {
 		padding: 40px;
 
 		.large-6 {
@@ -162,19 +163,19 @@ header {
 		}
 
 		input {
-			background-color: #c9c9c9;
+			background-color: #ddd;
 			border: none;
 		}
 
 		select {
-			background-color: #c9c9c9;
+			background-color: #ddd;
 			border: none;
 		}
 
 		textarea {
-			background-color: #c9c9c9;
+			background-color: #ddd;
 			border: none;
-			height: 120px;
+			height: 137px;
 		}
 	}
 
