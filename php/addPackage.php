@@ -6,7 +6,6 @@
 	// gp.dev/php/addPackage.php?vendor=checlc&appId=69&appName=funz&appVersion=3&revision=2.0
 	if(!empty($_GET['vendor']) && !empty($_GET['appId']) && !empty($_GET['appName']) && !empty($_GET['appVersion']) && !empty($_GET['revision'])){
 		
-
 		$appId = $_GET['appId'];
 		$vendor = $_GET['vendor'];
 		$appName = $_GET['appName'];
@@ -21,13 +20,16 @@
 		$category = 'discovery';
 		$status = 'new';
 		$added = date('Y-m-d H:i:s');
+
+		//check if input appID already exists in the db
 		$exists = checkValue('appID', $appId, 'packages');
 
+		//if appID valid then addes package to db
 		if(!$exists){
 			$packageAdded = addPackage($appId, $vendor, $appName, $appVersion, $revision, $OS, $pType, $priority, $comments, $category, $status, $added);
 			format_response($packageAdded, 'Package added successfully');
-		}else{
 
+		}else{
 			format_response(false, 'The appID entered already exists', 'taken_appID');
 		}
 
