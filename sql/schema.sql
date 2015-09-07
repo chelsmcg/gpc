@@ -26,17 +26,17 @@ CREATE TABLE roles (
 
 CREATE TABLE packages (
 	id INT NOT NULL AUTO_INCREMENT,
-	name VARCHAR(200),
-	type VARCHAR(10),
-	category VARCHAR(30),
-	priority VARCHAR(10),
-	status VARCHAR(20),
-	vendor VARCHAR(200),
-	version VARCHAR(20),
-	operatingSystem VARCHAR(100),
-	department VARCHAR(100),
-	revision VARCHAR(50),
-	comments TEXT,
+	name VARCHAR(200) DEFAULT NULL,
+	type VARCHAR(10) DEFAULT NULL,
+	category VARCHAR(30) DEFAULT NULL,
+	priority VARCHAR(10) DEFAULT NULL,
+	status VARCHAR(20) DEFAULT NULL,
+	vendor VARCHAR(200) DEFAULT NULL,
+	version VARCHAR(20) DEFAULT NULL,
+	operatingSystem VARCHAR(100) DEFAULT NULL,
+	appID VARCHAR(100) DEFAULT NULL,
+	revision VARCHAR(50) DEFAULT NULL,
+	comments TEXT DEFAULT NULL,
 	added DATETIME,
 	PRIMARY KEY (id)
 );
