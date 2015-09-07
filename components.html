@@ -107,7 +107,7 @@
         <div class="formContainer">
             <div class="formHeader" id="formText">NEW PACKAGE</div>
             <div id="addPackageForm">
-                <div class="large-6 columns">
+                <div class="large-6 columns mainColumn">
                     <div class="formElement">
                         <label>Vendor:</label>
                         <input type="text" id="vendor" required></input>
@@ -132,7 +132,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="large-6 columns">
+                <div class="large-6 columns mainColumn">
                     <div class="formElement">
                         <label>Package Type:</label>
                         <select id="packageType">
@@ -166,3 +166,51 @@
     </div>
 </div>
 <!-- *********** END ADD PACKAGE PAGE ************ -->
+<!-- *********** DISCOVERY SETTINGS SECTION ************* -->
+<div id="discoverySettings">
+    <div class="divider"></div>
+    <div class="large-6 columns">
+        <div class="formElement">
+            <label>Status:</label>
+            <select id="status">
+                <option>New</option>
+                <option>Assigned</option>
+                <option>Started</option>
+                <option>On Hold</option>
+                <option>Pending Issues</option>
+            </select>
+        </div>
+        <div class="formElement">
+            <label>UPLOAD: Documentation</label>
+            <input type="file" class="uploadBtn"></input>
+        </div>
+    </div>
+    <div class="large-6 columns">
+        <div class="formElement">
+            <label>UPLOAD: Source Files</label>
+            <input type="file" class="uploadBtn"></input>
+            <input type="checkbox" class="checkbox"></input>
+            <p class="checkboxText">Source files provided by other means</p>
+        </div>
+    </div>
+    <div class="settingsBtnContainer">
+        <button>DELETE</button>
+        <button class="submit">COMPLETED</button>
+    </div>
+</div>
+<!-- *********** END DISCOVERY SETTINGS SECTION ************* -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

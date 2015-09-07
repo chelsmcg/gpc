@@ -37,10 +37,17 @@ var Load = {
 
 			$('#addPackageForm input, #addPackageForm select, #addPackageForm textarea').css('background', '#919191');
 
-			var $discoverySettings = $('#discoverySettings');
+			$('.btnContainer').hide();
+
+			var $discoverySettings = '<div id="loadDiscovery"></div>';
 
 			$('#addPackageForm').append($discoverySettings);
+			$('#loadDiscovery').load('components.html #discoverySettings');
+
+			$('.mainColumn').css('margin-bottom', '40px');
+			
 		});
+
 	}
 }
 

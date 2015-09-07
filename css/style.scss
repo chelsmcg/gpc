@@ -183,19 +183,48 @@ header {
 		padding: 10px 0;
 	}
 
-	.btnContainer {
+	.btnContainer, .settingsBtnContainer {
 		clear: both;
 		padding: 50px 62px 20px 47px;
 
 		button {
 			background: #00738E;
-			padding: 10px;
-			width: 110px;
+			padding: 10px 20px;
+			width: auto;
 		}
 
 		button.submit {
 			float: right;
 		}
+	}
+
+	#loadDiscovery {
+		clear: both;
+	}
+
+	.divider {
+		width: 92%;
+		height: 1px;
+		background-color: #444;
+		margin: 40px auto;
+	}
+
+	.uploadBtn {
+		background: none !important;
+		color: #fff;
+	}
+
+	.checkbox {
+		display: inline-block;
+		vertical-align: middle;
+		margin-top: -3px;
+	}
+
+	p.checkboxText {
+		display: inline-block;
+		vertical-align: middle;
+		color: #fff;
+		margin-left: 15px;
 	}
 }
 

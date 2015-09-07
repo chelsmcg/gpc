@@ -152,14 +152,33 @@ header {
       height: 137px; }
   .formContainer .formElement {
     padding: 10px 0; }
-  .formContainer .btnContainer {
+  .formContainer .btnContainer, .formContainer .settingsBtnContainer {
     clear: both;
     padding: 50px 62px 20px 47px; }
-    .formContainer .btnContainer button {
+    .formContainer .btnContainer button, .formContainer .settingsBtnContainer button {
       background: #00738E;
-      padding: 10px;
-      width: 110px; }
-    .formContainer .btnContainer button.submit {
+      padding: 10px 20px;
+      width: auto; }
+    .formContainer .btnContainer button.submit, .formContainer .settingsBtnContainer button.submit {
       float: right; }
+  .formContainer #loadDiscovery {
+    clear: both; }
+  .formContainer .divider {
+    width: 92%;
+    height: 1px;
+    background-color: #444;
+    margin: 40px auto; }
+  .formContainer .uploadBtn {
+    background: none !important;
+    color: #fff; }
+  .formContainer .checkbox {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -3px; }
+  .formContainer p.checkboxText {
+    display: inline-block;
+    vertical-align: middle;
+    color: #fff;
+    margin-left: 15px; }
 
 /*# sourceMappingURL=style.css.map */
