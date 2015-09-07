@@ -45,11 +45,24 @@
 
 	function format_response($success, $data=null, $message=null){
 
-		$response = array(
-				'success' => $success,
-				'data' => $data,
-				'message' => $message
-			);
+		if($data == null && $message == null){
+			$response = array(
+					'success' => $success
+				);
+
+		}else if($data == null){
+			$response = array(
+					'success' => $success,
+					'data' => $data
+				);
+			
+		}else{
+			$response = array(
+					'success' => $success,
+					'data' => $data,
+					'message' => $message
+				);
+		}
 		send_response($response);
 	}
 
