@@ -1,9 +1,41 @@
 <?php
 
+/*********************************************HOW TO USER******************************************/
+
+//the following values are the parameters needed to be passed through to this script in the data section of the ajax call
+
+
+/*For all packages
+*value: No Params required
+*returns: an object of package objects
+*test: gp.dev/php/getPackage.php
+*/
+
+/*For a specific package
+*value: rowId
+*returns: an object with one package object
+*test: gp.dev/php/getPackage.php?rowId=2
+*/
+
+/*For all packages of a specific type
+value: *category - ie. "discovery"
+*returns: an object of package objects of the set type
+*test: gp.dev/php/getPackage.php?category="discovery"
+*/
+
+/*For a specific package of specific type
+*value: category & rowId
+*likely not needed
+*test: gp.dev/php/getPackage.php?category="discovery"&rowId=2
+*/
+
+// gp.dev/php/getPackage.php
+
+/***************************************************************************************/
+
 	include_once "db/dbConnect.php";
 	include_once "commonFuncs.php";
 
-	// gp.dev/php/getPackage.php?rowId=7
 	$category = !empty($_GET['category']) ? $_GET['category'] : 'all';
 	
 	if(!empty($_GET['rowId'])){
@@ -13,22 +45,6 @@
 	}else{
 		$packages = getPackage($category);
 	}
-		
-	// $appId = !empty($_GET['appId']) ? $_GET['appId'] : null;
-	// $vendor = !empty($_GET['vendor']) ? $_GET['vendor'] : null;
-	// $appName = !empty($_GET['appName']) ? $_GET['appName'] : null;
-	// $appVersion = !empty($_GET['appVersion']) ? $_GET['appVersion'] : null;
-	// $revision = !empty($_GET['revision']) ? $_GET['revision'] : null;
-	// $OS = !empty($_GET['OS']) ? $_GET['pType'] : null;
-	// $pType = !empty($_GET['pType']) ? $_GET['pType'] : null;
-	// $priority = !empty($_GET['priority']) ? $_GET['pType'] : null;
-	// $comments = !empty($_GET['comments']) ? $_GET['pType'] : null;
-	// $category = !empty($_GET['category']) ? $_GET['category'] : null;
-	// $status = !empty($_GET['status']) ? $_GET['status'] : null;
-
-	// $added = date('Y-m-d H:i:s');
-
-
 
 	if(!$packages){
 
@@ -38,7 +54,6 @@
 		format_response(true, 'Retrieved packages', $packages);
 	}
 
-	
 
 	//updates the packages table
 	function getPackage($category, $rowId=null){
