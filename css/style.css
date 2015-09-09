@@ -164,7 +164,7 @@ header {
       width: auto; }
     .formContainer .btnContainer button.submit, .formContainer .settingsBtnContainer button.submit {
       float: right; }
-  .formContainer #loadDiscovery {
+  .formContainer #loadDiscovery, .formContainer #loadBottomSnippet {
     clear: both; }
   .formContainer .divider {
     width: 92%;

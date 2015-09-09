@@ -42,9 +42,9 @@ var Load = {
 
 			$('.btnContainer').hide();
 
-			var $discoverySettings = '<div id="loadDiscovery"></div>';
+			var discoverySettings = '<div id="loadDiscovery"></div>';
 
-			$('#addPackageForm').append($discoverySettings);
+			$('#addPackageForm').append(discoverySettings);
 			$('#loadDiscovery').load('components.html #discoverySettings');
 
 			$('.mainColumn').css('margin-bottom', '40px');
@@ -53,6 +53,13 @@ var Load = {
 		Load.loadModals();
 
 	},
+
+	loadBottomSnippet: function() {
+		var bottomSnippet = '<div id="loadBottomSnippet"></div>';
+
+		$('#addPackageForm').append(bottomSnippet);
+		$('#loadBottomSnippet').load('components.html #bottomSnippet');
+	}
 
 	loadModals: function() {
 		$('#modalContainer').load('components.html #modals');
