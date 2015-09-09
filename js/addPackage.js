@@ -5,7 +5,10 @@ var AddPackage = {
 	},
 
 	events: function() {
-		$('body').on('click touch', '#saveNewPackageBtn', AddPackage.saveNewPackage);
+    $('body').on('click touch', '#saveNewPackageBtn', AddPackage.saveNewPackage);
+    $('body').on('click touch', '#addPackageSuccessBtn', AddPackage.successOKBtn);
+    $('body').on('click touch', '#addPackageSuccessBtn', AddPackage.errorOKBtn);
+		$('body').on('click touch', '#notUniqueBtn', AddPackage.notUniqueOKBtn);
 	},
 
 	saveNewPackage: function() {
@@ -37,17 +40,53 @@ var AddPackage = {
   			success: function(response) {
   				console.log(response);
   				if(response.success) {
-  					alert('yay');
+  					AddPackage.successModal();
   				} else {
   					if(response.data == 'taken_appID') {
-  						alert('Taken App ID');
+  						AddPackage.notUniqueModal();
   					} else {
-  						alert('Unexpected Error');
+  						AddPackage.errorModal();
   					}
   				}
   			}
 		});
-	}
+	},
+
+  successModal: function() {
+    var $modal = $('#packageAddedSuccessModal');
+
+    $modal.fadeIn();
+  },
+
+  successOKBtn: function() {
+    var $modal = $('#packageAddedSuccessModal');
+
+    $modal.fadeOut();
+  },
+
+  errorModal: function() {
+    var $modal = $('#packageAddedErrorModal');
+
+    $modal.fadeIn();
+  },
+
+  errorOKBtn: function() {
+    var $modal = $('#packageAddedErrorModal');
+
+    $modal.fadeOut();
+  },
+
+  notUniqueModal: function() {
+    var $modal = $('#notUniqueModal');
+
+    $modal.fadeIn();
+  },
+
+  notUniqueOKBtn: function() {
+    var $modal = $('#notUniqueModal');
+
+    $modal.fadeOut();
+  }
 
 
 }

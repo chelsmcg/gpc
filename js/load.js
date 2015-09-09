@@ -3,22 +3,24 @@ var Load = {
 	init: function() {
 		Load.events();
 		Load.dashboard();
+		Load.loadModals();
 	},
 
 	events: function() {
 		$('#mainContainer').on('click touch', '#addPackageBtn', Load.addPackage);
 		$('body').on('click touch', '.companyLogo', Load.dashboard);
-		// $('body').on('click touch', '#editIcon', Load.addEditPackage);
 		$('body').on('click touch', '#discoveryBtn', Load.discoveryPage);
 		
 	},
 
 	dashboard: function() {
 		$('#mainContainer').load('components.html #dashboard');
+		Load.loadModals();
 	},
 
 	addPackage: function() {
 		$('#mainContainer').load('components.html #addPackage');
+		Load.loadModals();
 	},
 
 	addEditPackage: function(){
@@ -27,6 +29,7 @@ var Load = {
 			$('#pageIcon').text('M');
 			$('.formHeader').text('EDIT PACKAGE');
 		});
+		Load.loadModals();
 	},
 
 	discoveryPage: function() {
@@ -47,7 +50,12 @@ var Load = {
 			$('.mainColumn').css('margin-bottom', '40px');
 			
 		});
+		Load.loadModals();
 
+	},
+
+	loadModals: function() {
+		$('#modalContainer').load('components.html #modals');
 	}
 }
 
