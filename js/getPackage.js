@@ -6,20 +6,10 @@ var GetPackage = {
 	},
 
 	events: function() {
-		$('body').on('click touch', '.edit', GetPackage.packageDetails);
+
 	},
 
 	getAllPackages: function() {
-		var $this = $(this);
-		var vendor;
-		var appID;
-		var appName;
-		var appVersion;
-		var opSystem;
-		var packageType;
-		var revision;
-		var priority;
-		var comments;
 
 		$.ajax({
   			url: "php/getPackage.php",
@@ -47,59 +37,33 @@ var GetPackage = {
     var priority;
     var comments;
     var row_html;
+    var id;
+    var packageName;
 
     console.log(packages);
 
     for(var i = 0; i < packages.length; i++) {
       package = packages[i];
-      vendor = package.vendor;
+      id = package.id;
+      vendor = package.vendor.replace(/\s+/g, '');
       appID = package.appID;
-      appName = package.name;
-      appVersion = package.version;
+      appName = package.name.replace(/\s+/g, '');
+      appVersion = package.version.replace(/\s+/g, '');
       opSystem = package.operatingSystem;
       packageType = package.type;
-      revision = package.revision;
+      revision = package.revision.replace(/\s+/g, '');
       category = package.category;
       status = package.status;
       priority = package.priority;
       comments = package.comments;
+      packageName = Global.createPackagName(vendor, appName, appVersion, revision);
 
-      row_html = '<tr data-packageid="#"><td>'+ appID +'</td><td>'+ vendor +'_'+ appName +'_'+ appVersion + '_' + revision + '<td>'+ packageType + '</td><td>' + priority + '</td><td>' + category + '</td><td>' + status + '</td><td class="tableIcon edit">M</td><td class="tableIcon issue">g</td><td class="tableIcon documents">H</td><td class="tableIcon source">T</td></tr>'
-    
+      row_html = '<tr data-rowid="' + id + '"><td>'+ appID +'</td><td>'+ packageName + '<td>'+ packageType + '</td><td>' + priority + '</td><td>' + category + '</td><td>' + status + '</td><td class="tableIcon edit">M</td><td class="tableIcon issue">g</td><td class="tableIcon documents">H</td><td class="tableIcon source">T</td></tr>';
+
       $('#dashboardTable tbody').append(row_html);
     }
 
 
-  },
-
-  packageDetails: function() {
-    Load.addEditPackage();
-
-    $.ajax({
-        url: "php/getPackage.php",
-        dataType: 'jsonp',
-        success: function(response) {
-          console.log(response);
-          var vendor = response.vendor;
-          var appID = response.appID;
-          var appName = response.name;;
-          var appVersion = response.version;
-          var opSystem = response.operatingSystem;
-          var packageType = response.type;
-          var revision = response.revision;
-          var priority = response.priority;
-          var comments = response.comments;
-
-          $('#vendor').val(vendor);
-          $('#appName').val(appName);
-          $('#appVersion').val(appVersion);
-          $('#opSystem').val(opSystem);
-          $('#packageType').val(packageType);
-          $('#revision').val(revision);
-          $('#priority').val(priority);
-          $('#comments').val(comments);
-        }
-    });
   }
 
   // openUserDetails: function() {

@@ -1,5 +1,5 @@
 <!-- *********** OGIN PAGE ************ -->
-<div class="loginContainer">
+<div class="loginContainer" id="loginPage">
     <div class="loginBox">
         <div class="row" style="position:relative;">
             <div class="large-6 columns logoColumn">
@@ -22,100 +22,119 @@
 <!-- *********** END LOGIN PAGE ************ -->
 <!-- *********** DASHBOARD PAGE ************ -->
 <div id="dashboard">
-    <div class="row">
-        <div class="dashboardTitle">
-            <span class="userIcon">O</span>
-            <span class="dashTitle">DASHBOARD</span>
+    <header>
+        <div class="row">
+            <div class="small-4 large-4 columns companyLogo">
+                <img src="img/santos-logo.png" />
+            </div>
+            <div class="small-4 large-4 columns">
+                <span class="companyLogo"></span>
+                <span class="userNameDiv">
+                    <span class="userIcon"></span>
+                    <span class="userName">Mark Ganser</span>
+                    <span class="userArrow">8</span>
+                </span>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <table id="dashboardTable">
-            <thead>
-                <tr>
-                    <th width="100">ID</th>
-                    <th width="400">Package Name</th>
-                    <th width="200">Type</th>
-                    <th width="200">Priority</th>
-                    <th width="200">Category</th>
-                    <th width="100">Status</th>
-                    <th width="50"></th>
-                    <th width="50"></th>
-                    <th width="50"></th>
-                    <th width="50"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- <tr>
-                    <td>1001</td>
-                    <td>adobe_photoshop cs6_1_1_M</td>
-                    <td>MSI</td>
-                    <td>HIGH</td>
-                    <td id="discoveryBtn">DISCOVERY</td>
-                    <td>NEW</td>
-                    <td class="tableIcon" id="editIcon" alt="edit">M</td>
-                    <td class="tableIcon" id="issueIcon" alt="issues">g</td>
-                    <td class="tableIcon" id="docIcon" alt="documents">H</td>
-                    <td class="tableIcon" id="sourceIcon" alt="source">T</td>
-                </tr>
-                <tr>
-                    <td>1001</td>
-                    <td>adobe_photoshop cs6_1_1_M</td>
-                    <td>MSI</td>
-                    <td>HIGH</td>
-                    <td>DISCOVERY</td>
-                    <td>NEW</td>
-                    <td class="tableIcon" id="editIcon" alt="edit">M</td>
-                    <td class="tableIcon" id="issueIcon" alt="issues">g</td>
-                    <td class="tableIcon" id="docIcon" alt="documents">H</td>
-                    <td class="tableIcon" id="sourceIcon" alt="source">T</td>
-                </tr> -->
-            </tbody>
-        </table>
-    </div>
-    <div class="row">
-        <div class="large-6 columns padding-left-0">
-            <div class="graph"></div>
+    </header>
+    <div id="mainContainer">
+        <div class="row">
+            <div class="dashboardTitle">
+                <span class="userIcon">O</span>
+                <span class="dashTitle">DASHBOARD</span>
+            </div>
         </div>
-        <div class="large-6 columns padding-right-0">
-            <div class="row">
-                <div class="large-6 columns">
-                    <div class="dashboardBtn" id="addPackageBtn">
-                        <div class="btnHeader">add package</div>
-                        <div class="btnIcon smallerBtn">d</div>
+        <div class="row">
+            <table id="dashboardTable">
+                <thead>
+                    <tr>
+                        <th width="100">ID</th>
+                        <th width="400">Package Name</th>
+                        <th width="200">Type</th>
+                        <th width="200">Priority</th>
+                        <th width="200">Category</th>
+                        <th width="100">Status</th>
+                        <th width="50"></th>
+                        <th width="50"></th>
+                        <th width="50"></th>
+                        <th width="50"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr>
+                        <td>1001</td>
+                        <td>adobe_photoshop cs6_1_1_M</td>
+                        <td>MSI</td>
+                        <td>HIGH</td>
+                        <td id="discoveryBtn">DISCOVERY</td>
+                        <td>NEW</td>
+                        <td class="tableIcon" id="editIcon" alt="edit">M</td>
+                        <td class="tableIcon" id="issueIcon" alt="issues">g</td>
+                        <td class="tableIcon" id="docIcon" alt="documents">H</td>
+                        <td class="tableIcon" id="sourceIcon" alt="source">T</td>
+                    </tr>
+                    <tr>
+                        <td>1001</td>
+                        <td>adobe_photoshop cs6_1_1_M</td>
+                        <td>MSI</td>
+                        <td>HIGH</td>
+                        <td>DISCOVERY</td>
+                        <td>NEW</td>
+                        <td class="tableIcon" id="editIcon" alt="edit">M</td>
+                        <td class="tableIcon" id="issueIcon" alt="issues">g</td>
+                        <td class="tableIcon" id="docIcon" alt="documents">H</td>
+                        <td class="tableIcon" id="sourceIcon" alt="source">T</td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="large-6 columns padding-left-0">
+                <div class="graph"></div>
+            </div>
+            <div class="large-6 columns padding-right-0">
+                <div class="row">
+                    <div class="large-6 columns">
+                        <div class="dashboardBtn" id="addPackageBtn">
+                            <div class="btnHeader">add package</div>
+                            <div class="btnIcon smallerBtn">d</div>
+                        </div>
+                    </div>
+                    <div class="large-6 columns">
+                        <div class="dashboardBtn">
+                            <div class="btnHeader">profile</div>
+                            <div class="btnIcon">&#xe001;</div>
+                        </div>
                     </div>
                 </div>
-                <div class="large-6 columns">
-                    <div class="dashboardBtn">
-                        <div class="btnHeader">profile</div>
-                        <div class="btnIcon">&#xe001;</div>
+                <div class="row">
+                    <div class="large-6 columns">
+                        <div class="dashboardBtn">
+                            <div class="btnHeader">settings</div>
+                            <div class="btnIcon"><</div>
+                        </div>
+                    </div>
+                    <div class="large-6 columns">
+                        <div class="dashboardBtn">
+                            <div class="btnHeader">logout</div>
+                            <div class="btnIcon">-</div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="large-6 columns">
-                    <div class="dashboardBtn">
-                        <div class="btnHeader">settings</div>
-                        <div class="btnIcon"><</div>
-                    </div>
-                </div>
-                <div class="large-6 columns">
-                    <div class="dashboardBtn">
-                        <div class="btnHeader">logout</div>
-                        <div class="btnIcon">-</div>
-                    </div>
-                </div>
+        </div>
+        <div class="row margin-top-neg-30">
+            <div class="large-6 columns padding-left-0">
+                <div class="graph"></div>
             </div>
-        </div>
-    </div>
-    <div class="row margin-top-neg-30">
-        <div class="large-6 columns padding-left-0">
-            <div class="graph"></div>
-        </div>
-        <div class="large-6 columns padding-right-0">
-            <div class="graph"></div>
+            <div class="large-6 columns padding-right-0">
+                <div class="graph"></div>
+            </div>
         </div>
     </div>
 </div>
+<div id="modalContainer"></div>
+
 <!-- *********** END DASHBOARD PAGE ************ -->
 <!-- *********** ADD PACKAGE PAGE ************ -->
 <div id="addPackage">

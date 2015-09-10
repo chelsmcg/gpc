@@ -2,7 +2,7 @@ var Load = {
 
 	init: function() {
 		Load.events();
-		Load.dashboard();
+		Load.login();
 		Load.loadModals();
 	},
 
@@ -10,11 +10,17 @@ var Load = {
 		$('#mainContainer').on('click touch', '#addPackageBtn', Load.addPackage);
 		$('body').on('click touch', '.companyLogo', Load.dashboard);
 		$('body').on('click touch', '#discoveryBtn', Load.discoveryPage);
+		$('body').on('click touch', '.loginBtn', Load.dashboard);
 		
 	},
 
+	login: function() {
+		$('#loadContainer').load('components.html #loginPage');
+	},
+
 	dashboard: function() {
-		$('#mainContainer').load('components.html #dashboard');
+		$('#loadContainer').load('components.html #dashboard');
+		GetPackage.getAllPackages();
 		Load.loadModals();
 	},
 
@@ -25,7 +31,7 @@ var Load = {
 
 	addEditPackage: function(){
 		$('#mainContainer').load('components.html #addPackage', function(){
-			$('.dashTitle').text('EDIT PACKAGE - PACKAGE NAME');
+			// $('.dashTitle').text('EDIT PACKAGE - PACKAGE NAME');
 			$('#pageIcon').text('M');
 			$('.formHeader').text('EDIT PACKAGE');
 		});
