@@ -19,10 +19,10 @@
 	$appName = !empty($_GET['appName']) ? $_GET['appName'] : null;
 	$appVersion = !empty($_GET['appVersion']) ? $_GET['appVersion'] : null;
 	$revision = !empty($_GET['revision']) ? $_GET['revision'] : null;
-	$OS = !empty($_GET['OS']) ? $_GET['pType'] : null;
+	$OS = !empty($_GET['OS']) ? $_GET['OS'] : null;
 	$pType = !empty($_GET['pType']) ? $_GET['pType'] : null;
-	$priority = !empty($_GET['priority']) ? $_GET['pType'] : null;
-	$comments = !empty($_GET['comments']) ? $_GET['pType'] : null;
+	$priority = !empty($_GET['priority']) ? $_GET['priority'] : null;
+	$comments = !empty($_GET['comments']) ? $_GET['comments'] : null;
 	$category = !empty($_GET['category']) ? $_GET['category'] : null;
 	$status = !empty($_GET['status']) ? $_GET['status'] : null;
 
