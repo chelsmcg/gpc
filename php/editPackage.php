@@ -46,7 +46,7 @@
 		global $mysqli;
 
 		$sql = "UPDATE packages
-				SET appID='$appId', vendor='$vendor', name='$appName', version='$appVersion', revision='$revision', operatingSystem='$OS', type='$pType', priority='$priority', comments='$comments', category='$category', status='$status'
+				SET appID='$appId', vendor='$vendor', name='$appName', version='$appVersion', revision='$revision', operatingSystem='$OS', type='$pType', priority='$priority', comments='$comments'
 				WHERE id='$rowId'";
 
 		if (!$result = $mysqli->query($sql)) {

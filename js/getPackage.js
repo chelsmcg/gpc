@@ -58,7 +58,7 @@ var GetPackage = {
       comments = package.comments;
       packageName = Global.createPackagName(vendor, appName, appVersion, revision);
 
-      row_html = '<tr data-rowid="' + id + '"><td>'+ appID +'</td><td>'+ packageName + '<td>'+ packageType + '</td><td>' + priority + '</td><td>' + category + '</td><td>' + status + '</td><td class="tableIcon edit">M</td><td class="tableIcon issue">g</td><td class="tableIcon documents">H</td><td class="tableIcon source">T</td></tr>';
+      row_html = '<tr data-rowid="' + id + '"><td>'+ appID +'</td><td class="packageName ' + category + 'PageBtn">'+ packageName + '<td>'+ packageType + '</td><td>' + priority + '</td><td>' + category + '</td><td>' + status + '</td><td class="tableIcon edit">M</td><td class="tableIcon issue">g</td><td class="tableIcon documents">H</td><td class="tableIcon source">T</td></tr>';
 
       $('#dashboardTable tbody').append(row_html);
     }

@@ -11,6 +11,7 @@ var Load = {
 		$('body').on('click touch', '.companyLogo', Load.dashboard);
 		$('body').on('click touch', '#discoveryBtn', Load.discoveryPage);
 		$('body').on('click touch', '.loginBtn', Load.dashboard);
+		$('body').on('click touch', '.discoveryPageBtn', Load.discoveryPage);
 		
 	},
 
@@ -34,11 +35,13 @@ var Load = {
 			// $('.dashTitle').text('EDIT PACKAGE - PACKAGE NAME');
 			$('#pageIcon').text('M');
 			$('.formHeader').text('EDIT PACKAGE');
+			$('#saveNewPackageBtn').attr('id', 'editPackageBtn');
 		});
 		Load.loadModals();
 	},
 
 	discoveryPage: function() {
+		
 		$('#mainContainer').load('components.html #addPackage', function(){
 			$('.dashTitle').text('DISCOVERY - PACKAGE NAME');
 			$('#pageIcon').text('T');
@@ -57,6 +60,7 @@ var Load = {
 			
 		});
 		Load.loadModals();
+		
 
 	},
 
