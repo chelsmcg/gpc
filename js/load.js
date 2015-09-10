@@ -44,7 +44,7 @@ var Load = {
 			$('#pageIcon').text('T');
 			$('.formHeader').text('DISCOVERY - PACKAGE DETAILS');
 
-			$('#addPackageForm input, #addPackageForm select, #addPackageForm textarea').css('background', '#919191');
+			$('#addPackageForm input, #addPackageForm select, #addPackageForm textarea').css('background', '#919191').prop('disabled', 'true');
 
 			$('.btnContainer').hide();
 

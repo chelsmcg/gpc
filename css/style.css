@@ -164,7 +164,7 @@ header {
       width: auto; }
     .formContainer .btnContainer button.submit, .formContainer .settingsBtnContainer button.submit {
       float: right; }
-  .formContainer #loadDiscovery, .formContainer #loadBottomSnippet {
+  .formContainer #loadDiscovery, .formContainer #loadBottomSnippet, .formContainer #manageRoles {
     clear: both; }
   .formContainer .divider {
     width: 92%;
@@ -182,7 +182,11 @@ header {
     display: inline-block;
     vertical-align: middle;
     color: #fff;
-    margin-left: 15px; }
+    margin-left: 10px;
+    font-size: 14px; }
+  .formContainer .rolesTitle {
+    font-size: 18px;
+    margin-bottom: 10px; }
 
 .modal {
   display: none;

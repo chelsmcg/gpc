@@ -200,7 +200,7 @@ header {
 		}
 	}
 
-	#loadDiscovery, #loadBottomSnippet {
+	#loadDiscovery, #loadBottomSnippet, #manageRoles {
 		clear: both;
 	}
 
@@ -226,7 +226,13 @@ header {
 		display: inline-block;
 		vertical-align: middle;
 		color: #fff;
-		margin-left: 15px;
+		margin-left: 10px;
+		font-size: 14px;
+	}
+
+	.rolesTitle {
+		font-size: 18px;
+		margin-bottom: 10px;
 	}
 }
 
