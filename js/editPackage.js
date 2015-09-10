@@ -1,30 +1,26 @@
 var EditPackage = {
 
-  rowId: null,
+  packageData: [],
 
 	init: function() {
 		EditPackage.events();
 	},
 
 	events: function() {
-    $('body').on('click touch', '.edit', EditPackage.packageDetails);
     $('body').on('click touch', '#editPackageBtn', EditPackage.editDetails);
 	},
 
-  packageDetails: function() {
-    console.log('yay');
-    Load.addEditPackage();
-
-    EditPackage.rowID = $(this).parent().attr('data-rowid');
-
+  packageDetails: function(rowID) {
+    EditPackage.packageData = [];
     $.ajax({
         url: "php/getPackage.php",
         data: {
-          rowId: EditPackage.rowID
+          rowId: rowID
         },
         dataType: 'jsonp',
         success: function(response) {
           console.log(response);
+          EditPackage.packageData = response.data.package[0]
           var vendor = response.data.package[0].vendor;
           var appID = response.data.package[0].appID;
           var appName = response.data.package[0].name;;
@@ -68,7 +64,7 @@ var EditPackage = {
     $.ajax({
         url: "php/editPackage.php",
         data: {
-          rowId: EditPackage.rowID,
+          rowId: EditPackage.packageData.rowID,
           appId: appID,
           vendor: vendor,
           appName: appName,
@@ -91,7 +87,30 @@ var EditPackage = {
 
         }
     });
-  }
+  },
+
+  // completed: function(){
+
+  //    $.ajax({
+  //       url: "php/editPackage.php",
+  //       data: {
+  //         rowId: EditPackage.packageData.rowID,
+          
+  //       },
+  //       dataType: 'jsonp',
+  //       success: function(response) {
+  //         console.log(response);
+
+  //         if(response.success){
+  //           AddPackage.successModal();
+  //         }else{
+  //           AddPackage.errorModal();
+  //         }
+
+  //       }
+  //   });
+
+  // }
 
 }
 
