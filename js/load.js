@@ -7,7 +7,7 @@ var Load = {
 	},
 
 	events: function() {
-		$('#mainContainer').on('click touch', '#addPackageBtn', Load.addPackage);
+		$('body').on('click touch', '#addPackageBtn', Load.addPackage);
 		$('body').on('click touch', '.companyLogo', Load.dashboard);
 		$('body').on('click touch', '#discoveryBtn', Load.discoveryPage);
 		$('body').on('click touch', '.loginBtn', Load.dashboard);
