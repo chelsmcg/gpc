@@ -59,7 +59,7 @@ var Load = {
 
 		$('#addPackageForm').append(bottomSnippet);
 		$('#loadBottomSnippet').load('components.html #bottomSnippet');
-	}
+	},
 
 	loadModals: function() {
 		$('#modalContainer').load('components.html #modals');
