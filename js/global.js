@@ -4,7 +4,7 @@ var Global = {
 	},
 
 	events: function(){
-
+		$('body').on('touch click', '#cancelBtn', Load.dashboard)
 	},
 
 	createPackagName: function(vendor, appName, appVersion, revision){
