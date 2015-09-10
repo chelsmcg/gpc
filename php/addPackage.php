@@ -12,10 +12,10 @@
 		$appVersion = $_GET['appVersion'];
 		$revision = $_GET['revision'];
 
-		$OS = !empty($_GET['OS']) ? $_GET['pType'] : null;
+		$OS = !empty($_GET['OS']) ? $_GET['OS'] : null;
 		$pType = !empty($_GET['pType']) ? $_GET['pType'] : null;
-		$priority = !empty($_GET['priority']) ? $_GET['pType'] : null;
-		$comments = !empty($_GET['comments']) ? $_GET['pType'] : null;
+		$priority = !empty($_GET['priority']) ? $_GET['priority'] : null;
+		$comments = !empty($_GET['comments']) ? $_GET['comments'] : null;
 
 		$category = 'discovery';
 		$status = 'new';
