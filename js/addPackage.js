@@ -60,8 +60,9 @@ var AddPackage = {
 
   successOKBtn: function() {
     var $modal = $('#packageAddedSuccessModal');
-
     $modal.fadeOut();
+
+    Load.dashboard();
   },
 
   errorModal: function() {
