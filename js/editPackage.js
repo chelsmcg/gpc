@@ -30,6 +30,7 @@ var EditPackage = {
           var revision = response.data.package[0].revision;
           var priority = response.data.package[0].priority;
           var comments = response.data.package[0].comments;
+          var status = response.data.package[0].status;
           var packageName = Global.createPackagName(vendor, appName, appVersion, revision);
 
           $('.dashTitle').text('EDIT PACKAGE - ' + packageName);
@@ -43,6 +44,7 @@ var EditPackage = {
           $('#revision').val(revision);
           $('#priority').val(priority);
           $('#comments').val(comments);
+          $('#status').val(status);
 
         }
     });
