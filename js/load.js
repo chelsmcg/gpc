@@ -18,10 +18,12 @@ var Load = {
 
 	login: function() {
 		$('#loadContainer').load('components.html #loginPage');
+		$('#loadContainer').addClass('loginBackground');
 	},
 
 	dashboard: function() {
 		$('#loadContainer').load('components.html #dashboard');
+		$('#loadContainer').removeClass('loginBackground');
 		GetPackage.getAllPackages();
 		Load.loadModals();
 	},
