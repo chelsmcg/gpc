@@ -11,7 +11,7 @@ var Load = {
 		$('body').on('click touch', '.companyLogo', Load.dashboard);
 		$('body').on('click touch', '#discoveryBtn', Load.discoveryPage);
 		$('body').on('click touch', '.loginBtn', Load.dashboard);
-		$('body').on('click touch', '.discoveryPageBtn', Load.discoveryPage);
+		$('body').on('click touch', '.DiscoveryPageBtn', Load.discoveryPage);
 		$('body').on('click touch', '.edit', Load.addEditPackage);
 		
 	},
@@ -45,7 +45,7 @@ var Load = {
 	},
 
 	discoveryPage: function() {
-		
+		$discover = $(this);
 		$('#mainContainer').load('components.html #addPackage', function(){
 			$('.dashTitle').text('DISCOVERY - PACKAGE NAME');
 			$('#pageIcon').text('T');
@@ -61,6 +61,8 @@ var Load = {
 			$('#loadDiscovery').load('components.html #discoverySettings');
 
 			$('.mainColumn').css('margin-bottom', '40px');
+			var rowID = $discover.parent().attr('data-rowid');
+			EditPackage.packageDetails(rowID);
 			
 		});
 		Load.loadModals();

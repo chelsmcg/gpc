@@ -17,8 +17,8 @@
 		$priority = !empty($_GET['priority']) ? $_GET['priority'] : null;
 		$comments = !empty($_GET['comments']) ? $_GET['comments'] : null;
 
-		$category = 'discovery';
-		$status = 'new';
+		$category = 'Discovery';
+		$status = 'New';
 		$added = date('Y-m-d H:i:s');
 
 		//check if input appID already exists in the db
