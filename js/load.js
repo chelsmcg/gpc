@@ -12,6 +12,9 @@ var Load = {
 		$('body').on('click touch', '#discoveryBtn', Load.discoveryPage);
 		$('body').on('click touch', '.loginBtn', Load.dashboard);
 		$('body').on('click touch', '.DiscoveryPageBtn', Load.discoveryPage);
+		$('body').on('click touch', '.PackagingPageBtn', Load.PackagingPage);
+		$('body').on('click touch', '.QualityPageBtn', Load.QualityPage);
+		$('body').on('click touch', '.UATPageBtn', Load.UATPage);
 		$('body').on('click touch', '.edit', Load.addEditPackage);
 		
 	},
