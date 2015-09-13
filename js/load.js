@@ -9,12 +9,12 @@ var Load = {
 	events: function() {
 		$('body').on('click touch', '#addPackageBtn', Load.addPackage);
 		$('body').on('click touch', '.companyLogo', Load.dashboard);
-		$('body').on('click touch', '#discoveryBtn', Load.discoveryPage);
+		// $('body').on('click touch', '#discoveryBtn', Load.discoveryPage);
 		$('body').on('click touch', '.loginBtn', Load.dashboard);
 		$('body').on('click touch', '.DiscoveryPageBtn', Load.discoveryPage);
-		$('body').on('click touch', '.PackagingPageBtn', Load.PackagingPage);
-		$('body').on('click touch', '.QualityPageBtn', Load.QualityPage);
-		$('body').on('click touch', '.UATPageBtn', Load.UATPage);
+		$('body').on('click touch', '.PackagingPageBtn', Load.pages);
+		$('body').on('click touch', '.QualityPageBtn', Load.pages);
+		$('body').on('click touch', '.UATPageBtn', Load.pages);
 		$('body').on('click touch', '.edit', Load.addEditPackage);
 		
 	},
@@ -80,6 +80,24 @@ var Load = {
 
 		$('#addPackageForm').append(bottomSnippet);
 		$('#loadBottomSnippet').load('components.html #bottomSnippet');
+	},
+
+	pages: function() {
+		$('#mainContainer').load('components.html #addPackage', function(){
+			$('.dashTitle').text('PACKAGING - PACKAGE NAME');
+			$('#pageIcon').text('T');
+			$('.formHeader').text('PACKAGING - PACKAGE DETAILS');
+
+			$('#addPackageForm input, #addPackageForm select, #addPackageForm textarea').css('background', '#919191').prop('disabled', 'true');
+
+			$('.btnContainer').hide();
+
+			Load.loadBottomSnippet();
+
+			$('.mainColumn').css('margin-bottom', '40px');
+			
+		});
+		Load.loadModals();
 	},
 
 	loadModals: function() {
