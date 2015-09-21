@@ -3,7 +3,9 @@ var Load = {
 	init: function() {
 		Load.events();
 		Load.login();
+		//love you chell c
 		Load.loadModals();
+		//chell c is a bigger poopie
 	},
 
 	events: function() {
