@@ -8,7 +8,6 @@ var EditPackage = {
 
 	events: function() {
 		$('body').on('click touch', '#editPackageBtn', EditPackage.editDetails);
-		$('body').on('click touch', '#completeBtn', EditPackage.completedStage);
 		$('body').on('click touch', '.settingsBtnContainer .submit', EditPackage.completedStage);
 	},
 
