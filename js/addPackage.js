@@ -7,8 +7,10 @@ var AddPackage = {
 	events: function() {
     $('body').on('click touch', '#saveNewPackageBtn', AddPackage.saveNewPackage);
     $('body').on('click touch', '#addPackageSuccessBtn', AddPackage.successOKBtn);
-    $('body').on('click touch', '#addPackageSuccessBtn', AddPackage.errorOKBtn);
-		$('body').on('click touch', '#notUniqueBtn', AddPackage.notUniqueOKBtn);
+    $('body').on('click touch', '#packageAddedErrorBtn', AddPackage.errorOKBtn);
+    $('body').on('click touch', '#notUniqueBtn', AddPackage.notUniqueOKBtn);
+    $('body').on('click touch', '#editPackageSuccessBtn', AddPackage.editSuccessOKBtn);
+		$('body').on('click touch', '#editPackageErrorBtn', AddPackage.editErrorOKBtn);
 	},
 
 	saveNewPackage: function() {
@@ -87,7 +89,32 @@ var AddPackage = {
     var $modal = $('#notUniqueModal');
 
     $modal.fadeOut();
-  }
+  },
+
+  editSuccessModal: function() {
+    var $modal = $('#packageEditSuccessModal');
+
+    $modal.fadeIn();
+  },
+
+  editSuccessOKBtn: function() {
+    var $modal = $('#packageEditSuccessModal');
+    $modal.fadeOut();
+
+    Load.dashboard();
+  },
+
+  editErrorModal: function() {
+    var $modal = $('#packageEditErrorModal');
+
+    $modal.fadeIn();
+  },
+
+  editErrorOKBtn: function() {
+    var $modal = $('#packageEditErrorModal');
+
+    $modal.fadeOut();
+  },
 
 
 }

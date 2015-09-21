@@ -83,9 +83,9 @@ var EditPackage = {
 				console.log(response);
 
 				if(response.success){
-					AddPackage.successModal();
+					AddPackage.editSuccessModal();
 				}else{
-					AddPackage.errorModal();
+					AddPackage.editErrorModal();
 				}
 
 			}
