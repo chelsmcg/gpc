@@ -12,9 +12,9 @@ var Load = {
 		// $('body').on('click touch', '#discoveryBtn', Load.discoveryPage);
 		$('body').on('click touch', '.loginBtn', Load.dashboard);
 		$('body').on('click touch', '.DiscoveryPageBtn', Load.discoveryPage);
-		$('body').on('click touch', '.PackagingPageBtn', Load.pages);
-		$('body').on('click touch', '.QualityPageBtn', Load.pages);
-		$('body').on('click touch', '.UATPageBtn', Load.pages);
+		$('body').on('click touch', '.PackagingPageBtn', Load.packagingPage);
+		// $('body').on('click touch', '.QualityPageBtn', Load.pages);
+		// $('body').on('click touch', '.UATPageBtn', Load.pages);
 		$('body').on('click touch', '.edit', Load.addEditPackage);
 		
 	},
@@ -50,7 +50,7 @@ var Load = {
 	},
 
 	discoveryPage: function() {
-		$discover = $(this);
+		$discovery = $(this);
 		$('#mainContainer').load('components.html #addPackage', function(){
 			$('.dashTitle').text('DISCOVERY - PACKAGE NAME');
 			$('#pageIcon').text('T');
@@ -66,7 +66,7 @@ var Load = {
 			$('#loadDiscovery').load('components.html #discoverySettings');
 
 			$('.mainColumn').css('margin-bottom', '40px');
-			var rowID = $discover.parent().attr('data-rowid');
+			var rowID = $discovery.parent().attr('data-rowid');
 			EditPackage.packageDetails(rowID);
 			
 		});
@@ -82,7 +82,8 @@ var Load = {
 		$('#loadBottomSnippet').load('components.html #bottomSnippet');
 	},
 
-	pages: function() {
+	packagingPage: function() {
+		$packaging = $(this);
 		$('#mainContainer').load('components.html #addPackage', function(){
 			$('.dashTitle').text('PACKAGING - PACKAGE NAME');
 			$('#pageIcon').text('T');
@@ -95,6 +96,8 @@ var Load = {
 			Load.loadBottomSnippet();
 
 			$('.mainColumn').css('margin-bottom', '40px');
+			var rowID = $packaging.parent().attr('data-rowid');
+			EditPackage.packageDetails(rowID);
 			
 		});
 		Load.loadModals();
