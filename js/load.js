@@ -105,6 +105,48 @@ var Load = {
 		Load.loadModals();
 	},
 
+	qualityPage: function() {
+		$quality = $(this);
+		$('#mainContainer').load('components.html #addPackage', function(){
+			$('.dashTitle').text('QUALITY ASSURANCE - PACKAGE NAME');
+			$('#pageIcon').text('T');
+			$('.formHeader').text('QUALITY ASSURANCE - PACKAGE DETAILS');
+
+			$('#addPackageForm input, #addPackageForm select, #addPackageForm textarea').css('background', '#919191').prop('disabled', 'true');
+
+			$('.btnContainer').hide();
+
+			Load.loadBottomSnippet();
+
+			$('.mainColumn').css('margin-bottom', '40px');
+			var rowID = $quality.parent().attr('data-rowid');
+			EditPackage.packageDetails(rowID);
+			
+		});
+		Load.loadModals();
+	},
+
+	qatPage: function() {
+		$quality = $(this);
+		$('#mainContainer').load('components.html #addPackage', function(){
+			$('.dashTitle').text('QAT - PACKAGE NAME');
+			$('#pageIcon').text('T');
+			$('.formHeader').text('QAT - PACKAGE DETAILS');
+
+			$('#addPackageForm input, #addPackageForm select, #addPackageForm textarea').css('background', '#919191').prop('disabled', 'true');
+
+			$('.btnContainer').hide();
+
+			Load.loadBottomSnippet();
+
+			$('.mainColumn').css('margin-bottom', '40px');
+			var rowID = $quality.parent().attr('data-rowid');
+			EditPackage.packageDetails(rowID);
+			
+		});
+		Load.loadModals();
+	},
+
 	loadModals: function() {
 		$('#modalContainer').load('components.html #modals');
 	}
