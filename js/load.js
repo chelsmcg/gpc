@@ -15,8 +15,8 @@ var Load = {
 		$('body').on('click touch', '.loginBtn', Load.dashboard);
 		$('body').on('click touch', '.DiscoveryPageBtn', Load.discoveryPage);
 		$('body').on('click touch', '.PackagingPageBtn', Load.packagingPage);
-		// $('body').on('click touch', '.QualityPageBtn', Load.pages);
-		// $('body').on('click touch', '.UATPageBtn', Load.pages);
+		$('body').on('click touch', '.AssurancePageBtn', Load.qualityPage);
+		$('body').on('click touch', '.UATPageBtn', Load.qatPage);
 		$('body').on('click touch', '.edit', Load.addEditPackage);
 		
 	},

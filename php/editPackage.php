@@ -63,6 +63,12 @@
 
 					$stageUpdated = updateStage($rowId, $status, $nextCategory);
 
+					if($stageUpdated){
+						format_response(true, 'stage updated successfully');
+					}else{
+						format_response(false, 'stage updated fail');
+					}
+
 				
 				//when category is on discover then must also add files to package
 				}else if($currentCategory == 'Discovery' && !empty($_GET['sourceFile']) && !empty($_GET['documentation'])){
