@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	
 	//formats data to be returned to ajax call
 	function format_response($success, $message=null, $data=null){
@@ -59,5 +60,14 @@
 			}
 
 			return false;
+		}
+	}
+
+	function loginCheck(){
+		if(isset($_SESSION['user'])){
+			return true;
+		}else{
+			format_response(false, 'loggedOut');
+			die();
 		}
 	}

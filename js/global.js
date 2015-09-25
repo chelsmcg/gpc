@@ -11,7 +11,27 @@ var Global = {
 		var packageName = vendor + '_' + appName + '_' + appVersion + '_' + revision;
 		packageName = packageName.replace(/\s+/g, '');
 		return packageName;
+	},
+
+	isLoggedIn: function(){
+		$.ajax({
+  			type: 'get',
+  			url: "php/checkLoggedIn.php",
+  			dataType: 'jsonp',
+  			success: function(response) {
+  				console.log(response);
+  				if(response.success){
+  					console.log('logged in');
+  					return true;
+
+  				}else{
+  					console.log('not logged in');
+  					return false;
+  				}
+  			}
+		});
 	}
+	
 };
 
 $(function(){
