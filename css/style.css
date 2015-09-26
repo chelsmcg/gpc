@@ -73,7 +73,8 @@ header {
 .userArrow {
   font-family: icon-font-5;
   vertical-align: middle;
-  font-size: 9px; }
+  font-size: 9px;
+  cursor: pointer; }
 
 .companyLogo {
   line-height: 50px;
@@ -97,6 +98,35 @@ header {
   margin-left: 10px;
   letter-spacing: 0.5px; }
 
+#dashboard .dropdown {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 10px 20px;
+  font-size: 14px; }
+  #dashboard .dropdown:before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid black;
+    top: -10px;
+    right: 0; }
+  #dashboard .dropdown #logout {
+    cursor: pointer; }
+    #dashboard .dropdown #logout:hover {
+      color: #dddddd; }
+  #dashboard .dropdown .icon, #dashboard .dropdown .text {
+    display: inline-block;
+    vertical-align: middle; }
+  #dashboard .dropdown .icon {
+    font-family: icon-font-5;
+    margin-right: 10px; }
 #dashboard .tableIcon {
   font-family: icon-font-5;
   font-size: 20px;
