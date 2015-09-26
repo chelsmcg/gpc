@@ -166,7 +166,9 @@ var Load = {
 	},
 
 	profilePage: function() {
-		$('#mainContainer').load('components.html #profilePage');
+		$('#mainContainer').load('components.html #profilePage', function() {
+			Profile.getUser();
+		});
 	},
 
 	loadModals: function() {

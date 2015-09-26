@@ -21,11 +21,11 @@ var Profile = {
 	},
 
 	populateProfile: function(response) {
-		var firstName = response.fName;
-		var lastName = response.lName;
-		var email = response.email;
-		var username = response.username;
-		var roles = response.type;
+		var firstName = response.data.fName;
+		var lastName = response.data.lName;
+		var email = response.data.email;
+		var username = response.data.username;
+		var roles = response.data.type;
 
 		$('#fName').val(firstName);
 		$('#lName').val(lastName);
@@ -33,7 +33,7 @@ var Profile = {
 		$('#username').val(username);
 
 		// for(i = 0; i < roles.length; i++) {
-			
+
 		// }
 	}
 };
