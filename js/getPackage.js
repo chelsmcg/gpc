@@ -2,7 +2,6 @@ var GetPackage = {
 
 	init: function() {
 		GetPackage.events();
-    GetPackage.getAllPackages();
 	},
 
 	events: function() {
