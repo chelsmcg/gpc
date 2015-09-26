@@ -9,7 +9,7 @@ var EditPackage = {
 	events: function() {
 		$('body').on('click touch', '#editPackageBtn', EditPackage.editDetails);
 		$('body').on('click touch', '.settingsBtnContainer .submit', EditPackage.completedStage);
-		$('body').on('click touch', '.settingsBtnContainer #rejectedBtn', Load.dashboard);
+		$('body').on('click touch', '.settingsBtnContainer #rejectedBtn', EditPackage.rejectPackage);
 	},
 
 	packageDetails: function(rowID) {
@@ -116,6 +116,36 @@ var EditPackage = {
 		$.ajax({
 			url: "php/editPackage.php",
 			data: ajaxData,
+			dataType: 'jsonp',
+			success: function(response) {
+				console.log(response);
+
+				if(response.success){
+					AddPackage.successModal();
+				}else{
+					AddPackage.errorModal();
+				}
+
+			}
+		});
+	},
+
+	rejectPackage: function(){
+
+		var status = $('#status').val();
+		var rowID = EditPackage.packageData.id;
+		var category = EditPackage.packageData.category;
+		var nextCategory = category != 'Packaging' ? 'Packaging' : 'Discovery';
+
+		$.ajax({
+			url: "php/editPackage.php",
+			data: {
+				rowId: rowID,
+				status: status,
+				currentCategory: category,
+				nextCategory: nextCategory,
+				type: 'completedStage'
+			},
 			dataType: 'jsonp',
 			success: function(response) {
 				console.log(response);
