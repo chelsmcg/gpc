@@ -1,4 +1,7 @@
 var Global = {
+
+	user: null,
+
 	init: function(){
 		Global.events();
 	},

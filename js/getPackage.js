@@ -71,6 +71,7 @@ var GetPackage = {
 
   userDetails: function(userData) {
     var $this = $(this);
+    Global.user = userData;
     console.log(userData);
     var firstName = userData.fName;
     var lastName = userData.lName;
