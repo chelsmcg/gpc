@@ -2,7 +2,24 @@ var Load = {
 
 	init: function() {
 		Load.events();
-		Load.login();
+
+		$.ajax({
+  			type: 'get',
+  			url: "php/checkLoggedIn.php",
+  			dataType: 'jsonp',
+  			success: function(response) {
+  				console.log(response);
+  				if(response.success){
+  					console.log('logged in');
+  					Load.dashboard();
+
+  				}else{
+  					console.log('not logged in');
+  					Load.login();
+  				}
+  			}
+		});
+		
 		//love you chell c
 		Load.loadModals();
 		//chell c is a bigger poopie
