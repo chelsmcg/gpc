@@ -14,8 +14,9 @@ var Load = {
 		$('body').on('click touch', '.DiscoveryPageBtn', Load.discoveryPage);
 		$('body').on('click touch', '.PackagingPageBtn', Load.packagingPage);
 		$('body').on('click touch', '.AssurancePageBtn', Load.qualityPage);
-		$('body').on('click touch', '.UATPageBtn', Load.qatPage);
+		$('body').on('click touch', '.UATPageBtn', Load.uatPage);
 		$('body').on('click touch', '.edit', Load.addEditPackage);
+		$('body').on('click touch', '#profileBtn', Load.profilePage);
 		
 	},
 
@@ -143,7 +144,7 @@ var Load = {
 		Load.loadModals();
 	},
 
-	qatPage: function() {
+	uatPage: function() {
 		$quality = $(this);
 		$('#mainContainer').load('components.html #addPackage', function(){
 			$('.dashTitle').text('QAT - PACKAGE NAME');
@@ -162,6 +163,10 @@ var Load = {
 			
 		});
 		Load.loadModals();
+	},
+
+	profilePage: function() {
+		$('#mainContainer').load('components.html #profilePage');
 	},
 
 	loadModals: function() {

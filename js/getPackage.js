@@ -15,14 +15,14 @@ var GetPackage = {
   			dataType: 'jsonp',
   			success: function(response) {
   				console.log(response);
-  				GetPackage.populateTable(response);
+          GetPackage.populateTable(response.data.package);
+  				GetPackage.userDetails(response.data.userData);
   			}
 		});
 	},
 
-  populateTable: function(response) {
+  populateTable: function(packages) {
     var $this = $(this);
-    var packages = response.data.package;
     var package;
     var vendor;
     var appID;
@@ -67,6 +67,17 @@ var GetPackage = {
     }
 
 
+  },
+
+  userDetails: function(userData) {
+    var $this = $(this);
+    console.log(userData);
+    var firstName = userData.fName;
+    var lastName = userData.lName;
+
+    var userName = firstName + ' ' + lastName;
+
+    $('.userName').text(userName);
   }
 
   // openUserDetails: function() {
