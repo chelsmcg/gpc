@@ -51,7 +51,11 @@ value: *category - ie. "discovery"
 		format_response(false, 'Could not retrieve packages', 'get_failed');
 
 	}else{
-		format_response(true, 'Retrieved packages', $packages);
+		$packageData = array();
+		$packageData['userData'] = $_SESSION['user'];
+		$packageData['package'] = $packages['package'];
+
+		format_response(true, 'Retrieved packages', $packageData);
 	}
 
 
