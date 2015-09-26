@@ -5,7 +5,7 @@ var Logout = {
 	},
 
 	events: function(){
-		$('body').on('click touch', '#logoutBtn', Logout.logout);
+		$('body').on('click touch', '#logoutBtn, #logout', Logout.logout);
 	},
 
 	logout: function(){

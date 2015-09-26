@@ -2,7 +2,24 @@ var Load = {
 
 	init: function() {
 		Load.events();
+		Load.loadModals();
+		Load.checkLogin();
+	},
 
+	events: function() {
+		$('body').on('click touch', '#addPackageBtn', Load.addPackage);
+		$('body').on('click touch', '.companyLogo', Load.dashboard);
+		// $('body').on('click touch', '#discoveryBtn', Load.discoveryPage);
+		// $('body').on('click touch', '.loginBtn', Load.dashboard);
+		$('body').on('click touch', '.DiscoveryPageBtn', Load.discoveryPage);
+		$('body').on('click touch', '.PackagingPageBtn', Load.packagingPage);
+		$('body').on('click touch', '.AssurancePageBtn', Load.qualityPage);
+		$('body').on('click touch', '.UATPageBtn', Load.qatPage);
+		$('body').on('click touch', '.edit', Load.addEditPackage);
+		
+	},
+
+	checkLogin: function() {
 		$.ajax({
   			type: 'get',
   			url: "php/checkLoggedIn.php",
@@ -19,23 +36,6 @@ var Load = {
   				}
   			}
 		});
-		
-		//love you chell c
-		Load.loadModals();
-		//chell c is a bigger poopie
-	},
-
-	events: function() {
-		$('body').on('click touch', '#addPackageBtn', Load.addPackage);
-		$('body').on('click touch', '.companyLogo', Load.dashboard);
-		// $('body').on('click touch', '#discoveryBtn', Load.discoveryPage);
-		// $('body').on('click touch', '.loginBtn', Load.dashboard);
-		$('body').on('click touch', '.DiscoveryPageBtn', Load.discoveryPage);
-		$('body').on('click touch', '.PackagingPageBtn', Load.packagingPage);
-		$('body').on('click touch', '.AssurancePageBtn', Load.qualityPage);
-		$('body').on('click touch', '.UATPageBtn', Load.qatPage);
-		$('body').on('click touch', '.edit', Load.addEditPackage);
-		
 	},
 
 	login: function() {
