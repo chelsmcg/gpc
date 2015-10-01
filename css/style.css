@@ -174,7 +174,8 @@ header {
     color: #fff;
     letter-spacing: 0.5px; }
   .formContainer #addPackageForm {
-    padding: 40px; }
+    padding: 40px;
+    overflow: auto; }
     .formContainer #addPackageForm .large-6 {
       padding-left: 2.9375rem !important;
       padding-right: 3.9375rem !important; }

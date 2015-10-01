@@ -59,7 +59,8 @@ var GetPackage = {
 
       if(category == 'Quality Assurance' || category == 'UAT' || category == 'Completed') {
         row_html = '<tr data-rowid="' + id + '"><td>'+ appID +'</td><td class="packageName ' + category + 'PageBtn">'+ packageName + '<td>'+ packageType + '</td><td>' + priority + '</td><td>' + category + '</td><td>' + status + '</td><td class="tableIcon disabled">M</td><td class="tableIcon disabled">g</td><td class="tableIcon disabled">H</td><td class="tableIcon disabled">T</td></tr>';
-      } else {
+      }
+      else {
         row_html = '<tr data-rowid="' + id + '"><td>'+ appID +'</td><td class="packageName ' + category + 'PageBtn">'+ packageName + '<td>'+ packageType + '</td><td>' + priority + '</td><td>' + category + '</td><td>' + status + '</td><td class="tableIcon edit">M</td><td class="tableIcon issue">g</td><td class="tableIcon documents">H</td><td class="tableIcon source">T</td></tr>';
       }
 

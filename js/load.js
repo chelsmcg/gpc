@@ -9,12 +9,10 @@ var Load = {
 	events: function() {
 		$('body').on('click touch', '#addPackageBtn', Load.addPackage);
 		$('body').on('click touch', '.companyLogo', Load.dashboard);
-		// $('body').on('click touch', '#discoveryBtn', Load.discoveryPage);
-		// $('body').on('click touch', '.loginBtn', Load.dashboard);
 		$('body').on('click touch', '.DiscoveryPageBtn', Load.discoveryPage);
 		$('body').on('click touch', '.PackagingPageBtn', Load.packagingPage);
 		$('body').on('click touch', '.AssurancePageBtn', Load.qualityPage);
-		$('body').on('click touch', '.UATPageBtn', Load.uatPage);
+		$('body').on('click touch', '.UATPageBtn', Load.qatPage);
 		$('body').on('click touch', '.edit', Load.addEditPackage);
 		$('body').on('click touch', '#profileBtn', Load.profilePage);
 		
@@ -83,7 +81,11 @@ var Load = {
 			var discoverySettings = '<div id="loadDiscovery"></div>';
 
 			$('#addPackageForm').append(discoverySettings);
-			$('#loadDiscovery').load('components.html #discoverySettings');
+
+			if(Global.user.type == 'client' || Global.user.type == 'teamleader' || Global.user.type == 'admin') {
+				$('#loadDiscovery').load('components.html #discoverySettings');
+			}
+			
 
 			$('.mainColumn').css('margin-bottom', '40px');
 			var rowID = $discovery.parent().attr('data-rowid');
@@ -113,7 +115,10 @@ var Load = {
 
 			$('.btnContainer').hide();
 
-			Load.loadBottomSnippet();
+			if(Global.user.type == 'packager' || Global.user.type == 'teamleader' || Global.user.type == 'admin') {
+				Load.loadBottomSnippet();
+			}
+			
 
 			$('.mainColumn').css('margin-bottom', '40px');
 			var rowID = $packaging.parent().attr('data-rowid');
@@ -134,7 +139,10 @@ var Load = {
 
 			$('.btnContainer').hide();
 
-			Load.loadBottomSnippet();
+			if(Global.user.type == 'client' || Global.user.type == 'qatester' || Global.user.type == 'admin') {
+				Load.loadBottomSnippet();
+			}
+			
 
 			$('.mainColumn').css('margin-bottom', '40px');
 			var rowID = $quality.parent().attr('data-rowid');
@@ -144,7 +152,7 @@ var Load = {
 		Load.loadModals();
 	},
 
-	uatPage: function() {
+	qatPage: function() {
 		$quality = $(this);
 		$('#mainContainer').load('components.html #addPackage', function(){
 			$('.dashTitle').text('QAT - PACKAGE NAME');
@@ -155,7 +163,9 @@ var Load = {
 
 			$('.btnContainer').hide();
 
-			Load.loadBottomSnippet();
+			if(Global.user.type == 'usertester' || Global.user.type == 'admin') {
+				Load.loadBottomSnippet();
+			}
 
 			$('.mainColumn').css('margin-bottom', '40px');
 			var rowID = $quality.parent().attr('data-rowid');
