@@ -8,9 +8,16 @@
 	
 	$username = !empty($_POST['username']) ? $_POST['username'] : false;
 	$password = !empty($_POST['password']) ? $_POST['password'] : false;
+	$hash = !empty($_GET['hash']) ? $_GET['hash'] : false;
+	
 
 	if(!$username || !$password){
-		format_response(false, 'no username or password');
+		if($hash){
+			$options = array('cost' => 11);
+			echo password_hash($hash, PASSWORD_BCRYPT, $options);
+		}else{
+			format_response(false, 'no username or password');
+		}
 
 	}else{
 		$userData = checkLogin($username, $password);
@@ -23,21 +30,39 @@
 		}
 	}
 
+
+
+	// See the password_hash() example to see where this came from.
+	// $hash = '$2y$07$BCryptRequires22Chrcte/VlQH0piJtjXl.0t1XkA8pw9dMXTpOq';
+
+	// if (password_verify('rasmuslerdorf', $hash)) {
+	//     echo 'Password is valid!';
+	// } else {
+	//     echo 'Invalid password.';
+	// }
+
+
+
 	function checkLogin($username, $password){
 		global $mysqli;
-		$sql = "SELECT u.email, u.username, u.fName, u.lName, r.type FROM users u INNER JOIN roles r ON u.id = r.id WHERE username = ? AND password = ?";
+		$sql = "SELECT u.email, u.username, u.fName, u.lName, u.password, r.type FROM users u INNER JOIN roles r ON u.id = r.id WHERE username = ?";
 
 		$result = $mysqli->prepare($sql);
-		$result->bind_param('ss', $username, $password);
+		$result->bind_param('s', $username);
 		$result->execute();
 
 		$result->store_result();
 		if($result->num_rows > 0) {
-			$result->bind_result($email, $username, $fName, $lName, $type);
+			$result->bind_result($email, $username, $fName, $lName, $hash, $type);
 
 			while($result->fetch())
-			{
-			    $userData = array('email'=>$email, 'username'=>$username, 'fName'=>$fName, 'lName'=>$lName, 'type'=>$type);
+			{	
+				if (password_verify($password, $hash)) {
+			    	$userData = array('email'=>$email, 'username'=>$username, 'fName'=>$fName, 'lName'=>$lName, 'type'=>$type);
+
+				} else {
+				    $userData = false;
+				}
 			}
 		}else{
 			$userData = false;
