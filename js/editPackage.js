@@ -35,7 +35,7 @@ var EditPackage = {
   		
 	    var form_data = new FormData();
 
-	    var test = Global.createPackagName(EditPackage.packageData.vendor, EditPackage.packageData.name, EditPackage.packageData.version, EditPackage.packageData.revision); 
+	    var test = Global.createPackageName(EditPackage.packageData.vendor, EditPackage.packageData.name, EditPackage.packageData.version, EditPackage.packageData.revision); 
 	    file.newName = test;
 	    form_data.append('file', file);
 
@@ -76,7 +76,7 @@ var EditPackage = {
 				var priority = response.data.package[0].priority;
 				var comments = response.data.package[0].comments;
 				var status = response.data.package[0].status;
-				var packageName = Global.createPackagName(vendor, appName, appVersion, revision);
+				var packageName = Global.createPackageName(vendor, appName, appVersion, revision);
 
 				$('.dashTitle').text('EDIT PACKAGE - ' + packageName);
 
