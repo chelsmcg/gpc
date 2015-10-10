@@ -1,6 +1,8 @@
 var EditPackage = {
 
 	packageData: [],
+	docFile: null,
+	sourceFile: null,
 
 	init: function() {
 		EditPackage.events();
@@ -10,6 +12,47 @@ var EditPackage = {
 		$('body').on('click touch', '#editPackageBtn', EditPackage.editDetails);
 		$('body').on('click touch', '.settingsBtnContainer .submit', EditPackage.completedStage);
 		$('body').on('click touch', '.settingsBtnContainer #rejectedBtn', EditPackage.rejectPackage);
+		$('body').on('change', ':file', EditPackage.fileAdded);
+	},
+
+	fileAdded: function(){
+		if(typeof this.files[0] != 'undefined'){
+
+			if($(this).hasClass('docs')){
+				console.log('docs');
+				EditPackage.docFile = this.files[0];
+
+			}else if($(this).hasClass('source')){
+				console.log('source');
+				EditPackage.sourceFile = this.files[0];
+			}
+
+			EditPackage.uploadFile(this.files[0]);
+		}
+	},
+
+	uploadFile: function(file){
+  		
+	    var form_data = new FormData();
+
+	    var test = Global.createPackagName(EditPackage.packageData.vendor, EditPackage.packageData.name, EditPackage.packageData.version, EditPackage.packageData.revision); 
+	    file.newName = test;
+	    form_data.append('file', file);
+
+	    console.log(file);                             
+	    $.ajax({
+            url: '../php/fileUpload.php', // point to server-side PHP script 
+            dataType: 'text',  // what to expect back from the PHP script, if anything
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,                         
+            type: 'post',
+            success: function(php_script_response){
+                console.log(php_script_response); // display response from the PHP script, if any
+            }
+	    });
+		
 	},
 
 	packageDetails: function(rowID) {
@@ -107,11 +150,16 @@ var EditPackage = {
 			type: 'completedStage'
 		};
 
-
 		if(category == 'Discovery'){
-			ajaxData.sourceFile = 'file/path';
-			ajaxData.documentation = 'file/path';
+			if(EditPackage.docFile != null && EditPackage.sourceFile != null){
+				ajaxData.sourceFile = EditPackage.sourceFile.name;
+				ajaxData.documentation = EditPackage.docFile.name;
+			}else{
+				console.log('missing file');
+				return;
+			}
 		}
+
 
 		$.ajax({
 			url: "php/editPackage.php",
