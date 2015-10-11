@@ -18,6 +18,8 @@
 			$id = addUser($email, $username, $encPassword, $firstName, $lastName);
 			addRole($id, $type);
 
+			format_response(true, 'user added');
+
 		}else{
 			format_response(false, 'username or email in user');
 		}
