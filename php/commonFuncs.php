@@ -39,12 +39,15 @@
 
 
 	//checks if a specified value already exists in a given field of a given table
-	function checkValue($field, $value, $table){
+	function checkValue($field, $value, $table, $select=null){
+
+		$select = $select == null ? $field : $select;
+
 		global $mysqli;
 		$data = array();
 
-		$sql = "SELECT $field FROM $table WHERE $field = '$value'";
-
+		$sql = "SELECT $select FROM $table WHERE $field = '$value'";
+		
 		if (!$result = $mysqli->query($sql)) {
 
 			printf("Errormessage 1 : %s\n", $mysqli->error);
@@ -54,7 +57,7 @@
 			if($result->num_rows != 0){
 
 				while($row = $result->fetch_assoc()){
-					$data[$field][] = $row;
+					$data[] = $row[$select];
 				}
 				return $data;
 			}
@@ -70,4 +73,11 @@
 			format_response(false, 'loggedOut');
 			die();
 		}
+	}
+
+	function encryptPassword($password){
+		$options = array('cost' => 11);
+		$encPassword = password_hash($password, PASSWORD_BCRYPT, $options);
+
+		return $encPassword;
 	}
