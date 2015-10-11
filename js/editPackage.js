@@ -20,28 +20,37 @@ var EditPackage = {
 
 			if($(this).hasClass('docs')){
 				console.log('docs');
-				EditPackage.docFile = this.files[0];
+
+				if(this.files[0].type == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' || this.files[0].type == 'application/msword'){
+					EditPackage.docFile = this.files[0];
+
+				}else{
+					EditPackage.docFile = null;
+				}
 
 			}else if($(this).hasClass('source')){
 				console.log('source');
-				EditPackage.sourceFile = this.files[0];
+
+				if(this.files[0].type == 'application/x-zip-compressed'){
+					EditPackage.sourceFile = this.files[0];
+
+				}else{
+					EditPackage.sourceFile = null;
+				}
 			}
 
-			EditPackage.uploadFile(this.files[0]);
+			EditPackage.uploadFile(this.files[0], 'source');
 		}
 	},
 
-	uploadFile: function(file){
-  		
+	uploadFile: function(file, field){
+
 	    var form_data = new FormData();
-
-	    var test = Global.createPackageName(EditPackage.packageData.vendor, EditPackage.packageData.name, EditPackage.packageData.version, EditPackage.packageData.revision); 
-	    file.newName = test;
+	    var newName = Global.createPackageName(EditPackage.packageData.vendor, EditPackage.packageData.name, EditPackage.packageData.version, EditPackage.packageData.revision); 
 	    form_data.append('file', file);
-
-	    console.log(file);                             
+                     
 	    $.ajax({
-            url: '../php/fileUpload.php', // point to server-side PHP script 
+            url: '../php/fileUpload.php?newName=' + newName + '&field=' + field,// point to server-side PHP script 
             dataType: 'text',  // what to expect back from the PHP script, if anything
             cache: false,
             contentType: false,
@@ -152,8 +161,11 @@ var EditPackage = {
 
 		if(category == 'Discovery'){
 			if(EditPackage.docFile != null && EditPackage.sourceFile != null){
+				// EditPackage.uploadFile(EditPackage.sourceFile, 'source');
+				// EditPackage.uploadFile(EditPackage.docFile, 'doc');
 				ajaxData.sourceFile = EditPackage.sourceFile.name;
 				ajaxData.documentation = EditPackage.docFile.name;
+
 			}else{
 				console.log('missing file');
 				return;
