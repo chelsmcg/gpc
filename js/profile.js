@@ -68,7 +68,8 @@ var Profile = {
 					lastName: lname,
 					username: username,
 					encPassword: password,
-					email: email
+					email: email,
+					type: type
 				},
 				dataType: 'jsonp',
 				success: function(response) {
