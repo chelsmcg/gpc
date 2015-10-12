@@ -113,3 +113,57 @@
 
 		return $encPassword;
 	}
+
+	function checkPassword($id, $password){
+		$hashedPassword = checkValue('id', $id, 'users', 'password');
+		if(!$hashedPassword){
+			error_log("could not find password for that user id");
+			return false;
+
+		}else{
+			$correctPassword = password_verify($password, $hashedPassword);
+		}
+
+		if($correctPassword){
+			return true;
+
+		}else{
+			return false;
+		}
+	}
+
+	function updateField($table, $updateField, $newValue, $whereField, $whereValue){
+		$type1 = preparedType($newValue);
+		$type2 = preparedType($whereValue);
+
+		global $mysqli;
+		$stmt = $mysqli->prepare("UPDATE ? SET ?=? WHERE ?=?");
+		$stmt->bind_param("ss".$type1."s".$type2, $table, $updateField, $newValue, $whereField, $whereValue);
+		$stmt->execute();
+		$stmt->close();
+	}
+
+
+	//returns the type of variable for use in prepared statement
+	function preparedType($variable){
+		$type = gettype($variable);
+
+		switch ($type) {
+		    case "boolean":
+		    	$type = 'b';
+		        break;
+		    case "integer":
+		    	$type = 'i';
+		        break;
+		    case "double":
+		    	$type = 'd';
+		        break;
+		    case "string":
+		    	$type = 's';
+		        break;
+		    default:
+		        return false;
+		}
+
+		return $type;
+	}
