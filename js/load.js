@@ -15,6 +15,7 @@ var Load = {
 		$('body').on('click touch', '.UATPageBtn', Load.qatPage);
 		$('body').on('click touch', '.edit', Load.addEditPackage);
 		$('body').on('click touch', '#profileBtn', Load.profilePage);
+		$('body').on('click touch', '#addUserBtn', Load.addUserPage);
 		
 	},
 
@@ -179,6 +180,10 @@ var Load = {
 		$('#mainContainer').load('components.html #profilePage', function() {
 			Profile.getUser();
 		});
+	},
+
+	addUserPage: function() {
+		$('#mainContainer').load('components.html #addUser');
 	},
 
 	loadModals: function() {

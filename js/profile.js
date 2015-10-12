@@ -5,7 +5,7 @@ var Profile = {
 	},
 
 	events: function() {
-		
+		$('body').on('click touch', '#saveNewUserBtn', Profile.addNewUser);
 	},
 
 	getUser: function() {
@@ -35,9 +35,34 @@ var Profile = {
 		// for(i = 0; i < roles.length; i++) {
 
 		// }
+	},
+
+	addNewUser: function() {
+		var fname = $('#fName').val();
+		var lname = $('#lName').val();
+		var email = $('#email').val();
+		var username = $('#username').val();
+		var password = $('#password').val();
+
+		$>ajax({
+			url: "php/addUser.php",
+			data: {
+				firstName: fname,
+				lastName: lname,
+				username: username,
+				encPassword: password,
+				email: email
+			},
+			dataType: 'jsonp',
+			success: function(response) {
+				console.log('SUCCESS!!!!!!!!');
+				console.log(response);
+			}
+		})
 	}
 };
 
 $(function() {
 	Profile.init();
 });
+

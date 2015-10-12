@@ -117,10 +117,12 @@ header {
     border-bottom: 10px solid black;
     top: -10px;
     right: 0; }
-  #dashboard .dropdown #logout {
+  #dashboard .dropdown #logout, #dashboard .dropdown #addUserBtn {
     cursor: pointer; }
-    #dashboard .dropdown #logout:hover {
+    #dashboard .dropdown #logout:hover, #dashboard .dropdown #addUserBtn:hover {
       color: #dddddd; }
+  #dashboard .dropdown #addUserBtn {
+    margin-bottom: 10px; }
   #dashboard .dropdown .icon, #dashboard .dropdown .text {
     display: inline-block;
     vertical-align: middle; }

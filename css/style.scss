@@ -119,12 +119,16 @@ header {
 			right: 0;
 		}
 
-		#logout {
+		#logout, #addUserBtn {
 			cursor: pointer;
 
 			&:hover {
 				color: #dddddd;
 			}
+		}
+
+		#addUserBtn {
+			margin-bottom: 10px;
 		}
 
 		.icon, .text {

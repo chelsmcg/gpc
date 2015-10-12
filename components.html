@@ -1,4 +1,4 @@
-<!-- *********** OGIN PAGE ************ -->
+<!-- *********** LOGIN PAGE ************ -->
 <div class="loginContainer" id="loginPage">
     <div class="loginBox">
         <div class="row" style="position:relative;">
@@ -35,9 +35,13 @@
                     <span class="userArrow" id="dropdownArrow">8</span>
                 </span>
                 <div class="dropdown">
+                        <div id="addUserBtn">
+                            <div class="icon"></div>
+                            <div class="text">Add User</div>
+                        </div>
                         <div id="logout">
                             <div class="icon">-</div>
-                            <div class="text">logout</div>
+                            <div class="text">Logout</div>
                         </div>
                     </div>
             </div>
@@ -284,33 +288,33 @@
                     <div class="large-4 columns" style="padding-left:50px;">
                         <label class="rolesTitle">Manage Roles</label>
                         <div class="formElement">
-                            <input type="checkbox" class="checkbox" data-role="admin"></input>
+                            <input type="checkbox" class="checkbox" data-role="admin" id="administrator" name="Administrator"></input>
                             <p class="checkboxText">Administrator</p>
                         </div>
                         <div class="formElement">
-                            <input type="checkbox" class="checkbox" data-role="client"></input>
+                            <input type="checkbox" class="checkbox" data-role="client" id="client" name="Client"></input>
                             <p class="checkboxText">Client</p>
                         </div>
                         <div class="formElement">
-                            <input type="checkbox" class="checkbox" data-role="packager"></input>
+                            <input type="checkbox" class="checkbox" data-role="packager" id="packagers" name="Packagers"></input>
                             <p class="checkboxText">Packagers</p>
                         </div>
                         <div class="formElement">
-                            <input type="checkbox" class="checkbox" data-role="teamleader"></input>
+                            <input type="checkbox" class="checkbox" data-role="teamleader" id="pleader" name="Packaging Team Leader"></input>
                             <p class="checkboxText">Packaging Team Leader</p>
                         </div>
                     </div>
                     <div class="large-6 columns" style="margin-top:38px;">
                         <div class="formElement">
-                            <input type="checkbox" class="checkbox" data-role="usertester"></input>
+                            <input type="checkbox" class="checkbox" data-role="usertester" id="tester" name="User Tester"></input>
                             <p class="checkboxText">User Tester</p>
                         </div>
                         <div class="formElement">
-                            <input type="checkbox" class="checkbox" data-role="qatester"></input>
+                            <input type="checkbox" class="checkbox" data-role="qatester" id="qatester" name="QA Tester"></input>
                             <p class="checkboxText">QA Tester</p>
                         </div>
                         <div class="formElement">
-                            <input type="checkbox" class="checkbox" data-role="projectmanager"></input>
+                            <input type="checkbox" class="checkbox" data-role="projectmanager" id="pmanager" name="Project Manager"></input>
                             <p class="checkboxText">Project Manager</p>
                         </div>
                     </div>
