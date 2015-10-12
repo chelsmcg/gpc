@@ -74,7 +74,6 @@ var EditPackage = {
 			dataType: 'jsonp',
 			success: function(response) {
 				console.log(response);
-				EditPackage.packageData = response.data.package[0]
 				var vendor = response.data.package[0].vendor;
 				var appID = response.data.package[0].appID;
 				var appName = response.data.package[0].name;;
@@ -86,6 +85,10 @@ var EditPackage = {
 				var comments = response.data.package[0].comments;
 				var status = response.data.package[0].status;
 				var packageName = Global.createPackageName(vendor, appName, appVersion, revision);
+
+				//puts package data into a global variable
+				EditPackage.packageData = response.data.package[0];
+				EditPackage.packageData.packageName = packageName;
 
 				$('.dashTitle').text('EDIT PACKAGE - ' + packageName);
 
