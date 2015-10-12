@@ -67,7 +67,7 @@ var Profile = {
 					firstName: fname,
 					lastName: lname,
 					username: username,
-					encPassword: password,
+					password: password,
 					email: email,
 					type: type
 				},

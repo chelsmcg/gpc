@@ -14,7 +14,7 @@
 		$foundUsername = checkValue('userName', $username, 'users');
 
 		if(!$foundUsername && !$foundEmail){
-			
+
 			$encPassword = encryptPassword($password);//encrypts password
 			$id = addUser($email, $username, $encPassword, $firstName, $lastName); //add user to users table
 
@@ -30,6 +30,8 @@
 		}else{
 			format_response(false, 'username or email in user');
 		}
+	}else{
+		format_response(false, 'missing ajax param');
 	}
 
 	//adds user to the users table and returns the new id
