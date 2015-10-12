@@ -67,19 +67,23 @@
 	}
 
 	function deleteTableRow($table, $where, $value){
+		$type1 = preparedType($value);
+
 		global $mysqli;
-		$sql = "DELETE FROM $table WHERE $where = $value";
+		$sql = "DELETE FROM $table WHERE $where = ?";
 
-		if(!$result = $mysqli->query($sql)) {
-
-			printf("Errormessage 1 : %s\n", $mysqli->error);
-
+		$stmt->bind_param($type1, $value);
+		$stmt->execute();
+		if ($stmt->errno) {
+			error_log("FAILURE!!! " . $stmt->error);
+			$stmt->close();
 			return false;
-
 		}
-
-		return true;
-		
+		else{
+			error_log("Updated {$stmt->affected_rows} rows");
+			$stmt->close();
+			return true;
+		}		
 	}
 
 
