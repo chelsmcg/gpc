@@ -10,11 +10,22 @@
 		$firstName = $_GET['firstName'];
 		$lastName = $_GET['lastName'];
 
-		updateUser($email, $username, $firstName, $lastName);
+		$updated = updateUser($email, $username, $firstName, $lastName);
+
+
+		if($updated){
+
+			if(empty($_GET['type']) && $_GET['type'] == ""){
+
+				format_response(true, 'user data updated');	
+			}
+		}else{
+			format_response(false, 'user data could not update');
+		}
 		
 	}
 
-	if(!empty($_GET['type'])){
+	if(!empty($_GET['type']) && $_GET['type'] != ""){
 
 		$type = $_GET['type'];
 
@@ -22,7 +33,16 @@
 
 		deleteTableRow('roles', 'id', $id);
 
-		addRole($id, $typeArr);
+		$added = addRole($id, $type);
+
+		if($added){
+			if(!empty($_GET['email']) && !empty($_GET['username']) && !empty($_GET['firstName']) && !empty($_GET['lastName'])){
+
+				format_response(true, 'user data updated');	
+			}else{
+				format_response(true, 'roles updated');	
+			}
+		}
 	}
 
 	//adds user to the users table and returns the new id
@@ -32,6 +52,8 @@
 		$stmt->bind_param("sssss", $email, $username, $firstName, $lastName);
 		$stmt->execute();
 		$stmt->close();
+
+		return true;
 	}
 
 

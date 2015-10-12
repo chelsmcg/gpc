@@ -66,13 +66,13 @@
 		}
 	}
 
-	function deleteTableRow($table, $where, $value){
+	function deleteTableRow($table, $whereField, $value){
 		$type1 = preparedType($value);
 
 		global $mysqli;
-		$sql = "DELETE FROM $table WHERE $where = ?";
-
-		$stmt->bind_param($type1, $value);
+		$sql = "DELETE FROM $table WHERE $whereField = ?";
+		$stmt = $mysqli->prepare($sql);
+		$stmt->bind_param("".$type1."", $value);
 		$stmt->execute();
 		if ($stmt->errno) {
 			error_log("FAILURE!!! " . $stmt->error);
@@ -99,6 +99,7 @@
 		}
 
 		$stmt->close();
+		return true;
 	}
 
 
