@@ -107,6 +107,7 @@
 		}
 	}
 
+	//ecrypts the input string
 	function encryptPassword($password){
 		$options = array('cost' => 11);
 		$encPassword = password_hash($password, PASSWORD_BCRYPT, $options);
@@ -114,6 +115,7 @@
 		return $encPassword;
 	}
 
+	//gets the stored password and checks it against input password
 	function checkPassword($id, $password){
 		$hashedPassword = checkValue('id', $id, 'users', 'password');
 		if(!$hashedPassword){
@@ -121,7 +123,7 @@
 			return false;
 
 		}else{
-			$correctPassword = password_verify($password, $hashedPassword);
+			$correctPassword = password_verify($password, $hashedPassword[0]);
 		}
 
 		if($correctPassword){
@@ -135,12 +137,24 @@
 	function updateField($table, $updateField, $newValue, $whereField, $whereValue){
 		$type1 = preparedType($newValue);
 		$type2 = preparedType($whereValue);
+		error_log($type1.$type2);
 
 		global $mysqli;
-		$stmt = $mysqli->prepare("UPDATE ? SET ?=? WHERE ?=?");
-		$stmt->bind_param("ss".$type1."s".$type2, $table, $updateField, $newValue, $whereField, $whereValue);
+		$stmt = $mysqli->prepare("UPDATE $table SET $updateField=? WHERE $whereField=?");
+		$stmt->bind_param($type1.$type2, $newValue, $whereValue);
 		$stmt->execute();
-		$stmt->close();
+		if ($stmt->errno) {
+			error_log("FAILURE!!! " . $stmt->error);
+			$stmt->close();
+			return false;
+		}
+		else{
+			error_log("Updated {$stmt->affected_rows} rows");
+			$stmt->close();
+			return true;
+		}
+			
+		
 	}
 
 
