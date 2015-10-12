@@ -31,22 +31,11 @@
 	}
 
 
-
-	// See the password_hash() example to see where this came from.
-	// $hash = '$2y$07$BCryptRequires22Chrcte/VlQH0piJtjXl.0t1XkA8pw9dMXTpOq';
-
-	// if (password_verify('rasmuslerdorf', $hash)) {
-	//     echo 'Password is valid!';
-	// } else {
-	//     echo 'Invalid password.';
-	// }
-
-
-
 	function checkLogin($username, $password){
+		$typeArr = array();
+
 		global $mysqli;
 		$sql = "SELECT u.id, u.email, u.username, u.fName, u.lName, u.password, r.type FROM users u INNER JOIN roles r ON u.id = r.id WHERE username = ?";
-
 		$result = $mysqli->prepare($sql);
 		$result->bind_param('s', $username);
 		$result->execute();
@@ -58,7 +47,8 @@
 			while($result->fetch())
 			{	
 				if (password_verify($password, $hash)) {
-			    	$userData = array('id'=>$id, 'email'=>$email, 'username'=>$username, 'fName'=>$fName, 'lName'=>$lName, 'type'=>$type);
+					$typeArr[] = $type;
+			    	$userData = array('id'=>$id, 'email'=>$email, 'username'=>$username, 'fName'=>$fName, 'lName'=>$lName);
 
 				} else {
 				    $userData = false;
@@ -69,6 +59,8 @@
 		}
 
 		$result->close();
+
+		$userData['type'] = $typeArr;
 
 		return $userData;
 	}
