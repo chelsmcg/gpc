@@ -47,7 +47,7 @@
 		$data = array();
 
 		$sql = "SELECT $select FROM $table WHERE $field = '$value'";
-		
+
 		if (!$result = $mysqli->query($sql)) {
 
 			printf("Errormessage 1 : %s\n", $mysqli->error);
@@ -65,6 +65,38 @@
 			return false;
 		}
 	}
+
+	function deleteTableRow($table, $where, $value){
+		global $mysqli;
+		$sql = "DELETE FROM $table WHERE $where = $value";
+
+		if(!$result = $mysqli->query($sql)) {
+
+			printf("Errormessage 1 : %s\n", $mysqli->error);
+
+			return false;
+
+		}
+
+		return true;
+		
+	}
+
+
+	//adds role to specified user
+	function addRole($id, $typeArr){
+
+		global $mysqli;
+		$stmt = $mysqli->prepare("INSERT INTO roles (id, type) VALUES (?, ?)");
+
+		foreach($typeArr as $type){
+			$stmt->bind_param("is", $id, $type);
+			$stmt->execute();
+		}
+
+		$stmt->close();
+	}
+
 
 	function loginCheck(){
 		if(isset($_SESSION['user'])){

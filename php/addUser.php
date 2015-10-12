@@ -14,9 +14,16 @@
 		$foundUsername = checkValue('userName', $username, 'users');
 
 		if(!$foundUsername && !$foundEmail){
-			$encPassword = encryptPassword($password);
-			$id = addUser($email, $username, $encPassword, $firstName, $lastName);
-			addRole($id, $type);
+			
+			$encPassword = encryptPassword($password);//encrypts password
+			$id = addUser($email, $username, $encPassword, $firstName, $lastName); //add user to users table
+
+			//if type not passed through as array, make it one
+			if(!is_array( $type )){
+				$type = array($type);
+			}
+
+			addRole($id, $type); //add user roles to roles table
 
 			format_response(true, 'user added');
 
@@ -34,15 +41,6 @@
 		$id = mysqli_insert_id($mysqli);
 		$stmt->close();
 		return $id;
-	}
-
-	//adds role to specified user
-	function addRole($id, $type){
-		global $mysqli;
-		$stmt = $mysqli->prepare("INSERT INTO roles (id, type) VALUES (?, ?)");
-		$stmt->bind_param("is", $id, $type);
-		$stmt->execute();
-		$stmt->close();
 	}
 
 

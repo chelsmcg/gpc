@@ -45,7 +45,7 @@
 
 	function checkLogin($username, $password){
 		global $mysqli;
-		$sql = "SELECT u.email, u.username, u.fName, u.lName, u.password, r.type FROM users u INNER JOIN roles r ON u.id = r.id WHERE username = ?";
+		$sql = "SELECT u.id, u.email, u.username, u.fName, u.lName, u.password, r.type FROM users u INNER JOIN roles r ON u.id = r.id WHERE username = ?";
 
 		$result = $mysqli->prepare($sql);
 		$result->bind_param('s', $username);
@@ -53,12 +53,12 @@
 
 		$result->store_result();
 		if($result->num_rows > 0) {
-			$result->bind_result($email, $username, $fName, $lName, $hash, $type);
+			$result->bind_result($id, $email, $username, $fName, $lName, $hash, $type);
 
 			while($result->fetch())
 			{	
 				if (password_verify($password, $hash)) {
-			    	$userData = array('email'=>$email, 'username'=>$username, 'fName'=>$fName, 'lName'=>$lName, 'type'=>$type);
+			    	$userData = array('id'=>$id, 'email'=>$email, 'username'=>$username, 'fName'=>$fName, 'lName'=>$lName, 'type'=>$type);
 
 				} else {
 				    $userData = false;
