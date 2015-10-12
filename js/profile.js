@@ -6,6 +6,9 @@ var Profile = {
 
 	events: function() {
 		$('body').on('click touch', '#saveNewUserBtn', Profile.addNewUser);
+		$('body').on('click touch', '#addUserSuccessBtn', Profile.addUserSuccessBtn);
+		$('body').on('click touch', '#addUserErrorBtn', Profile.addUserErrorBtn);
+		$('body').on('click touch', '#missingFieldsBtn', Profile.missingFieldsBtn);
 	},
 
 	getUser: function() {
@@ -58,7 +61,7 @@ var Profile = {
 		});
 
 		//if at least one checkbox was checked can ajax else if no boxes were checked cannot continue to ajax 
-		if(hasRole){
+		if(hasRole && fname != '' && lname != '' && email != '' && username != '' && password != ''){
 			console.log(type);
 
 			$.ajax({
@@ -73,13 +76,53 @@ var Profile = {
 				},
 				dataType: 'jsonp',
 				success: function(response) {
-					console.log('SUCCESS!!!!!!!!');
-					console.log(response);
+					if(response.success) {
+	  					Profile.addUserSuccessModal();
+	  				} else {
+	  					Profile.addUserErrorModal();
+	  				}
 				}
 			})
 		}else{
-			console.log("No boxes were checked!!!!");
+			Profile.missingFieldsModal();
 		}
+	},
+
+	addUserSuccessModal: function() {
+		var $modal = $('#addUserSuccessModal');
+
+    	$modal.fadeIn();
+	},
+
+	addUserSuccessBtn: function() {
+		var $modal = $('#addUserSuccessModal');
+
+    	$modal.fadeOut();
+    	Load.dashboard();
+	},
+
+	addUserErrorModal: function() {
+		var $modal = $('#addUserErrorModal');
+
+    	$modal.fadeIn();
+	},
+
+	addUserErrorBtn: function() {
+		var $modal = $('#addUserErrorModal');
+
+    	$modal.fadeOut();
+	},
+
+	missingFieldsModal: function() {
+		var $modal = $('#missingFieldsModal');
+
+    	$modal.fadeIn();
+	},
+
+	missingFieldsBtn: function() {
+		var $modal = $('#missingFieldsModal');
+
+    	$modal.fadeOut();
 	}
 };
 

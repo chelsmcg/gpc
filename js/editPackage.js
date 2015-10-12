@@ -12,6 +12,10 @@ var EditPackage = {
 		$('body').on('click touch', '#editPackageBtn', EditPackage.editDetails);
 		$('body').on('click touch', '.settingsBtnContainer .submit', EditPackage.completedStage);
 		$('body').on('click touch', '.settingsBtnContainer #rejectedBtn', EditPackage.rejectPackage);
+		$('body').on('click touch', '#nextCategoryBtn', EditPackage.nextCategoryBtn);
+		$('body').on('click touch', '#nextCategoryErrorBtn', EditPackage.nextCategoryErrorBtn);
+		$('body').on('click touch', '#rejectSuccessBtn', EditPackage.rejectSuccessBtn);
+		$('body').on('click touch', '#rejectErrorBtn', EditPackage.rejectErrorBtn);
 		$('body').on('change', ':file', EditPackage.fileAdded);
 	},
 
@@ -184,7 +188,7 @@ var EditPackage = {
 				console.log(response);
 
 				if(response.success){
-					AddPackage.successModal();
+					EditPackage.nextCategoryModal();
 				}else{
 					AddPackage.errorModal();
 				}
@@ -214,9 +218,9 @@ var EditPackage = {
 				console.log(response);
 
 				if(response.success){
-					AddPackage.successModal();
+					EditPackage.rejectSuccessModal();
 				}else{
-					AddPackage.errorModal();
+					EditPackage.rejectErrorModal();
 				}
 
 			}
@@ -241,6 +245,81 @@ var EditPackage = {
 		}
 
 		return nextCategory;
+	},
+
+	nextCategoryModal: function() {
+		var $modal = $('#nextCategoryModal');
+		var $name = EditPackage.packageData.packageName;
+		var category = EditPackage.packageData.category;
+		var nextCategory = EditPackage.nextCategory(category);
+
+		$('.nextCategoryText').text($name + ' ' + 'was moved to' + ' ' + nextCategory + ' ' + 'successfully!');
+
+
+    	$modal.fadeIn();
+	},
+
+	nextCategoryBtn: function() {
+		var $modal = $('#nextCategoryModal');
+
+    	$modal.fadeOut();
+    	Load.dashboard();
+	},
+
+	nextCategoryErrorModal: function() {
+		var $modal = $('#nextCategoryModal');
+		var $name = EditPackage.packageData.packageName;
+		var category = EditPackage.packageData.category;
+		var nextCategory = EditPackage.nextCategory(category);
+
+		$('.nextCategoryErrorText').text('There was an error moving' + ' ' + $name + ' ' + 'to' + ' ' + nextCategory + '. ' + 'Please try again.');
+
+
+    	$modal.fadeIn();
+	},
+
+	nextCategoryErrorBtn: function() {
+		var $modal = $('#nextCategoryModal');
+
+    	$modal.fadeOut();
+	},
+
+	rejectSuccessModal: function() {
+		var $modal = $('#rejectSuccessModal');
+		var $name = EditPackage.packageData.packageName;
+		var category = EditPackage.packageData.category;
+		var previousCategory = category != 'Packaging' ? 'Packaging' : 'Discovery';
+
+		$('.rejectSuccessText').text($name + ' ' + 'has been moved back to' + ' ' + previousCategory + '.');
+
+
+    	$modal.fadeIn();
+	},
+
+	rejectSuccessBtn: function() {
+		var $modal = $('#rejectSuccessModal');
+
+    	$modal.fadeOut();
+    	Load.dashboard();
+	},
+
+	rejectErrorModal: function() {
+		var $modal = $('#rejectErrorModal');
+		var $name = EditPackage.packageData.packageName;
+		var category = EditPackage.packageData.category;
+		var previousCategory = category != 'Packaging' ? 'Packaging' : 'Discovery';
+
+		$('.rejectErrorText').text('There was an error moving' + $name + ' ' + 'back to' + ' ' + previousCategory + '. Please try again.');
+
+
+    	$modal.fadeIn();
+	},
+
+	rejectErrorBtn: function() {
+		var $modal = $('#rejectErrorModal');
+
+    	$modal.fadeOut();
+    	Load.dashboard();
 	}
 }
 

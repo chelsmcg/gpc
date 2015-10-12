@@ -74,48 +74,49 @@
             </table>
         </div>
         <div class="row">
-            <div class="large-6 columns padding-left-0">
+            <!-- <div class="large-6 columns padding-left-0">
                 <div class="graph"></div>
-            </div>
-            <div class="large-6 columns padding-right-0">
+            </div> -->
+            <div class="large-12 columns padding-right-0 padding-left-0">
                 <div class="row">
-                    <div class="large-6 columns">
+                    <div class="large-3 columns">
                         <div class="dashboardBtn" id="addPackageBtn">
                             <div class="btnHeader">add package</div>
                             <div class="btnIcon smallerBtn">d</div>
                         </div>
                     </div>
-                    <div class="large-6 columns">
+                    <div class="large-3 columns">
                         <div class="dashboardBtn" id="profileBtn">
                             <div class="btnHeader">profile</div>
                             <div class="btnIcon">&#xe001;</div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="large-6 columns">
+                
+                <!-- <div class="row"> -->
+                    <!-- <div class="large-3 columns">
                         <div class="dashboardBtn" id="settingsBtn">
                             <div class="btnHeader">settings</div>
                             <div class="btnIcon"><</div>
                         </div>
-                    </div>
-                    <div class="large-6 columns">
+                    </div> -->
+                    <div class="large-3 columns" style="float:left;">
                         <div class="dashboardBtn" id="logoutBtn">
                             <div class="btnHeader">logout</div>
                             <div class="btnIcon">-</div>
                         </div>
                     </div>
+                <!-- </div> -->
                 </div>
             </div>
         </div>
-        <div class="row margin-top-neg-30">
+        <!-- <div class="row margin-top-neg-30">
             <div class="large-6 columns padding-left-0">
                 <div class="graph"></div>
             </div>
             <div class="large-6 columns padding-right-0">
                 <div class="graph"></div>
             </div>
-        </div>
+        </div> -->
     </div>
     <div id="modalContainer"></div>
 </div>
@@ -440,6 +441,90 @@
         </div>
     </div>
     <!-- End Error Adding Package Modal -->
+    <!-- Add User Success Modal -->
+    <div class="modal" id="addUserSuccessModal">
+        <div class="dialogContainer">
+            <div class="dialogBox">
+                <div class="dialogHeader">
+                    <div class="dialogText">The user has been added successfully!</div>
+                </div>
+                <button type="button" id="addUserSuccessBtn">OK</button>
+            </div>
+        </div>
+    </div>
+    <!-- End Add User Success Modal -->
+    <!-- Error Adding User Modal -->
+    <div class="modal" id="addUserErrorModal">
+        <div class="dialogContainer">
+            <div class="dialogBox">
+                <div class="dialogHeader">
+                    <div class="dialogText">There was an error adding a user. Please try again.</div>
+                </div>
+                <button type="button" id="addUserErrorBtn">OK</button>
+            </div>
+        </div>
+    </div>
+    <!-- End Error Adding User Modal -->
+    <!-- Missing Fields Modal -->
+    <div class="modal" id="missingFieldsModal">
+        <div class="dialogContainer">
+            <div class="dialogBox">
+                <div class="dialogHeader">
+                    <div class="dialogText">All fields must be filled out before submitting.</div>
+                </div>
+                <button type="button" id="missingFieldsBtn">OK</button>
+            </div>
+        </div>
+    </div>
+    <!-- End Missing Fields Modal -->
+    <!-- Next Category Success Modal -->
+    <div class="modal" id="nextCategoryModal">
+        <div class="dialogContainer">
+            <div class="dialogBox">
+                <div class="dialogHeader">
+                    <div class="dialogText nextCategoryText"></div> <!-- populated in editPackage.js -->
+                </div>
+                <button type="button" id="nextCategoryBtn">OK</button>
+            </div>
+        </div>
+    </div>
+    <!-- End Next Category Success Modal -->
+    <!-- Next Category Error Modal -->
+    <div class="modal" id="nextCategoryErrorModal">
+        <div class="dialogContainer">
+            <div class="dialogBox">
+                <div class="dialogHeader">
+                    <div class="dialogText nextCategoryErrorText"></div> <!-- populated in editPackage.js -->
+                </div>
+                <button type="button" id="nextCategoryErrorBtn">OK</button>
+            </div>
+        </div>
+    </div>
+    <!-- End Next Category Error Modal -->
+    <!-- Reject Success Modal -->
+    <div class="modal" id="rejectSuccessModal">
+        <div class="dialogContainer">
+            <div class="dialogBox">
+                <div class="dialogHeader">
+                    <div class="dialogText rejectSuccessText"></div> <!-- populated in editPackage.js -->
+                </div>
+                <button type="button" id="rejectSuccessBtn">OK</button>
+            </div>
+        </div>
+    </div>
+    <!-- End Reject Success Modal -->
+    <!-- Reject Error Modal -->
+    <div class="modal" id="rejectErrorModal">
+        <div class="dialogContainer">
+            <div class="dialogBox">
+                <div class="dialogHeader">
+                    <div class="dialogText rejectErrorText"></div> <!-- populated in editPackage.js -->
+                </div>
+                <button type="button" id="rejectErrorBtn">OK</button>
+            </div>
+        </div>
+    </div>
+    <!-- End Reject Error Modal -->
 </div>
 <!-- *********** END MODALS *********** -->
 

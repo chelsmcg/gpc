@@ -180,10 +180,12 @@ var Load = {
 		$('#mainContainer').load('components.html #profilePage', function() {
 			Profile.getUser();
 		});
+		Load.loadModals();
 	},
 
 	addUserPage: function() {
 		$('#mainContainer').load('components.html #addUser');
+		Load.loadModals();
 	},
 
 	loadModals: function() {
