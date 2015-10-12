@@ -37,7 +37,7 @@ var GetPackage = {
 		  		$(this).find('.source').addClass('disabled').removeClass('source');
 		  	}
 
-		  	if( Global.user.type != 'client' && Global.user.type != 'packager' && Global.user.type != 'c_tester' && Global.user.type != 'admin') {
+		  	if( Global.user.type != 'Client' && Global.user.type != 'Packager' && Global.user.type != 'User Tester' && Global.user.type != 'Administrator') {
 		  		$(this).find('.documents').addClass('disabled').removeClass('documents');
 		  		$(this).find('.source').addClass('disabled').removeClass('source');
 		  	}
