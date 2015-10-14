@@ -203,7 +203,7 @@
             <label>Status:</label>
             <select id="status">
                 <option>New</option>
-                <option>Assigned</option>
+                <option>Assign To</option>
                 <option>Started</option>
                 <option>On Hold</option>
                 <option>Pending Issues</option>
@@ -236,7 +236,7 @@
             <label>Status:</label>
             <select id="status">
                 <option>New</option>
-                <option>Assigned</option>
+                <option>Assign To</option>
                 <option>Started</option>
                 <option>On Hold</option>
                 <option>Pending Issues</option>
@@ -380,6 +380,37 @@
     </div>
 </div>
 <!-- *********** END PROFILE PAGE *********** -->
+<!-- *********** CREATE ISSUE ON REJECT PAGE *********** -->
+<div id="issuePage">
+    <div class="row">
+        <div class="dashboardTitle">
+            <span class="userIcon" id="pageIcon">g</span>
+            <span class="dashTitle">ADD AN ISSUE</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="formContainer">
+            <div class="formHeader" id="formText">NEW ISSUE</div>
+            <div id="addPackageForm">
+                <div class="large-12 columns" style="padding-bottom:20px;">
+                    <div class="formElement">
+                        <label>Subject:</label>
+                        <input type="text" id="issueSubject" class="issueField" required></input>
+                    </div>
+                    <div class="formElement">
+                        <label>Issue:</label>
+                        <textarea id="issueComment" class="issueField" required></textarea>
+                    </div>
+                </div>
+                <div class="btnContainer">
+                    <button id="issueCancelBtn">CANCEL</button>
+                    <button class="submit" id="submitIssue">SUBMIT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- *********** END CREATE ISSUE ON REJECT PAGE *********** -->
 <!-- *********** MODALS *********** -->
 <!-- Packaged Added Successfully Modal -->
 <div id="modals">
