@@ -1,0 +1,13 @@
+New Package ----> Package.Request@success-systems.com.au
+Discovery Completed ----> Packaging Team Leader
+New Issue (Packaging) ----> Client that added the package
+Issue Resolved (Discovery) ----> Packaging Engineer
+Packaging Completed ----> Client that added the package
+New Issue (QA) ----> Packaging Engineer
+Issue Resolved (QA) ----> Client Tester
+QA Completed ----> Packaging Engineer
+New Issue (UAT) ----> Packaging Engineer
+Issue Resolved (UAT) ----> Acceptance Tester
+UAT Completed ----> Packaging Engineer, Client that added the package, Client Tester, Packaging Team Leader, Project Manager
+ 
+I would like flexibility to add more than one email address to each category.

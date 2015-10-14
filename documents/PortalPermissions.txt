@@ -1,0 +1,7 @@
+		Add Package    Discovery   Packaging      QA       UAT      Completed     Reporting
+Client		Full		Full	    View	 Full      View      View	   Full
+Packager	None		View	    Full	 View	   View	     View	   Full
+Packaging T L	None		Full	    Full	 View	   View	     View	   Full
+QA Tester	None		View	    View	 Full	   View	     View	   Full
+User Tester	None		View	    View	 View	   Full	     View	   Full
+Project Manager None		View	    View	 View	   View	     View	   Full
