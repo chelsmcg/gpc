@@ -70,7 +70,11 @@ var Load = {
 	},
 
 	discoveryPage: function() {
+		
+		var hasPermission = false;
 		$discovery = $(this);
+
+
 		$('#mainContainer').load('components.html #addPackage', function(){
 			$('.dashTitle').text('DISCOVERY - PACKAGE NAME');
 			$('#pageIcon').text('T');
@@ -84,12 +88,19 @@ var Load = {
 
 			$('#addPackageForm').append(discoverySettings);
 
-			if(Global.user.type == 'client' || Global.user.type == 'teamleader' || Global.user.type == 'admin') {
+			//this loops through logged in user and get their types - if their type == 'something' they have permissions
+			$.each(Global.user.type, function(index, type){
+				if(type == 'Client' || type == 'Team Leader' || type == 'Administrator'){
+					hasPermission = true;
+				}
+			});
+
+			if(hasPermission) {
 				$('#loadDiscovery').load('components.html #discoverySettings');
+				$('.mainColumn').css('margin-bottom', '40px');
 			}
 			
 
-			$('.mainColumn').css('margin-bottom', '40px');
 			var rowID = $discovery.parent().attr('data-rowid');
 			EditPackage.packageDetails(rowID);
 			
