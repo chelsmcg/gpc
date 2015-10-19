@@ -22,11 +22,14 @@ var EditPackage = {
 	fileAdded: function(){
 		if(typeof this.files[0] != 'undefined'){
 
+			var field = null;
+
 			if($(this).hasClass('docs')){
 				console.log('docs');
 
 				if(this.files[0].type == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' || this.files[0].type == 'application/msword'){
 					EditPackage.docFile = this.files[0];
+					field = 'doc';
 
 				}else{
 					EditPackage.docFile = null;
@@ -37,13 +40,14 @@ var EditPackage = {
 
 				if(this.files[0].type == 'application/x-zip-compressed'){
 					EditPackage.sourceFile = this.files[0];
+					field = 'source';
 
 				}else{
 					EditPackage.sourceFile = null;
 				}
 			}
 
-			EditPackage.uploadFile(this.files[0], 'source');
+			EditPackage.uploadFile(this.files[0], field);
 		}
 	},
 
@@ -166,15 +170,27 @@ var EditPackage = {
 			type: 'completedStage'
 		};
 
+		//if completing discovery page check file uploads
 		if(category == 'Discovery'){
-			if(EditPackage.docFile != null && EditPackage.sourceFile != null){
-				// EditPackage.uploadFile(EditPackage.sourceFile, 'source');
-				// EditPackage.uploadFile(EditPackage.docFile, 'doc');
-				ajaxData.sourceFile = EditPackage.sourceFile.name;
+
+			//check doc was added else stop
+			if(EditPackage.docFile != null){				
 				ajaxData.documentation = EditPackage.docFile.name;
 
 			}else{
-				console.log('missing file');
+				console.log('missing documentation file');
+				return;
+			}
+
+			//check source added or checkbox ticked else stop
+			if(EditPackage.sourceFile != null){
+				ajaxData.sourceFile = EditPackage.sourceFile.name;
+
+			}else if($('.checkbox').is(":checked")){
+				ajaxData.sourceFile = 'N/A';
+
+			}else{
+				console.log('missing source file');
 				return;
 			}
 		}
@@ -188,10 +204,14 @@ var EditPackage = {
 				console.log(response);
 
 				if(response.success){
+					EditPackage.sourceFile = null;
+					EditPackage.docFile = null;
 					EditPackage.nextCategoryModal();
+					
 				}else{
 					AddPackage.errorModal();
 				}
+
 
 			}
 		});
