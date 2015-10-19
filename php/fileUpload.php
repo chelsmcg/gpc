@@ -30,71 +30,29 @@
 
 
 	function uploadToRemote($ftp_server, $ftp_username, $ftp_userpass, $fileName){
-		//connect and login to FTP server
-		// $ftp_server = "ftp.example.com";
-		// $ftp_conn = ftp_connect($ftp_server) or die("Could not connect to $ftp_server");
-		// $login = ftp_login($ftp_conn, $ftp_username, $ftp_userpass);
+		
 
-		// $file = '../tempUploads/' . $fileName;
-		// error_log($file);
-
-		// // upload file
-		// if (ftp_put($ftp_conn, "/Source/", $file, FTP_ASCII)){
-		// 	echo "Successfully uploaded $file.";
-		// }
-		// else{
-		// 	echo "Error uploading $file.";
-		// }
-
-		// // close connection
-		// ftp_close($ftp_conn);
-
-
-		$file = $fileName;
-		$remote_file = '/Source/'.$file;
-
+		$file = '../tempUploads/' . $fileName;
+		$remote_file = '/Source/' . $fileName;
 
 		// set up basic connection
 		$conn_id = ftp_connect($ftp_server);
-		
+
 		// login with username and password
 		$login_result = ftp_login($conn_id, $ftp_username, $ftp_userpass);
-		
+
 		// upload a file
-		if (ftp_put($conn_id, $remote_file, $_FILES["file"]["tmp_name"], FTP_BINARY)) {
-			echo "successfully uploaded $file\n";
-			// $pacAddress = "ftp://".$ftp_server."".$remote_file;
-			//echo $pacAddress;
-		} 
+		if (ftp_put($conn_id, $remote_file, $file, FTP_BINARY)) {
+		 echo "successfully uploaded $file\n";
+
+		} else {
+		 echo "There was a problem while uploading $file\n";
+		}
 
 		// close the connection
 		ftp_close($conn_id);
 
 
-
-
-
-
-		// // open some file for reading
-		// $file = 'somefile.txt';
-		// $fp = fopen('../tempUploads/' . $fileName, 'r');
-
-		// // set up basic connection
-		// $ftp_conn = ftp_connect($ftp_server);
-
-		// // login with username and password
-		// $login_result = ftp_login($ftp_conn, $ftp_username, $ftp_userpass);
-
-		// // try to upload $file
-		// if (ftp_fput($ftp_conn, $file, $fp, FTP_ASCII)) {
-		//     echo "Successfully uploaded $file\n";
-		// } else {
-		//     echo "There was a problem while uploading $file\n";
-		// }
-
-		// // close the connection and the file handler
-		// ftp_close($ftp_conn);
-		// fclose($fp);
 	}
 
 
