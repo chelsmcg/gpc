@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	date_default_timezone_set('Australia/Brisbane');
 	
 	//formats data to be returned to ajax call
 	function format_response($success, $message=null, $data=null){
