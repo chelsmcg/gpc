@@ -29,6 +29,8 @@ var EditPackage = {
 
 				if(this.files[0].type == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' || this.files[0].type == 'application/msword'){
 					EditPackage.docFile = this.files[0];
+					var tmpNewName = Global.createPackageName(EditPackage.packageData.vendor, EditPackage.packageData.name, EditPackage.packageData.version, EditPackage.packageData.revision);
+					EditPackage.docFile.newName = this.files[0].type == 'application/msword' ? tmpNewName + '.doc' : tmpNewName + '.docx'; 
 					field = 'doc';
 
 				}else{
@@ -40,6 +42,7 @@ var EditPackage = {
 
 				if(this.files[0].type == 'application/x-zip-compressed'){
 					EditPackage.sourceFile = this.files[0];
+					EditPackage.sourceFile.newName = Global.createPackageName(EditPackage.packageData.vendor, EditPackage.packageData.name, EditPackage.packageData.version, EditPackage.packageData.revision) + '.zip'; 
 					field = 'source';
 
 				}else{
@@ -175,7 +178,7 @@ var EditPackage = {
 
 			//check doc was added else stop
 			if(EditPackage.docFile != null){				
-				ajaxData.documentation = EditPackage.docFile.name;
+				ajaxData.documentation = EditPackage.docFile.newName;
 
 			}else{
 				console.log('missing documentation file');
@@ -184,7 +187,7 @@ var EditPackage = {
 
 			//check source added or checkbox ticked else stop
 			if(EditPackage.sourceFile != null){
-				ajaxData.sourceFile = EditPackage.sourceFile.name;
+				ajaxData.sourceFile = EditPackage.sourceFile.newName;
 
 			}else if($('.checkbox').is(":checked")){
 				ajaxData.sourceFile = 'N/A';
