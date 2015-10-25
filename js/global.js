@@ -1,6 +1,8 @@
 var Global = {
 
 	user: null,
+	docLink: "docUploads",
+	sourecLink : "ftp://ftp2.success-systems.com.au/Source",
 
 	init: function(){
 		Global.events();
