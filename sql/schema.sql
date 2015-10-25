@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS issues;
 DROP TABLE IF EXISTS files;
 DROP TABLE IF EXISTS packages;
+DROP TABLE IF EXISTS ftpConfig;
 
 
 CREATE TABLE users (
@@ -59,4 +60,12 @@ CREATE TABLE issues (
 	issue TEXT,
 	PRIMARY KEY (id),
 	FOREIGN KEY (pId) REFERENCES packages(id) ON DELETE CASCADE
+);
+
+CREATE TABLE ftpConfig (
+	id INT NOT NULL AUTO_INCREMENT,
+	hostName VARCHAR(100),
+	username VARCHAR(100),
+	password VARCHAR(100),
+	PRIMARY KEY (id)
 );

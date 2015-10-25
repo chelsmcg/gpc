@@ -1,5 +1,5 @@
 <?php
-	include_once "db/dbConnect.php";
+
 	include_once "commonFuncs.php";
 
 	if ( 0 < $_FILES['file']['error'] ) {
@@ -23,8 +23,9 @@
 
 		}else if($field == 'source'){
 			move_uploaded_file($_FILES['file']['tmp_name'], '../tempUploads/' . $newName);
+			$FTP = getFTPSettings();
 
-			uploadToRemote('ftp2.success-systems.com.au', 'data3', 'dAtA3', $newName);
+			uploadToRemote($FTP['hostName'], $FTP['username'], $FTP['password'], $newName);
 		}
 	}
 
@@ -74,4 +75,27 @@
 		}
 
 		return $extension;
+	}
+
+
+	function getFTPSettings(){
+
+		global $mysqli;
+		$sql = "SELECT * FROM ftpConfig WHERE id = 1";
+		if (!$result = $mysqli->query($sql)) {
+
+			printf("Errormessage 1 : %s\n", $mysqli->error);
+			return false;
+
+		} else {
+			if($result->num_rows != 0){
+
+				while($row = $result->fetch_assoc()){
+					$ftpSettings = $row;
+				}
+				return $ftpSettings;
+			}
+
+			return false;
+		}
 	}

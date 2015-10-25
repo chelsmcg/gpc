@@ -1,4 +1,6 @@
 <?php
+	include_once "db/dbConnect.php";
+	
 	session_start();
 	date_default_timezone_set('Australia/Brisbane');
 	
