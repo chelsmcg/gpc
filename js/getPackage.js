@@ -23,6 +23,7 @@ var GetPackage = {
 	},
 
 	restrictUser: function() {
+		var hasPermission = false;
 		$(".packageRow").each(function() {
 			var rowCategory = $(this).find('.packageCategory').text();
 
@@ -37,7 +38,13 @@ var GetPackage = {
 		  		$(this).find('.source').addClass('disabled').removeClass('source');
 		  	}
 
-		  	if( Global.user.type != 'Client' && Global.user.type != 'Packager' && Global.user.type != 'User Tester' && Global.user.type != 'Administrator') {
+		  	$.each(Global.user.type, function(index, type){
+				if(type == 'Client' || type == 'Packager' || type == 'User Tester' || type == 'Administrator'){
+					hasPermission = true;
+				}
+			});
+
+		  	if(hasPermission) {
 		  		$(this).find('.documents').addClass('disabled').removeClass('documents');
 		  		$(this).find('.source').addClass('disabled').removeClass('source');
 		  	}

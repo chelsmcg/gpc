@@ -118,6 +118,7 @@ var Load = {
 	},
 
 	packagingPage: function() {
+		var hasPermission = false;
 		$packaging = $(this);
 		$('#mainContainer').load('components.html #addPackage', function(){
 			$('.dashTitle').text('PACKAGING - PACKAGE NAME');
@@ -128,7 +129,14 @@ var Load = {
 
 			$('.btnContainer').hide();
 
-			if(Global.user.type == 'packager' || Global.user.type == 'teamleader' || Global.user.type == 'admin') {
+			//this loops through logged in user and get their types - if their type == 'something' they have permissions
+			$.each(Global.user.type, function(index, type){
+				if(type == 'Packager' || type == 'Team Leader' || type == 'Administrator'){
+					hasPermission = true;
+				}
+			});
+
+			if(hasPermission) {
 				Load.loadBottomSnippet();
 			}
 			
@@ -142,6 +150,7 @@ var Load = {
 	},
 
 	qualityPage: function() {
+		var hasPermission = false;
 		$quality = $(this);
 		$('#mainContainer').load('components.html #addPackage', function(){
 			$('.dashTitle').text('QUALITY ASSURANCE - PACKAGE NAME');
@@ -152,7 +161,14 @@ var Load = {
 
 			$('.btnContainer').hide();
 
-			if(Global.user.type == 'client' || Global.user.type == 'qatester' || Global.user.type == 'admin') {
+			//this loops through logged in user and get their types - if their type == 'something' they have permissions
+			$.each(Global.user.type, function(index, type){
+				if(type == 'Client' || type == 'QA Tester' || type == 'Administrator'){
+					hasPermission = true;
+				}
+			});
+
+			if(hasPermission) {
 				Load.loadBottomSnippet();
 			}
 			
@@ -166,6 +182,7 @@ var Load = {
 	},
 
 	qatPage: function() {
+		var hasPermission = false;
 		$quality = $(this);
 		$('#mainContainer').load('components.html #addPackage', function(){
 			$('.dashTitle').text('QAT - PACKAGE NAME');
@@ -176,7 +193,14 @@ var Load = {
 
 			$('.btnContainer').hide();
 
-			if(Global.user.type == 'usertester' || Global.user.type == 'admin') {
+			//this loops through logged in user and get their types - if their type == 'something' they have permissions
+			$.each(Global.user.type, function(index, type){
+				if(type == 'User Tester' || type == 'Administrator'){
+					hasPermission = true;
+				}
+			});
+
+			if(hasPermission) {
 				Load.loadBottomSnippet();
 			}
 
