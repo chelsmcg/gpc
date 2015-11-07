@@ -218,7 +218,7 @@
 					"<p>Status: ".$packageData['status']."</p>";
 
 
-			email($body, 'mark-g-@hotmail.com', 'Mark', 'New package in Packaging');//send to 
+			email($body, 'mark-g-@hotmail.com', 'Mark', 'HSQ - New package in Packaging');//send to 
 
 		}else if($emailType == 'stageComplete'){
 
@@ -238,7 +238,7 @@
 					"<p>Status: ".$packageData['status']."</p>";
 
 
-			email($body, 'mark-g-@hotmail.com', 'Mark', "New package in $nextCategory");//send to 
+			email($body, 'mark-g-@hotmail.com', 'Mark', "HSQ - New package in $nextCategory");//send to 
 
 		}else if($emailType == 'rejected'){
 			$body = "<p>$loggedFName $loggedLName has rejected $packageBigName. Please see issue details below:</p>".
@@ -248,7 +248,7 @@
 					"<p>Issue Subject: $issueSubject</p>".
 					"<p>Issue Description: $issueComment</p>";
 
-			email($body, 'mark-g-@hotmail.com', 'Mark', 'Package Rejected');//send to 
+			email($body, 'mark-g-@hotmail.com', 'Mark', 'HSQ - Package Rejected');//send to 
 		}
 	}
 
