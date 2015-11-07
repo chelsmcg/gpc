@@ -77,16 +77,21 @@
 
 					$sourceFile = $_GET['sourceFile'];
 					$documentation = $_GET['documentation'];
-
 					$stageUpdated = updateStage($rowId, $status, $nextCategory);
 
 					if($stageUpdated){
 
+						updateField('packages', 'docFile', 'NULL', 'id', $rowId);
+						updateField('packages', 'sourceFile', 'NULL', 'id', $rowId);
+						
 						$filesUpdated = updateFiles($rowId, $sourceFile, $documentation);
 
 						if($filesUpdated){
 							format_response(true, 'stage and files added successfully');
 							setupEmail($rowId);
+
+						}else{
+							format_response(false, 'file paths could not be updated in db');
 						}
 
 					}else{
