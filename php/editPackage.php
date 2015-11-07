@@ -2,6 +2,8 @@
 
 	include_once "db/dbConnect.php";
 	include_once "commonFuncs.php";
+	include_once '../email/emailConfig.php';
+	include_once '../email/emailFuncs.php';
 
 	// gp.dev/php/editPackage.php?rowId=7&vendor=checlc&appId=69&appName=funz&appVersion=3&revision=2.0
 
@@ -84,6 +86,7 @@
 
 						if($filesUpdated){
 							format_response(true, 'stage and files added successfully');
+							setupEmail($rowId);
 						}
 
 					}else{
@@ -167,6 +170,34 @@
 
 			return false;
 		}
+
+	}
+
+	function setupEmail($rowId){
+		$packageData = getSingleRow('packages', 'id', $rowId);
+		$loggedFName = $_SESSION['user']['fName'];
+		$loggedLName = $_SESSION['user']['lName'];
+		$t = time();
+		$date = date("d-m-Y",$t);
+		$time = date("h:ia", $t);
+
+		$body = "<p>$loggedFName $loggedLName has moved a package to packaging.</p>".
+				"<p>Added Date: $date</p>".
+				"<p>Added Time: $time</p>".
+				"<p>App Id: ".$packageData['appID']."</p>".
+				"<p>Vendor: ".$packageData['vendor']."</p>".
+				"<p>App Name: ".$packageData['name']."</p>".
+				"<p>App Version: ".$packageData['version']."</p>".
+				"<p>Revision: ".$packageData['revision']."</p>".
+				"<p>OS: ".$packageData['operatingSystem']."</p>".
+				"<p>Type: ".$packageData['type']."</p>".
+				"<p>Priority: ".$packageData['priority']."</p>".
+				"<p>Comments: ".$packageData['comments']."</p>".
+				"<p>Category: ".$packageData['category']."</p>".
+				"<p>Status: ".$packageData['status']."</p>";
+
+
+		email($body, 'mark-g-@hotmail.com', 'Mark', 'New package in Packaging');//send to 
 
 	}
 

@@ -40,6 +40,31 @@
 	}
 
 
+	function getSingleRow($table, $field, $value){
+		global $mysqli;
+		$data = array();
+
+		$sql = "SELECT * FROM $table WHERE $field = '$value'";
+
+		if (!$result = $mysqli->query($sql)) {
+
+			printf("Errormessage 1 : %s\n", $mysqli->error);
+			return false;
+
+		} else {
+			if($result->num_rows == 1){
+
+				while($row = $result->fetch_assoc()){
+					$data = $row;
+				}
+				return $data;
+			}
+
+			return false;
+		}
+	}
+
+
 
 	//checks if a specified value already exists in a given field of a given table
 	function checkValue($field, $value, $table, $select=null){
