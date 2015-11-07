@@ -14,6 +14,9 @@ var AddPackage = {
 	},
 
 	saveNewPackage: function() {
+
+    $('#loader').show();
+
 		var $this = $(this);
 		var vendor = $('#vendor').val();
 		var appID = $('#appID').val();
@@ -41,6 +44,7 @@ var AddPackage = {
   			dataType: 'jsonp',
   			success: function(response) {
   				console.log(response);
+          $('#loader').hide();
   				if(response.success) {
   					AddPackage.successModal();
   				} else {

@@ -61,7 +61,7 @@ var EditPackage = {
 	    form_data.append('file', file);
                      
 	    $.ajax({
-            url: '../php/fileUpload.php?newName=' + newName + '&field=' + field,// point to server-side PHP script 
+            url: 'php/fileUpload.php?newName=' + newName + '&field=' + field,// point to server-side PHP script 
             dataType: 'text',  // what to expect back from the PHP script, if anything
             cache: false,
             contentType: false,
@@ -119,6 +119,9 @@ var EditPackage = {
 	},
 
 	editDetails: function(){
+
+		$('#loader').show();
+
 		var vendor = $('#vendor').val();
 		var appID = $('#appID').val();
 		var appName = $('#appName').val();
@@ -149,6 +152,8 @@ var EditPackage = {
 			success: function(response) {
 				console.log(response);
 
+				$('#loader').hide();
+
 				if(response.success){
 					AddPackage.editSuccessModal();
 				}else{
@@ -160,6 +165,8 @@ var EditPackage = {
 	},
 
 	completedStage: function(){
+
+		$('#loader').show();
 
 		var status = $('#status').val();
 		var rowID = EditPackage.packageData.id;
@@ -205,6 +212,8 @@ var EditPackage = {
 			dataType: 'jsonp',
 			success: function(response) {
 				console.log(response);
+
+				$('#loader').hide();
 
 				if(response.success){
 					EditPackage.sourceFile = null;
