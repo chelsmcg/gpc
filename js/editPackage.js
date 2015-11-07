@@ -11,7 +11,8 @@ var EditPackage = {
 	events: function() {
 		$('body').on('click touch', '#editPackageBtn', EditPackage.editDetails);
 		$('body').on('click touch', '.settingsBtnContainer .submit', EditPackage.completedStage);
-		$('body').on('click touch', '.settingsBtnContainer #rejectedBtn', EditPackage.rejectPackage);
+		$('body').on('click touch', '.settingsBtnContainer #rejectedBtn', EditPackage.rejectClicked);
+		$('body').on('click touch', '#submitIssue', EditPackage.rejectPackage);
 		$('body').on('click touch', '#nextCategoryBtn', EditPackage.nextCategoryBtn);
 		$('body').on('click touch', '#nextCategoryErrorBtn', EditPackage.nextCategoryErrorBtn);
 		$('body').on('click touch', '#rejectSuccessBtn', EditPackage.rejectSuccessBtn);
@@ -259,11 +260,18 @@ var EditPackage = {
 		});
 	},
 
+	rejectClicked: function(){
+		EditPackage.packageData.status = $('#status').val();
+		Load.issuePage();
+	},
+
 	rejectPackage: function(){
 
-		var status = $('#status').val();
+		var issueSubject = $('#issueSubject').val();
+		var issueComment = $('#issueComment').val();
 		var rowID = EditPackage.packageData.id;
 		var category = EditPackage.packageData.category;
+		var status = EditPackage.packageData.status;
 		var nextCategory = category != 'Packaging' ? 'Packaging' : 'Discovery';
 
 		$.ajax({
@@ -273,7 +281,10 @@ var EditPackage = {
 				status: status,
 				currentCategory: category,
 				nextCategory: nextCategory,
-				type: 'completedStage'
+				type: 'completedStage',
+				rejected: true,
+				issueSubject: issueSubject,
+				issueComment: issueComment
 			},
 			dataType: 'jsonp',
 			success: function(response) {

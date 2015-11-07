@@ -16,7 +16,7 @@ var Load = {
 		$('body').on('click touch', '.edit', Load.addEditPackage);
 		$('body').on('click touch', '#profileBtn', Load.profilePage);
 		$('body').on('click touch', '#addUserBtn', Load.addUserPage);
-		$('body').on('click touch', '#rejectedBtn', Load.issuePage);
+		// $('body').on('click touch', '#rejectedBtn', Load.issuePage);
 		
 	},
 

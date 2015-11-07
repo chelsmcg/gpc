@@ -42,9 +42,10 @@
 	//adds a package to the packages table
 	function addPackage($appId, $vendor, $appName, $appVersion, $revision, $OS, $pType, $priority, $comments, $category, $status, $added){
 		global $mysqli;
+		$userId = $_SESSION['user']['id'];
 
-		$sql = "INSERT INTO packages(appID, vendor, name, version, revision, operatingSystem, type, priority, comments, category, status, added) 
-				VALUES('$appId', '$vendor', '$appName', '$appVersion', '$revision', '$OS', '$pType', '$priority', '$comments', '$category', '$status', '$added')";
+		$sql = "INSERT INTO packages(appID, vendor, name, version, revision, operatingSystem, type, priority, comments, category, status, added, addedBy) 
+				VALUES('$appId', '$vendor', '$appName', '$appVersion', '$revision', '$OS', '$pType', '$priority', '$comments', '$category', '$status', '$added', '$userId')";
 
 		if (!$result = $mysqli->query($sql)) {
 

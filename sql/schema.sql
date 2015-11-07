@@ -47,9 +47,10 @@ CREATE TABLE packages (
 	docFile VARCHAR(100) DEFAULT NULL,
 	sourceFile VARCHAR(100) DEFAULT NULL,
 	added DATETIME,
-	uploadedBy INT(20) DEFAULT NULL,
+	addedBy INT(20) DEFAULT NULL,
 	assignedPackager INT(20) DEFAULT NULL,
 	assignedQA INT(20) DEFAULT NULL,
+	assignedUAT INT(20) DEFAULT NULL,
 	PRIMARY KEY (id)
 );
 
@@ -65,8 +66,10 @@ CREATE TABLE files (
 
 CREATE TABLE issues (
 	id INT NOT NULL AUTO_INCREMENT,
-	pId INT(30),
+	issueSubject VARCHAR(100) DEFAULT NULL,
 	issue TEXT,
+	resolved BOOLEAN DEFAULT 0,
+	pId INT(30),
 	PRIMARY KEY (id),
 	FOREIGN KEY (pId) REFERENCES packages(id) ON DELETE CASCADE
 );

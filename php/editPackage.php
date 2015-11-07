@@ -66,7 +66,21 @@
 					$stageUpdated = updateStage($rowId, $status, $nextCategory);
 
 					if($stageUpdated){
+
+						//adds issue data to issue table on rejected
+						if(!empty($_GET['issueSubject']) && !empty($_GET['issueComment']) && !empty($_GET['rejected']) && $_GET['rejected'] == true){
+							$issueSubject = $_GET['issueSubject'];
+							$issueComment = $_GET['issueComment'];
+
+							insertRow('issues', 'issueSubject, issue, pId', "'$issueSubject', '$issueComment', '$rowId'");
+							setupEmail($rowId, 'rejected', $currentCategory, $nextCategory, $issueSubject, $issueComment);
+						}else{
+							//send email for next stage notification here
+							setupEmail($rowId, 'stageComplete', $currentCategory, $nextCategory);
+						}
+
 						format_response(true, 'stage updated successfully');
+
 					}else{
 						format_response(false, 'stage updated fail');
 					}
@@ -83,12 +97,12 @@
 
 						updateField('packages', 'docFile', 'NULL', 'id', $rowId);
 						updateField('packages', 'sourceFile', 'NULL', 'id', $rowId);
-						
+
 						$filesUpdated = updateFiles($rowId, $sourceFile, $documentation);
 
 						if($filesUpdated){
 							format_response(true, 'stage and files added successfully');
-							setupEmail($rowId);
+							setupEmail($rowId, 'discoveryComplete', $currentCategory, $nextCategory);
 
 						}else{
 							format_response(false, 'file paths could not be updated in db');
@@ -178,32 +192,64 @@
 
 	}
 
-	function setupEmail($rowId){
+	function setupEmail($rowId, $emailType, $currentCategory, $nextCategory, $issueSubject=NULL, $issueComment=NULL){
 		$packageData = getSingleRow('packages', 'id', $rowId);
+		$packageBigName = $packageData['vendor'] .'_'. $packageData['name'] .'_'. $packageData['version'] .'_'. $packageData['revision'];
 		$loggedFName = $_SESSION['user']['fName'];
 		$loggedLName = $_SESSION['user']['lName'];
 		$t = time();
 		$date = date("d-m-Y",$t);
 		$time = date("h:ia", $t);
 
-		$body = "<p>$loggedFName $loggedLName has moved a package to packaging.</p>".
-				"<p>Added Date: $date</p>".
-				"<p>Added Time: $time</p>".
-				"<p>App Id: ".$packageData['appID']."</p>".
-				"<p>Vendor: ".$packageData['vendor']."</p>".
-				"<p>App Name: ".$packageData['name']."</p>".
-				"<p>App Version: ".$packageData['version']."</p>".
-				"<p>Revision: ".$packageData['revision']."</p>".
-				"<p>OS: ".$packageData['operatingSystem']."</p>".
-				"<p>Type: ".$packageData['type']."</p>".
-				"<p>Priority: ".$packageData['priority']."</p>".
-				"<p>Comments: ".$packageData['comments']."</p>".
-				"<p>Category: ".$packageData['category']."</p>".
-				"<p>Status: ".$packageData['status']."</p>";
+		if($emailType == 'discoveryComplete'){
+			$body = "<p>$loggedFName $loggedLName has moved $packageBigName to packaging.</p>".
+					"<p>Added Date: $date</p>".
+					"<p>Added Time: $time</p>".
+					"<p>App Id: ".$packageData['appID']."</p>".
+					"<p>Vendor: ".$packageData['vendor']."</p>".
+					"<p>App Name: ".$packageData['name']."</p>".
+					"<p>App Version: ".$packageData['version']."</p>".
+					"<p>Revision: ".$packageData['revision']."</p>".
+					"<p>OS: ".$packageData['operatingSystem']."</p>".
+					"<p>Type: ".$packageData['type']."</p>".
+					"<p>Priority: ".$packageData['priority']."</p>".
+					"<p>Comments: ".$packageData['comments']."</p>".
+					"<p>Category: ".$packageData['category']."</p>".
+					"<p>Status: ".$packageData['status']."</p>";
 
 
-		email($body, 'mark-g-@hotmail.com', 'Mark', 'New package in Packaging');//send to 
+			email($body, 'mark-g-@hotmail.com', 'Mark', 'New package in Packaging');//send to 
 
+		}else if($emailType == 'stageComplete'){
+
+			$body = "<p>$loggedFName $loggedLName has moved $packageBigName to $nextCategory.</p>".
+					"<p>Added Date: $date</p>".
+					"<p>Added Time: $time</p>".
+					"<p>App Id: ".$packageData['appID']."</p>".
+					"<p>Vendor: ".$packageData['vendor']."</p>".
+					"<p>App Name: ".$packageData['name']."</p>".
+					"<p>App Version: ".$packageData['version']."</p>".
+					"<p>Revision: ".$packageData['revision']."</p>".
+					"<p>OS: ".$packageData['operatingSystem']."</p>".
+					"<p>Type: ".$packageData['type']."</p>".
+					"<p>Priority: ".$packageData['priority']."</p>".
+					"<p>Comments: ".$packageData['comments']."</p>".
+					"<p>Category: ".$packageData['category']."</p>".
+					"<p>Status: ".$packageData['status']."</p>";
+
+
+			email($body, 'mark-g-@hotmail.com', 'Mark', "New package in $nextCategory");//send to 
+
+		}else if($emailType == 'rejected'){
+			$body = "<p>$loggedFName $loggedLName has rejected $packageBigName. Please see issue details below:</p>".
+					"<p>Submitted Date: $date</p>".
+					"<p>Submitted Time: $time</p>".
+					"<p>App Id: ".$packageData['appID']."</p>".
+					"<p>Issue Subject: $issueSubject</p>".
+					"<p>Issue Description: $issueComment</p>";
+
+			email($body, 'mark-g-@hotmail.com', 'Mark', 'Package Rejected');//send to 
+		}
 	}
 
 
