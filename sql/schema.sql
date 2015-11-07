@@ -17,12 +17,18 @@ CREATE TABLE users (
 	PRIMARY KEY (id)
 );
 
+INSERT INTO `users` (`id`, `email`, `userName`, `password`, `fName`, `lName`, `hasLoggedin`) VALUES
+(1, 'm@g.com', 'm', '$2y$11$hYI8GKwUIgRs0AAFZI5z6u0U/xHAQ7GKXOYVltyJNhN9vPP/gQtBu', 'Mark', 'Ganser', 0);
+
 CREATE TABLE roles (
 	id INT(30),
 	type VARCHAR(90),
 	CONSTRAINT pk_roleId PRIMARY KEY (id, type),
 	FOREIGN KEY (id) REFERENCES users(id) ON DELETE CASCADE
 );
+
+INSERT INTO `roles` (`id`, `type`) VALUES
+(1, 'Administrator');
 
 
 CREATE TABLE packages (
@@ -41,6 +47,9 @@ CREATE TABLE packages (
 	docFile VARCHAR(100) DEFAULT NULL,
 	sourceFile VARCHAR(100) DEFAULT NULL,
 	added DATETIME,
+	uploadedBy INT(20) DEFAULT NULL,
+	assignedPackager INT(20) DEFAULT NULL,
+	assignedQA INT(20) DEFAULT NULL,
 	PRIMARY KEY (id)
 );
 
@@ -69,3 +78,7 @@ CREATE TABLE ftpConfig (
 	password VARCHAR(100),
 	PRIMARY KEY (id)
 );
+
+INSERT INTO `ftpconfig` (`id`, `hostName`, `username`, `password`) VALUES
+(1, 'ftp2.success-systems.com.au', 'data3', 'dAtA3');
+
