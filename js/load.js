@@ -98,8 +98,8 @@ var Load = {
 			if(hasPermission) {
 				$('#loadDiscovery').load('components.html #discoverySettings');
 				$('.mainColumn').css('margin-bottom', '40px');
+
 			}
-			
 
 			var rowID = $discovery.parent().attr('data-rowid');
 			EditPackage.packageDetails(rowID);
