@@ -18,7 +18,8 @@ CREATE TABLE users (
 );
 
 INSERT INTO `users` (`id`, `email`, `userName`, `password`, `fName`, `lName`, `hasLoggedin`) VALUES
-(1, 'm@g.com', 'm', '$2y$11$hYI8GKwUIgRs0AAFZI5z6u0U/xHAQ7GKXOYVltyJNhN9vPP/gQtBu', 'Mark', 'Ganser', 0);
+(1, 'm@g.com', 'm', '$2y$11$hYI8GKwUIgRs0AAFZI5z6u0U/xHAQ7GKXOYVltyJNhN9vPP/gQtBu', 'Mark', 'Ganser', 0),
+(2, 'c@c.com', 'chelsmcg', '$2y$11$isJm9beZSreX/GAhDdWwtOKk88BsnVzcCZskX7LFvrnsiyCnqW8Aa', 'Chelsea', 'McGuinness', 0);
 
 CREATE TABLE roles (
 	id INT(30),
@@ -28,7 +29,8 @@ CREATE TABLE roles (
 );
 
 INSERT INTO `roles` (`id`, `type`) VALUES
-(1, 'Administrator');
+(1, 'Administrator'),
+(2, 'Administrator');
 
 
 CREATE TABLE packages (
