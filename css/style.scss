@@ -472,6 +472,72 @@ header {
 	}
 }
 
+#assignList {
+	display: none;
+	width: 350px;
+	background-color: #ccc;
+	position: relative;
+	-webkit-transition: all 300ms ease-out 300ms;
+    -moz-transition: all 300ms ease-out 300ms;
+    -o-transition: all 300ms ease-out 300ms;
+    transition: all 300ms ease-out 300ms;
+
+    ul {
+    	list-style: none;
+    	margin: 0;
+    	color: #ffffff;
+
+    	li {
+    		padding: 10px;
+    		cursor: pointer;
+    		font-size: 14px;
+
+    		&:nth-child(even) {
+    			background: rgba(0,0,0,0.8);
+    		}
+
+    		&:nth-child(odd) {
+    			background: rgba(0,0,0,0.5);
+    		}
+
+    		&:hover {
+	    		opacity: 0.8;
+	    	}
+    	}
+    }
+
+	&:before {
+		content: '';
+	    width: 5px;
+	    height: 5px;
+	    position: absolute;
+	    border-left: 10px solid transparent;
+	    border-right: 10px solid transparent;
+	    border-bottom: 10px solid #666;
+	    top: -10px;
+	    right: 0;
+	}
+}
+
+.list {
+	overflow: scroll;
+	height: 300px;
+}
+
+#assignedToText {
+	display: inline-block;
+	font-size: 14px;
+	color: #ffffff;
+	margin-top: 10px;
+}
+
+.updateBtn {
+	display: none;
+	background: #00738E;
+	padding: 10px 20px;
+	float: right;
+}
+
 ::-webkit-input-placeholder {
    color: #ccc;
    margin-left: 40px;
