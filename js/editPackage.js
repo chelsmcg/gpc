@@ -40,7 +40,7 @@ var EditPackage = {
 			}else if($(this).hasClass('source')){
 				console.log('source');
 
-				if(this.files[0].type == 'application/x-zip-compressed'){
+				if(this.files[0].type == 'application/x-zip-compressed' || this.files[0].type == 'application/zip'){
 					EditPackage.sourceFile = this.files[0];
 					EditPackage.sourceFile.newName = Global.createPackageName(EditPackage.packageData.vendor, EditPackage.packageData.name, EditPackage.packageData.version, EditPackage.packageData.revision) + '.zip'; 
 					field = 'source';
