@@ -18,36 +18,7 @@ var EditPackage = {
 		$('body').on('click touch', '#rejectSuccessBtn', EditPackage.rejectSuccessBtn);
 		$('body').on('click touch', '#rejectErrorBtn', EditPackage.rejectErrorBtn);
 		$('body').on('change', ':file', EditPackage.fileAdded);
-		$('body').on('change', '#status', EditPackage.showAssignList);
-		$('body').on('click touch', '.assigned', EditPackage.selectedAssignee);
-	},
-
-	showAssignList: function() {
-		console.log($(this));
-
-		var selected = $(this).find('option:selected').val();
-
-		if(selected == 'assignTo') {
-			$('#assignList').show();
-			$('.updateBtn').hide();
-		} else {
-			$('#assignList').hide();
-		}
-	},
-
-	selectedAssignee: function() {
-
-		$('#assignList').hide();
-
-		var person = $(this).text();
-
-		$('#person').remove();
-
-		var assignedText = '<span id="person">ASSIGNED TO:' + ' ' + person + '</span>';
-
-		$('#assignedToText').append(assignedText);
-
-		$('.updateBtn').show();
+		
 	},
 
 	fileAdded: function(){

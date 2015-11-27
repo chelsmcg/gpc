@@ -65,6 +65,29 @@
 	}
 
 
+	function customQuery($sql){
+		global $mysqli;
+		$data = array();
+
+		if (!$result = $mysqli->query($sql)) {
+
+			printf("Errormessage 1 : %s\n", $mysqli->error);
+			return false;
+
+		} else {
+			if($result->num_rows != 0){
+
+				while($row = $result->fetch_assoc()){
+					$data[] = $row;
+				}
+				return $data;
+			}
+
+			return false;
+		}
+	}
+
+
 
 	//checks if a specified value already exists in a given field of a given table
 	function checkValue($field, $value, $table, $select=null){
