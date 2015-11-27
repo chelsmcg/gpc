@@ -454,6 +454,76 @@
     </div>
 </div>
 <!-- *********** END CREATE ISSUE ON REJECT PAGE *********** -->
+<!-- *********** DISPLAY ISSUE FROM TABLE *********** -->
+<div id="displayIssuePage">
+    <div class="row">
+        <div class="dashboardTitle">
+            <span class="userIcon" id="pageIcon">g</span>
+            <span class="dashTitle">ISSUE</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="formContainer">
+            <div class="formHeader" id="formText">CURRENT ISSUE</div>
+            <div id="addPackageForm">
+                <div class="large-3 columns issueDetails" style="padding-bottom:20px;padding-left:50px;">
+                    <div class="bold">Created By:</div>
+                    <div class="issueCreator">Jim McGuinness</div>
+                    <div class="issueDate">11/12/15 12:20pm</div>
+                </div>
+                <div class="large-9 columns" style="padding-right:50px;">
+                    <div class="formElement">
+                        <label>Subject:</label>
+                        <input type="text" id="issueSubject" class="issueField display" required></input>
+                    </div>
+                    <div class="formElement">
+                        <label>Issue:</label>
+                        <textarea id="issueComment" class="issueField display" required></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-12 columns">
+                    <div id="addPackageForm">
+                        <div class="divider" style="margin-bottom:30px;"></div>
+                        <div class="large-4 columns" style="padding-left:50px;">
+                            <label class="rolesTitle">Issue Status</label>
+                            <div class="formElement">
+                                <input type="checkbox" class="checkbox newRole" data-role="resloved" id="Resolved" name="Resolved"></input>
+                                <p class="checkboxText">Resolved</p>
+                            </div>
+                            <div class="formElement">
+                                <input type="checkbox" class="checkbox newRole" data-role="acknowledged" id="Acknowledged" name="Acknowledged"></input>
+                                <p class="checkboxText">Acknowledged</p>
+                            </div>
+                        </div>
+                        <div class="large-6 columns" style="margin-top:38px;">
+                            <div class="formElement">
+                                <input type="checkbox" class="checkbox newRole" data-role="onhold" id="onhold" name="On Hold"></input>
+                                <p class="checkboxText">On Hold</p>
+                            </div>
+                            <div class="formElement">
+                                <input type="checkbox" class="checkbox newRole" data-role="details" id="details" name="More Details"></input>
+                                <p class="checkboxText">More Details</p>
+                            </div>
+                        </div>
+                        <div class="large-12 columns" style="padding-left:50px;padding-right:50px;">
+                            <div class="formElement">
+                                <label>Reply:</label>
+                                <textarea id="issueComment" class="issueField display" required></textarea>
+                            </div>
+                            <div class="btnContainer">
+                                <button id="issueCancelBtn">CANCEL</button>
+                                <button class="submit" id="submitIssue">SUBMIT</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- *********** END DISPLAY ISSUE FROM TABLE *********** -->
 <!-- *********** MODALS *********** -->
 <!-- Packaged Added Successfully Modal -->
 <div id="modals">

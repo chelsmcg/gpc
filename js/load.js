@@ -16,6 +16,7 @@ var Load = {
 		$('body').on('click touch', '.edit', Load.addEditPackage);
 		$('body').on('click touch', '#profileBtn', Load.profilePage);
 		$('body').on('click touch', '#addUserBtn', Load.addUserPage);
+		$('body').on('click touch', '.issue', Load.showSingleIssuePage);
 		// $('body').on('click touch', '#rejectedBtn', Load.issuePage);
 		
 	},
@@ -221,6 +222,11 @@ var Load = {
 
 	issuePage: function() {
 		$('#mainContainer').load('components.html #issuePage');
+		Load.loadModals();
+	},
+
+	showSingleIssuePage: function() {
+		$('#mainContainer').load('components.html #displayIssuePage');
 		Load.loadModals();
 	},
 

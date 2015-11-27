@@ -538,6 +538,20 @@ header {
 	float: right;
 }
 
+.issueDetails {
+	color: #ffffff;
+	font-size: 14px;
+
+	.bold {
+		font-weight: 600;
+	}
+
+	.issueDate {
+		font-size: 12px;
+		color: #cccccc;
+	}
+}
+
 ::-webkit-input-placeholder {
    color: #ccc;
    margin-left: 40px;

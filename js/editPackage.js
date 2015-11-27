@@ -198,6 +198,7 @@ var EditPackage = {
 	completedStage: function(){
 
 		$('#loader').show();
+		$('body').addClass('overflow-hidden');
 
 		var status = $('#status').val();
 		var rowID = EditPackage.packageData.id;
@@ -245,6 +246,8 @@ var EditPackage = {
 				console.log(response);
 
 				$('#loader').hide();
+				$('body').removeClass('overflow-hidden');
+
 
 				if(response.success){
 					EditPackage.sourceFile = null;
