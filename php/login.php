@@ -60,7 +60,9 @@
 
 		$result->close();
 
-		$userData['type'] = $typeArr;
+		if($userData){
+			$userData['type'] = $typeArr;
+		}
 
 		return $userData;
 	}
