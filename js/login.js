@@ -6,6 +6,16 @@ var Login = {
 
 	events: function(){
 		$('body').on('click touch', '.loginBtn', Login.validateInput);
+		$('body').on('keyup', Login.enterLogin);
+		   
+	},
+
+	enterLogin: function(e) {
+		var key = e.which;
+		   if(key == 13) {
+		    Login.validateInput();
+		   }
+		});
 	},
 
 	validateInput: function(){
@@ -39,3 +49,4 @@ var Login = {
 $(function(){
 	Login.init();
 });
+

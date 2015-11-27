@@ -15,7 +15,7 @@ var AddPackage = {
 
 	saveNewPackage: function() {
 
-    $('#loader').show();
+    Global.showLoader();
 
 		var $this = $(this);
 		var vendor = $('#vendor').val();
@@ -44,7 +44,7 @@ var AddPackage = {
   			dataType: 'jsonp',
   			success: function(response) {
   				console.log(response);
-          $('#loader').hide();
+          Global.hideLoader();
   				if(response.success) {
   					AddPackage.successModal();
   				} else {

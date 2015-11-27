@@ -14,5 +14,5 @@ var Effects = {
 }
 
 $(document).ready(function(){
-	Effects.init()
+	Effects.init();
 });

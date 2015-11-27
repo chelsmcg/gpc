@@ -395,8 +395,9 @@ header {
     right: 0; }
 
 .list {
-  overflow: scroll;
-  height: 300px; }
+  overflow-y: scroll;
+  height: auto;
+  max-height: 300px; }
 
 #assignedToText {
   display: inline-block;

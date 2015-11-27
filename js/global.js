@@ -35,6 +35,18 @@ var Global = {
   				}
   			}
 		});
+	},
+
+	showLoader: function() {
+		$('#loader').show();
+
+		$('#loadContainer').css("overflow", "hidden");
+	},
+
+	hideLoader: function() {
+		$('#loader').hide();
+
+		$('#loadContainer').css("overflow", "auto");
 	}
 	
 };

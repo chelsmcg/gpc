@@ -41,6 +41,8 @@ var Profile = {
 	},
 
 	addNewUser: function() {
+		Global.showLoader();
+
 		var fname = $('#fName').val();
 		var lname = $('#lName').val();
 		var email = $('#email').val();
@@ -76,6 +78,7 @@ var Profile = {
 				},
 				dataType: 'jsonp',
 				success: function(response) {
+					Global.hideLoader();
 					if(response.success) {
 	  					Profile.addUserSuccessModal();
 	  				} else {

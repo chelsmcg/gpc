@@ -151,7 +151,7 @@ var EditPackage = {
 
 	editDetails: function(){
 
-		$('#loader').show();
+		Global.showLoader();
 
 		var vendor = $('#vendor').val();
 		var appID = $('#appID').val();
@@ -183,7 +183,7 @@ var EditPackage = {
 			success: function(response) {
 				console.log(response);
 
-				$('#loader').hide();
+				Global.hideLoader();
 
 				if(response.success){
 					AddPackage.editSuccessModal();
@@ -197,7 +197,7 @@ var EditPackage = {
 
 	completedStage: function(){
 
-		$('#loader').show();
+		Global.showLoader();
 		$('body').addClass('overflow-hidden');
 
 		var status = $('#status').val();
@@ -245,9 +245,7 @@ var EditPackage = {
 			success: function(response) {
 				console.log(response);
 
-				$('#loader').hide();
-				$('body').removeClass('overflow-hidden');
-
+				Global.hideLoader();
 
 				if(response.success){
 					EditPackage.sourceFile = null;
@@ -269,6 +267,8 @@ var EditPackage = {
 	},
 
 	rejectPackage: function(){
+
+		Global.showLoader();
 
 		var issueSubject = $('#issueSubject').val();
 		var issueComment = $('#issueComment').val();
@@ -292,6 +292,7 @@ var EditPackage = {
 			dataType: 'jsonp',
 			success: function(response) {
 				console.log(response);
+				Global.hideLoader();
 
 				if(response.success){
 					EditPackage.rejectSuccessModal();
