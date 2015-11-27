@@ -12,10 +12,9 @@ var Login = {
 
 	enterLogin: function(e) {
 		var key = e.which;
-		   if(key == 13) {
-		    Login.validateInput();
-		   }
-		});
+		if(key == 13) {
+			Login.validateInput();
+		}
 	},
 
 	validateInput: function(){
