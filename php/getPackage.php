@@ -91,7 +91,12 @@ value: *category - ie. "discovery"
 			if(mysqli_affected_rows($mysqli) != 0){
 
 				while($row = $result->fetch_assoc()){
-					$packages['package'][] = $row; 
+					 
+					$pid = $row['id'];
+					$issue = customQuery("SELECT * FROM issues WHERE pid = '$pid' ORDER BY id DESC LIMIT 0, 1");
+					$row['issue'] = $issue[0];
+					$packages['package'][] = $row;
+
 				}
 				return $packages;
 			}
