@@ -3,6 +3,12 @@
 	
 	session_start();
 	date_default_timezone_set('Australia/Brisbane');
+
+	//updates th eseeion variable
+	function updateSession($key, $value){
+		$_SESSION['user'][$key] = $value;
+
+	}
 	
 	//formats data to be returned to ajax call
 	function format_response($success, $message=null, $data=null){
