@@ -71,6 +71,7 @@ var GetPackage = {
 		var doc;
 		var source;
 		var issueId;
+		var disableIssue;
 
 		console.log(packages);
 
@@ -89,13 +90,14 @@ var GetPackage = {
 			priority = package.priority;
 			comments = package.comments;
 			issueId = package.issue != null ? package.issue.id : null;
+			disableIssue = package.issue == null ? 'disabled' : '';
 
 			doc = package.docFile;
 			source = package.sourceFile;
 
 			packageName = Global.createPackageName(vendor, appName, appVersion, revision);
 
-			row_html = '<tr class="packageRow" data-rowid="' + id + '"><td class="packageID">'+ appID +'</td><td class="packageName ' + category + 'PageBtn">'+ packageName + '<td class="packageType">'+ packageType + '</td><td class="packagePriority">' + priority + '</td><td class="packageCategory">' + category + '</td><td class="packageStatus">' + status + '</td><td class="tableIcon edit">M</td><td class="tableIcon issue" data-issueid="'+issueId+'">g</td><td class="tableIcon documents"><a  href="' + Global.docLink + '/' + doc + '">H</a></td><td class="tableIcon source" data-source="' + source + '">T</td></tr>';
+			row_html = '<tr class="packageRow" data-rowid="' + id + '"><td class="packageID">'+ appID +'</td><td class="packageName ' + category + 'PageBtn">'+ packageName + '<td class="packageType">'+ packageType + '</td><td class="packagePriority">' + priority + '</td><td class="packageCategory">' + category + '</td><td class="packageStatus">' + status + '</td><td class="tableIcon edit">M</td><td class="tableIcon issue ' + disableIssue + '" data-issueid="'+issueId+'">g</td><td class="tableIcon documents"><a  href="' + Global.docLink + '/' + doc + '">H</a></td><td class="tableIcon source" data-source="' + source + '">T</td></tr>';
 
 			$('#dashboardTable tbody').append(row_html);
 		}

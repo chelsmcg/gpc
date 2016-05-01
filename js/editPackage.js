@@ -42,7 +42,7 @@ var EditPackage = {
 			}else if($(this).hasClass('source')){
 				console.log('source');
 
-				if(this.files[0].type == 'application/x-zip-compressed' || this.files[0].type == 'application/zip'){
+				if(this.files[0].type == 'application/x-zip-compressed' || this.files[0].type == 'application/zip' || this.files[0].name.indexOf('.zip') || this.files[0].name.indexOf('.rar')){
 					EditPackage.sourceFile = this.files[0];
 					EditPackage.sourceFile.newName = Global.createPackageName(EditPackage.packageData.vendor, EditPackage.packageData.name, EditPackage.packageData.version, EditPackage.packageData.revision) + '.zip'; 
 					field = 'source';

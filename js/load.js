@@ -226,9 +226,11 @@ var Load = {
 	},
 
 	showSingleIssuePage: function() {
-		$('#mainContainer').load('components.html #displayIssuePage');
-		Load.loadModals();
-		Issues.getIssueData($(this).attr('data-issueid'));
+		if(!$(this).hasClass('disabled')){
+			$('#mainContainer').load('components.html #displayIssuePage');
+			Load.loadModals();
+			Issues.getIssueData($(this).attr('data-issueid'));
+		}
 	},
 
 	addUserPage: function() {
