@@ -35,20 +35,20 @@
 		$typeArr = array();
 
 		global $mysqli;
-		$sql = "SELECT u.id, u.email, u.username, u.fName, u.lName, u.password, r.type FROM users u INNER JOIN roles r ON u.id = r.id WHERE username = ?";
+		$sql = "SELECT u.id, u.email, u.username, u.fName, u.lName, u.password, u.hasLoggedIn, r.type FROM users u INNER JOIN roles r ON u.id = r.id WHERE username = ?";
 		$result = $mysqli->prepare($sql);
 		$result->bind_param('s', $username);
 		$result->execute();
 
 		$result->store_result();
 		if($result->num_rows > 0) {
-			$result->bind_result($id, $email, $username, $fName, $lName, $hash, $type);
+			$result->bind_result($id, $email, $username, $fName, $lName, $hash, $hasLoggedIn, $type);
 
 			while($result->fetch())
 			{	
 				if (password_verify($password, $hash)) {
 					$typeArr[] = $type;
-			    	$userData = array('id'=>$id, 'email'=>$email, 'username'=>$username, 'fName'=>$fName, 'lName'=>$lName);
+			    	$userData = array('id'=>$id, 'email'=>$email, 'username'=>$username, 'fName'=>$fName, 'lName'=>$lName, 'hasLoggedIn'=>$hasLoggedIn);
 
 				} else {
 				    $userData = false;
