@@ -343,6 +343,15 @@ header {
 				margin: 0 auto;
 			}
 
+			.errorMsg {
+				display: none;
+			}
+
+			#passwordInput {
+				margin-top: 20px;
+				box-shadow: none !important;
+			}
+
 			button {
 				background: #00738E;
 				padding: 10px 20px;

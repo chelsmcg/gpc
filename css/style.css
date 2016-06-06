@@ -266,6 +266,11 @@ header {
       .modal .dialogContainer .dialogBox .dialogText {
         width: 79%;
         margin: 0 auto; }
+      .modal .dialogContainer .dialogBox .errorMsg {
+        display: none; }
+      .modal .dialogContainer .dialogBox #passwordInput {
+        margin-top: 20px;
+        box-shadow: none !important; }
       .modal .dialogContainer .dialogBox button {
         background: #00738E;
         padding: 10px 20px;
