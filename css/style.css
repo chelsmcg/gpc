@@ -46,6 +46,10 @@ header {
   width: 100%;
   margin-bottom: 30px; }
 
+p {
+  color: #ffffff;
+  font-size: 14px; }
+
 .padding-left-0 {
   padding-left: 0px !important; }
 
@@ -196,6 +200,13 @@ header {
       height: 137px; }
   .formContainer .formElement {
     padding: 10px 0; }
+    .formContainer .formElement .statusLabel {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 10px; }
+    .formContainer .formElement .statusResult {
+      display: inline-block;
+      vertical-align: middle; }
   .formContainer .btnContainer, .formContainer .settingsBtnContainer {
     clear: both;
     padding: 50px 62px 20px 47px; }

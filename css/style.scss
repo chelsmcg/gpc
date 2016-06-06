@@ -29,6 +29,11 @@ header {
 	margin-bottom: 30px;
 }
 
+p {
+	color: #ffffff;
+	font-size: 14px;
+}
+
 .padding-left-0 {
 	padding-left: 0px !important;
 }
@@ -243,6 +248,17 @@ header {
 
 	.formElement {
 		padding: 10px 0;
+
+		.statusLabel {
+			display: inline-block;
+			vertical-align: middle;
+			margin-right: 10px;
+		}
+
+		.statusResult {
+			display: inline-block;
+			vertical-align: middle;
+		}
 	}
 
 	.btnContainer, .settingsBtnContainer {
