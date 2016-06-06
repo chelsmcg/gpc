@@ -46,7 +46,7 @@ var Load = {
 					}
 				});
 
-				GetPackage.getAllPackages();
+				GetPackage.getPackages();
 				typeof callback == 'function' ? callback() : null;
 			});
 		});

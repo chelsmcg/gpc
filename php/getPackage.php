@@ -35,15 +35,21 @@ value: *category - ie. "discovery"
 
 	include_once "db/dbConnect.php";
 	include_once "commonFuncs.php";
-
-	$category = !empty($_GET['category']) ? $_GET['category'] : 'all';
 	
 	if(!empty($_GET['rowId'])){
 		$rowId = $_GET['rowId'];
-		$packages = getPackage($category, $rowId);
+		$packages = querySinglePackage($rowId);
 
 	}else{
-		$packages = getPackage($category);
+		$orderBy = !empty($_GET['orderBy']) ? $_GET['orderBy']: 'id';
+		$page = !empty($_GET['page']) ? intval($_GET['page']): 1;
+		$sortDirection = !empty($_GET['sortDirection']) ? $_GET['sortDirection']: 'ASC';
+		$limit = !empty($_GET['limit']) ? intval($_GET['limit']): 4;
+		$category = !empty($_GET['category']) ? $_GET['category'] : 'all';
+		$search = !empty($_GET['search']) ? $_GET['search'] : '';
+
+		$packages = queryMultiplePackages($orderBy, $page, $sortDirection, $limit, $category, $search);
+
 	}
 
 	if(!$packages){
@@ -58,29 +64,37 @@ value: *category - ie. "discovery"
 		format_response(true, 'Retrieved packages', $packageData);
 	}
 
+	function querySinglePackage($rowId){
+		$sql = "SELECT * FROM packages WHERE id = '$rowId'";
+		return runPackgeQuery($sql);
+	}
 
-	//updates the packages table
-	function getPackage($category, $rowId=null){
+	function queryMultiplePackages($orderBy, $page, $sortDirection, $limit, $category, $search){
+		$offset = ($page - 1) * $limit;
+
+		// SELECT * FROM packages
+		$sql = "SELECT * FROM packages ";
+		// WHERE
+		$sql .= $category != 'all' || $search != '' ? "WHERE " : "";
+		// Category = 'Discovery'
+		$sql .= $category == 'all' ? "" : "category = '$category' ";
+		// AND
+		$sql .= $category == 'all' && $search == '' ? "" : "AND ";
+		// name LIKE %xbox%
+		$sql .= $search == '' ? "" : "name LIKE '%$search%' ";
+		// ORDER BY id ASC
+		$sql .= "ORDER BY $orderBy $sortDirection ";
+		// LIMIT 0, 4
+		$sql .= "LIMIT $offset, $limit ";
+
+		return runPackgeQuery($sql);
+
+	}
+
+	function runPackgeQuery($sql){
 		global $mysqli;
 
 		$packages = array();
-
-		$where = "";
-
-		if($category == 'all'){
-			$where = "";
-
-		}else{
-			$where .= " WHERE category='$category'";
-		}
-
-		if($rowId != null){
-			$where .= $where == "" ? " WHERE id='$rowId'" : " AND id='$rowId'";
-		}
-
-
-		$sql = "SELECT * FROM packages" . $where;
-		// echo $sql;
 
 		if (!$result = $mysqli->query($sql)) {
 
@@ -103,8 +117,4 @@ value: *category - ie. "discovery"
 
 			return false;
 		}
-
 	}
-
-
-	

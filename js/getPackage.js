@@ -1,4 +1,5 @@
 var GetPackage = {
+	page: 1,
 
 	init: function() {
 		GetPackage.events();
@@ -8,16 +9,31 @@ var GetPackage = {
 
 	},
 
-	getAllPackages: function() {
-
+	packageAjax: function(data, callback){
 		$.ajax({
-				url: "php/getPackage.php",
-				dataType: 'jsonp',
-				success: function(response) {
-					GetPackage.populateTable(response.data.package);
-					GetPackage.userDetails(response.data.userData);
-					GetPackage.restrictUser();
-				}
+			url: "php/getPackage.php",
+			data: data,
+			dataType: 'jsonp',
+			success: function(response) {
+				callback(response);
+			}
+		});
+	},
+
+	getPackages: function(orderBy, sortDirection, limit, page, category) {
+
+		var data = {
+			orderBy: orderBy,
+			page: page,
+			sortDirection: sortDirection,
+			limit: limit,
+			category: category
+		};
+
+		GetPackage.packageAjax(data, function(response){
+			GetPackage.populateTable(response.data.package);
+			GetPackage.userDetails(response.data.userData);
+			GetPackage.restrictUser();
 		});
 	},
 
