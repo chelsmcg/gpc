@@ -1,12 +1,69 @@
 var GetPackage = {
-	page: 1,
+	
+	packageFilter: {
+		page: 1,
+		orderBy: 'id',
+		sortDirection: 'ASC',
+		limit: 5,
+		category: 'all'
+	},
 
 	init: function() {
 		GetPackage.events();
 	},
 
 	events: function() {
+		$('body').on('click', '#nextPageBtn', GetPackage.nextPage)
+		$('body').on('click', '#prevPageBtn', GetPackage.prevPage)
+	},
 
+	updatePackageFilter: function(key, value){
+		if(key == 'page' && value > 0) {
+			GetPackage.packageFilter[key] = value;
+		}
+	},
+
+	getPackageFilterVal: function(key){
+		return GetPackage.packageFilter[key];
+	},
+
+	nextPage: function(){
+		var currentPage = GetPackage.getPackageFilterVal('page');
+		var nextPage = currentPage + 1;
+		GetPackage.updatePackageFilter('page', nextPage);
+		GetPackage.getPackages(function(response){
+			console.log(response);
+			if(response.data == 'get_failed'){
+				GetPackage.updatePackageFilter('page', currentPage);
+			}
+		});
+	},
+
+	prevPage: function(){
+		var currentPage = GetPackage.getPackageFilterVal('page');
+		var nextPage = currentPage - 1;
+		GetPackage.updatePackageFilter('page', nextPage);
+		GetPackage.getPackages(function(response){
+			console.log(response);
+			if(response.data == 'get_failed'){
+				GetPackage.updatePackageFilter('page', currentPage);
+			}
+		});
+	},
+
+	getPackages: function(callback) {
+
+		var data = GetPackage.packageFilter;
+
+		GetPackage.packageAjax(data, function(response){
+			if(response.success){
+				$('#dashboardTable tbody').empty();
+				GetPackage.populateTable(response.data.package);
+				GetPackage.userDetails(response.data.userData);
+				GetPackage.restrictUser();
+			}
+			typeof callback == 'function' ? callback(response) : null;
+		});
 	},
 
 	packageAjax: function(data, callback){
@@ -20,21 +77,8 @@ var GetPackage = {
 		});
 	},
 
-	getPackages: function(orderBy, sortDirection, limit, page, category) {
-
-		var data = {
-			orderBy: orderBy,
-			page: page,
-			sortDirection: sortDirection,
-			limit: limit,
-			category: category
-		};
-
-		GetPackage.packageAjax(data, function(response){
-			GetPackage.populateTable(response.data.package);
-			GetPackage.userDetails(response.data.userData);
-			GetPackage.restrictUser();
-		});
+	processPackageData: function(){
+		
 	},
 
 	restrictUser: function() {
@@ -128,37 +172,6 @@ var GetPackage = {
 
 		$('.userName').text(userName);
 	}
-
-	// openUserDetails: function() {
-	//   console.log("yay");
-	//   var user_id = $(this).data('userid');
-	//   console.log(user_id);
-	//   $('.sidePanel').addClass('sidePanelOpen');
-	//   $.when(
-	//     $.ajax({
-	//       url: 'php/ajax_tutorial.php',
-	//       type: 'GET',
-	//       data: {
-	//         getUserDetails: true,
-	//         userId: user_id
-	//       },
-	//       dataType: 'jsonp'
-	//     })
-	//   ).done(function(response){
-	//     console.log(response);
-	//     var id = response.userId;
-	//     var name = response.name;
-	//     var email = response.email;
-	//     var age = response.age;
-
-	//     $('#usersName').val(name);
-	//     $('#usersEmail').val(email);
-	//     $('#usersAge').val(age);
-
-	//     // $('.sidePanel').data('userid', id);
-	//     $('.sidePanel').attr('data-userid', id);
-	//   });
-	// },
 
 }
 
