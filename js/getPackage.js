@@ -14,7 +14,6 @@ var GetPackage = {
 				url: "php/getPackage.php",
 				dataType: 'jsonp',
 				success: function(response) {
-					console.log(response);
 					GetPackage.populateTable(response.data.package);
 					GetPackage.userDetails(response.data.userData);
 					GetPackage.restrictUser();
@@ -73,8 +72,6 @@ var GetPackage = {
 		var issueId;
 		var disableIssue;
 
-		console.log(packages);
-
 		for(var i = 0; i < packages.length; i++) {
 			package = packages[i];
 			id = package.id;
@@ -108,7 +105,6 @@ var GetPackage = {
 	userDetails: function(userData) {
 		var $this = $(this);
 		Global.user = userData;
-		console.log(userData);
 		var firstName = userData.fName;
 		var lastName = userData.lName;
 

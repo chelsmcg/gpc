@@ -40,24 +40,38 @@ var Load = {
 		});
 	},
 
-	login: function() {
-		$('#loadContainer').load('components.html #loginPage');
-		$('#loadContainer').addClass('loginBackground');
+	// loaderModule: function(container, component, callback){
+	// 	$(container).load(component, callback);
+	// },
+
+	login: function(callback) {
+		$('#loadContainer').load('components.html #loginPage', function(){
+			$('#loadContainer').addClass('loginBackground');
+			typeof callback == 'function' ? callback() : null;
+		});
 	},
 
-	dashboard: function() {
-		$('#loadContainer').load('components.html #dashboard');
-		$('#loadContainer').removeClass('loginBackground');
-		GetPackage.getAllPackages();
-		Load.loadModals();
+	dashboard: function(callback) {
+		$('#loadContainer').load('components.html #dashboard', function(){
+			$('#loadContainer').removeClass('loginBackground');
+			
+			Load.loadModals(function(){
+				GetPackage.getAllPackages();
+				typeof callback == 'function' ? callback() : null;
+			});
+		});
+		
 	},
 
-	addPackage: function() {
-		$('#mainContainer').load('components.html #addPackage');
-		Load.loadModals();
+	addPackage: function(callback) {
+		$('#mainContainer').load('components.html #addPackage', function(){
+			Load.loadModals(function(){
+				typeof callback == 'function' ? callback() : null;
+			});
+		});
 	},
 
-	addEditPackage: function(){
+	addEditPackage: function(callback){
 		$edit = $(this);
 		$('#mainContainer').load('components.html #addPackage', function(){
 			// $('.dashTitle').text('EDIT PACKAGE - PACKAGE NAME');
@@ -66,8 +80,11 @@ var Load = {
 			$('#saveNewPackageBtn').attr('id', 'editPackageBtn');
 			var rowID = $edit.parent().attr('data-rowid');
 			EditPackage.packageDetails(rowID);
+
+			Load.loadModals(function(){
+				typeof callback == 'function' ? callback() : null;
+			});
 		});
-		Load.loadModals();
 	},
 
 	discoveryPage: function() {
@@ -97,18 +114,16 @@ var Load = {
 			});
 
 			if(hasPermission) {
-				$('#loadDiscovery').load('components.html #discoverySettings');
-				$('.mainColumn').css('margin-bottom', '40px');
-
+				$('#loadDiscovery').load('components.html #discoverySettings', function(){
+					$('.mainColumn').css('margin-bottom', '40px');
+				});
 			}
 
 			var rowID = $discovery.parent().attr('data-rowid');
 			EditPackage.packageDetails(rowID);
-			
-		});
-		Load.loadModals();
-		
 
+			Load.loadModals()
+		});
 	},
 
 	loadBottomSnippet: function() {
@@ -146,8 +161,8 @@ var Load = {
 			var rowID = $packaging.parent().attr('data-rowid');
 			EditPackage.packageDetails(rowID);
 			
+			Load.loadModals();
 		});
-		Load.loadModals();
 	},
 
 	qualityPage: function() {
@@ -178,8 +193,8 @@ var Load = {
 			var rowID = $quality.parent().attr('data-rowid');
 			EditPackage.packageDetails(rowID);
 			
+			Load.loadModals();
 		});
-		Load.loadModals();
 	},
 
 	qatPage: function() {
@@ -209,37 +224,44 @@ var Load = {
 			var rowID = $quality.parent().attr('data-rowid');
 			EditPackage.packageDetails(rowID);
 			
+			Load.loadModals();
 		});
-		Load.loadModals();
 	},
 
 	profilePage: function() {
 		$('#mainContainer').load('components.html #profilePage', function() {
-			Profile.getUser();
+			Load.loadModals(function(){
+				Profile.getUser();
+			});
 		});
-		Load.loadModals();
 	},
 
 	issuePage: function() {
-		$('#mainContainer').load('components.html #issuePage');
-		Load.loadModals();
+		$('#mainContainer').load('components.html #issuePage', function(){
+			Load.loadModals();
+		});
 	},
 
 	showSingleIssuePage: function() {
 		if(!$(this).hasClass('disabled')){
-			$('#mainContainer').load('components.html #displayIssuePage');
-			Load.loadModals();
-			Issues.getIssueData($(this).attr('data-issueid'));
+			$('#mainContainer').load('components.html #displayIssuePage', function(){
+				Load.loadModals(function(){
+					Issues.getIssueData($(this).attr('data-issueid'));
+				});
+			});
 		}
 	},
 
 	addUserPage: function() {
-		$('#mainContainer').load('components.html #addUser');
-		Load.loadModals();
+		$('#mainContainer').load('components.html #addUser', function(){
+			Load.loadModals();
+		});
 	},
 
-	loadModals: function() {
-		$('#modalContainer').load('components.html #modals');
+	loadModals: function(callback) {
+		$('#modalContainer').load('components.html #modals', function(){
+			typeof callback == 'function' ? callback() : null;
+		});
 	}
 }
 

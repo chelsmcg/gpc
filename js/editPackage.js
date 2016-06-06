@@ -86,7 +86,6 @@ var EditPackage = {
 			},
 			dataType: 'jsonp',
 			success: function(response) {
-				console.log(response);
 				var vendor = response.data.package[0].vendor;
 				var appID = response.data.package[0].appID;
 				var appName = response.data.package[0].name;;

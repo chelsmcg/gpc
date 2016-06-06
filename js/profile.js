@@ -17,7 +17,6 @@ var Profile = {
   			url: "php/getUserData.php",
   			dataType: 'jsonp',
   			success: function(response) {
-  				console.log(response);
           		Profile.populateProfile(response);
   			}
 		});
@@ -43,7 +42,6 @@ var Profile = {
 	},
 
 	saveProfile: function(){
-		console.log('test');
 		var email = $('#email').val() != "" ? $('#email').val() : null;
 		var firstName = $('#fName').val() != "" ? $('#fName').val() : null;
 		var lastName = $('#lName').val() != "" ? $('#lName').val() : null;
@@ -53,28 +51,21 @@ var Profile = {
 			console.log('missing field');
 
 		}else{
-			console.log('test2')
 			$.ajax({
-  			url: "php/editUser.php",
-  			data: {
-	  			email: email,
-	  			firstName: firstName,
-	  			lastName: lastName,
-	  			username: username
-  			},
-  			dataType: 'jsonp',
-  			success: function(response) {
-  				console.log(response);
-          		
-  			}
-		});
+	  			url: "php/editUser.php",
+	  			data: {
+		  			email: email,
+		  			firstName: firstName,
+		  			lastName: lastName,
+		  			username: username
+	  			},
+	  			dataType: 'jsonp',
+	  			success: function(response) {
+	  				console.log(response);
+	          		
+	  			}
+			});
 		}
-
-
-
-
-
-		
 	}
 
 	
