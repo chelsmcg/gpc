@@ -3,7 +3,9 @@ var Load = {
 	init: function() {
 		Load.events();
 		Load.loadModals();
-		Load.checkLogin();
+		Global.checkLogin(function(response){
+			response.success ? Load.dashboard() : Load.login();
+		});
 	},
 
 	events: function() {
@@ -21,29 +23,6 @@ var Load = {
 		
 	},
 
-	checkLogin: function() {
-		$.ajax({
-  			type: 'get',
-  			url: "php/checkLoggedIn.php",
-  			dataType: 'jsonp',
-  			success: function(response) {
-  				console.log(response);
-  				if(response.success){
-  					console.log('logged in');
-  					Load.dashboard();
-
-  				}else{
-  					console.log('not logged in');
-  					Load.login();
-  				}
-  			}
-		});
-	},
-
-	// loaderModule: function(container, component, callback){
-	// 	$(container).load(component, callback);
-	// },
-
 	login: function(callback) {
 		$('#loadContainer').load('components.html #loginPage', function(){
 			$('#loadContainer').addClass('loginBackground');
@@ -56,6 +35,17 @@ var Load = {
 			$('#loadContainer').removeClass('loginBackground');
 			
 			Load.loadModals(function(){
+
+				Global.getUserDetails(function(response){
+
+					console.log(response)
+					Global.user = response.success ? response.data : Global.user;
+
+					if(!Global.user.hasLoggedIn){
+						$('#changePasswordModal').fadeIn();
+					}
+				});
+
 				GetPackage.getAllPackages();
 				typeof callback == 'function' ? callback() : null;
 			});

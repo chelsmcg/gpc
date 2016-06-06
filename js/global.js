@@ -18,25 +18,6 @@ var Global = {
 		return packageName;
 	},
 
-	isLoggedIn: function(){
-		$.ajax({
-  			type: 'get',
-  			url: "php/checkLoggedIn.php",
-  			dataType: 'jsonp',
-  			success: function(response) {
-  				console.log(response);
-  				if(response.success){
-  					console.log('logged in');
-  					return true;
-
-  				}else{
-  					console.log('not logged in');
-  					return false;
-  				}
-  			}
-		});
-	},
-
 	showLoader: function() {
 		$('#loader').show();
 
@@ -47,7 +28,29 @@ var Global = {
 		$('#loader').hide();
 
 		$('#loadContainer').css("overflow", "auto");
-	}
+	},
+
+	checkLogin: function(callback){
+		$.ajax({
+  			type: 'get',
+  			url: "php/checkLoggedIn.php",
+  			dataType: 'jsonp',
+  			success: function(response) {
+  				callback(response);
+  			}
+		});
+	},
+
+	getUserDetails: function(callback){
+		$.ajax({
+  			type: 'get',
+  			url: "php/getUserData.php",
+  			dataType: 'jsonp',
+  			success: function(response) {
+  				callback(response);
+  			}
+		});
+	},
 	
 };
 

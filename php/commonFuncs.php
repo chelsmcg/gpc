@@ -7,7 +7,6 @@
 	//updates th eseeion variable
 	function updateSession($key, $value){
 		$_SESSION['user'][$key] = $value;
-
 	}
 	
 	//formats data to be returned to ajax call
