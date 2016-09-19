@@ -80,7 +80,7 @@ CREATE TABLE issues (
 	FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE
 );
 
-CREATE TABLE issuesReplies (
+CREATE TABLE issueReplies (
 	id INT NOT NULL AUTO_INCREMENT,
 	status VARCHAR(100) DEFAULT NULL,
 	replyText TEXT,
