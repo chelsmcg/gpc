@@ -165,8 +165,15 @@ var EditPackage = {
 		});
 	},
 
-	completedStage: function(){
+	noStatusWarning: function(){
+		alert('please select a status to continue')
+	},
 
+	completedStage: function(){
+		if(!$('#status').val()){
+			EditPackage.noStatusWarning();
+			return;
+		}
 		Global.showLoader();
 		$('body').addClass('overflow-hidden');
 
@@ -232,8 +239,13 @@ var EditPackage = {
 	},
 
 	rejectClicked: function(){
-		EditPackage.packageData.status = $('#status').val();
-		Load.issuePage();
+		if(!$('#status').val()){
+			EditPackage.noStatusWarning();
+		}else{
+			EditPackage.packageData.status = $('#status').val();
+			Load.issuePage();
+		}
+		
 	},
 
 	rejectPackage: function(){
