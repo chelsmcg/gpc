@@ -131,6 +131,7 @@ var GetPackage = {
 		var source;
 		var issueId;
 		var disableIssue;
+		var issueAlert;
 
 		for(var i = 0; i < packages.length; i++) {
 			package = packages[i];
@@ -149,12 +150,20 @@ var GetPackage = {
 			issueId = package.issue != null ? package.issue.id : null;
 			disableIssue = package.issue == null ? 'disabled' : '';
 
+			if(package.issue && (package.issue.status == null || package.issue.status == 'More Details')){
+				issueAlert = 'reply-unread';
+			}else if(package.issue && (package.issue.status == 'On Hold' || package.issue.status == 'Acknowledged')){
+				issueAlert = 'reply-onhold';
+			}else{
+				issueAlert = '';
+			}
+
 			doc = package.docFile;
 			source = package.sourceFile;
 
 			packageName = Global.createPackageName(vendor, appName, appVersion, revision);
 
-			row_html = '<tr class="packageRow" data-rowid="' + id + '"><td class="packageID">'+ appID +'</td><td class="packageName ' + category + 'PageBtn">'+ packageName + '<td class="packageType">'+ packageType + '</td><td class="packagePriority">' + priority + '</td><td class="packageCategory">' + category + '</td><td class="packageStatus">' + status + '</td><td class="tableIcon edit">M</td><td class="tableIcon issue ' + disableIssue + '" data-issueid="'+issueId+'">g</td><td class="tableIcon documents"><a  href="' + Global.docLink + '/' + doc + '">H</a></td><td class="tableIcon source" data-source="' + source + '">T</td></tr>';
+			row_html = '<tr class="packageRow" data-rowid="' + id + '"><td class="packageID">'+ appID +'</td><td class="packageName ' + category + 'PageBtn">'+ packageName + '<td class="packageType">'+ packageType + '</td><td class="packagePriority">' + priority + '</td><td class="packageCategory">' + category + '</td><td class="packageStatus">' + status + '</td><td class="tableIcon edit">M</td><td class="tableIcon issue ' + disableIssue + ' ' + issueAlert + '" data-issueid="'+issueId+'">g</td><td class="tableIcon documents"><a  href="' + Global.docLink + '/' + doc + '">H</a></td><td class="tableIcon source" data-source="' + source + '">T</td></tr>';
 
 			$('#dashboardTable tbody').append(row_html);
 		}

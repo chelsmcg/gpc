@@ -15,7 +15,7 @@
 		// convert seconds timestamp to date format
 		$issue[0]['date'] = date('d/m/y h:ia', $issue[0]['timestamp']);
 
-		$issueReplies = customQuery("SELECT ir.*, u.fName, u.lName FROM issueReplies ir INNER JOIN users u ON ir.userId = u.id WHERE ir.iId = $issueId");
+		$issueReplies = customQuery("SELECT ir.*, u.fName, u.lName FROM issueReplies ir INNER JOIN users u ON ir.userId = u.id WHERE ir.iId = $issueId ORDER BY ir.timestamp DESC");
 		
 		// convert seconds timestamp to date format
 		foreach ($issueReplies as $key => $value) {
