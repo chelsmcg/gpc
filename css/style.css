@@ -120,11 +120,18 @@ p {
     #dashboard .table-pagination .pagination-buttons .pagination-next,
     #dashboard .table-pagination .pagination-buttons .pagination-prev {
       display: inline-block;
-      vertical-align: middle; }
+      vertical-align: middle;
+      cursor: pointer; }
+      #dashboard .table-pagination .pagination-buttons .pagination-next:hover,
+      #dashboard .table-pagination .pagination-buttons .pagination-prev:hover {
+        opacity: 0.7; }
     #dashboard .table-pagination .pagination-buttons .pagination-pages {
       display: inline-block;
       vertical-align: middle;
-      margin: 0 5px 0 5px; }
+      margin: 0 5px 0 5px;
+      cursor: pointer; }
+      #dashboard .table-pagination .pagination-buttons .pagination-pages:hover {
+        opacity: 0.7; }
     #dashboard .table-pagination .pagination-buttons .active {
       color: #00738E; }
   #dashboard .table-pagination .pagination-dots {
@@ -353,6 +360,11 @@ p {
         padding: 10px 20px;
         width: auto;
         margin-top: 30px; }
+
+#changePasswordModal .dialogBox p.errorMsg {
+  color: #8C001A; }
+#changePasswordModal .dialogBox button#changesPasswordBtn {
+  margin-top: 0; }
 
 .loginBackground {
   background: url("../img/background.jpg") no-repeat;
