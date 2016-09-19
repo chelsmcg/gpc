@@ -7,10 +7,11 @@
 	if(!empty($_POST['issueId']) && !empty($_POST['getIssue'])){
 		$issueId = $_POST['issueId'];
 
-		$issue = getSingleRow('issues', 'id', $issueId);
+		// $issue = getSingleRow('issues', 'id', $issueId);
+		$issue = customQuery("SELECT i.*, u.fName, u.lName FROM issues i INNER JOIN users u ON i.userId = u.id WHERE i.id = $issueId");
 
 		if($issue){
-			format_response(true, 'issue retrieved', $issue);
+			format_response(true, 'issue retrieved', $issue[0]);
 		}else{
 			format_response(false, 'issue retrieval failed');
 		}

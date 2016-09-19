@@ -29,7 +29,7 @@ var Issues = {
 
 	populatePage: function(issueData){
 		$('#issueSubject').val(issueData.issueSubject);
-		$('#issueComment').val(issueData.issue);
+		$('#issueComment').val(issueData.issueText);
 	}
 };
 

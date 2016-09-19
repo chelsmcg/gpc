@@ -6,7 +6,7 @@
 	include_once '../email/emailFuncs.php';
 
 	// gp.dev/php/editPackage.php?rowId=7&vendor=checlc&appId=69&appName=funz&appVersion=3&revision=2.0
-
+	$userId = $_SESSION['user']['id'];
 
 	if(!empty($_GET['rowId'])){
 		$rowId = $_GET['rowId'];
@@ -71,8 +71,9 @@
 						if(!empty($_GET['issueSubject']) && !empty($_GET['issueComment']) && !empty($_GET['rejected']) && $_GET['rejected'] == true){
 							$issueSubject = $_GET['issueSubject'];
 							$issueComment = $_GET['issueComment'];
-
-							insertRow('issues', 'issueSubject, issue, pId', "'$issueSubject', '$issueComment', '$rowId'");
+							$time = time();
+							
+							insertRow('issues', 'issueSubject, issueText, timestamp, userId, pId', "'$issueSubject', '$issueComment', '$time', '$userId', '$rowId'");
 							setupEmail($rowId, 'rejected', $currentCategory, $nextCategory, $issueSubject, $issueComment);
 						}else{
 							//send email for next stage notification here
