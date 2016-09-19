@@ -106,6 +106,58 @@ p {
 
 #dashboard {
 
+	#dashboardTable {
+		margin-bottom: 0;
+	}
+
+	.table-pagination {
+		background: lighten(#000000, 5%);
+		color: #ffffff;
+		padding: 5px 10px;
+		position: relative;
+		height: 30px;
+
+		.pagination-buttons {
+			font-size: 12px;
+			letter-spacing: 0.8px;
+			font-weight: lighter;
+
+			.pagination-next,
+			.pagination-prev {
+				display: inline-block;
+				vertical-align: middle;
+			}
+
+			.pagination-pages {
+				display: inline-block;
+				vertical-align: middle;
+				margin: 0 5px 0 5px;
+			}
+
+			.active {
+				color: #00738E;
+			}
+		}
+
+		.pagination-dots {
+			margin: 0 !important;
+		}
+
+		.pagination-showing {
+			float: right;
+			clear: both;
+			margin-top: -18px;
+			font-size: 12px;
+			letter-spacing: 0.8px;
+			font-weight: lighter;
+
+			.pagination-showing-block {
+				display: inline-block;
+				vertical-align: middle;
+			}
+		}
+	}
+
 	.dropdown {
 		display: none;
 		position: absolute;
@@ -170,6 +222,48 @@ p {
 
 		&:hover {
 			color: rgba(0,189,255,0.1);
+		}
+	}
+
+	.issue {
+		position: relative;
+	}
+
+	.reply-unread {
+		&:after {
+			content: '!';
+			position: absolute;
+			background: #8C001A;
+			color: white;
+			width: 15px;
+			height: 15px;
+			border-radius: 30px;
+			font-family: sans-serif;
+			font-size: 13px;
+			text-align: center;
+			padding-right: 1px;
+			line-height: 16px;
+			top: 12px;
+			right: 12px;
+		}
+	}
+
+	.reply-onhold {
+		&:after {
+			content: '!';
+			position: absolute;
+			background: #ff9900;
+			color: white;
+			width: 15px;
+			height: 15px;
+			border-radius: 30px;
+			font-family: sans-serif;
+			font-size: 13px;
+			text-align: center;
+			padding-right: 1px;
+			line-height: 16px;
+			top: 12px;
+			right: 12px;
 		}
 	}
 
