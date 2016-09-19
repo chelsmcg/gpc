@@ -234,9 +234,10 @@ var Load = {
 
 	showSingleIssuePage: function() {
 		if(!$(this).hasClass('disabled')){
+			var $this = $(this); 
 			$('#mainContainer').load('components.html #displayIssuePage', function(){
 				Load.loadModals(function(){
-					Issues.getIssueData($(this).attr('data-issueid'));
+					Issues.getIssueData($this.attr('data-issueid'));
 				});
 			});
 		}
