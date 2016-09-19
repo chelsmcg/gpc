@@ -5,39 +5,36 @@ var AssignUser = {
 	},
 
 	events: function(){
-		$('body').on('change', '#status', AssignUser.showAssignList);
-		$('body').on('click touch', '.assigned', AssignUser.selectedAssignee);
+		$('#assignList').on('change', '.assigned', AssignUser.selectedAssignee);
 		$('body').on('click touch', '.assignUserBtn', AssignUser.updateAssignedUser);
 	},
 
 	showAssignList: function() {
 
-		if($('#status option:selected').val() == 'assignTo'){
-
-			var userType = "";
-
-			if(EditPackage.packageData.category == 'Discovery'){
-				userType = 'Client';
-			}else if(EditPackage.packageData.category == 'Packaging'){
-				userType = 'Packager';
-			}else if(EditPackage.packageData.category == 'Quality Assurance'){
-				userType = 'QA Tester';
-			}else if(EditPackage.packageData.category == 'UAT'){
-				userType = 'User Tester';
-			}
-			var data = {
-					userType: userType
-				};
-
-			AssignUser.getAssigneesAjax(data);
+		var userType = "";
+		console.log(EditPackage.packageData)
+		if(EditPackage.packageData.category == 'Discovery'){
+			userType = 'Client';
+		}else if(EditPackage.packageData.category == 'Packaging'){
+			userType = 'Packager';
+		}else if(EditPackage.packageData.category == 'Quality Assurance'){
+			userType = 'QA Tester';
+		}else if(EditPackage.packageData.category == 'UAT'){
+			userType = 'User Tester';
 		}
+
+		console.log(userType)
+		var data = {
+				userType: userType
+			};
+
+		AssignUser.getAssigneesAjax(data);
 
 		
 	},
 
 	selectedAssignee: function() {
-
-		$('#assignList').hide();
+		alert('MEOW!');
 
 		var personName = $(this).text();
 		var userId = $(this).attr('data-id');
@@ -63,26 +60,17 @@ var AssignUser = {
   					console.log(response.data);
   					AssignUser.renderAssignList(response.data);
   				}else{
-  					alert('there is no one in this role to assign :S');
+  					alert('there is no one in this role to assign');
   				}
   			}
 		});
 	},
 
 	renderAssignList: function(users){
-		// <li class="assigned">Chelsea</li>
-		var selected = $('#status option:selected').val();
-		$('#assignList .list ul li').remove();
-		$.each(users, function(i, user){
-			$('#assignList .list ul').append('<li class="assigned" data-id="'+user.id+'">'+user.fName+' '+user.lName+'</li>');
-		});
 
-		if(selected == 'assignTo') {
-			$('#assignList').show();
-			$('.updateBtn').hide();
-		} else {
-			$('#assignList').hide();
-		}
+		$.each(users, function(i, user){
+			$('#assignList').append('<option class="assigned" data-id="'+user.id+'">'+user.fName+' '+user.lName+'</option>');
+		});
 	},
 
 	updateAssignedUser: function(){

@@ -102,6 +102,7 @@ var EditPackage = {
 				EditPackage.packageData = response.data.package[0];
 				EditPackage.packageData.packageName = packageName;
 
+				AssignUser.showAssignList();
 				$('.dashTitle').text('EDIT PACKAGE - ' + packageName);
 
 				$('#appID').val(appID);
