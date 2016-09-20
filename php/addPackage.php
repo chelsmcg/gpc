@@ -22,7 +22,7 @@
 
 		$category = 'Discovery';
 		$status = 'New';
-		$added = date('Y-m-d H:i:s');
+		$added = time();
 
 		//check if input appID already exists in the db
 		$exists = checkValue('appID', $appId, 'packages');

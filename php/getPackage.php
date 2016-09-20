@@ -130,6 +130,8 @@ value: *category - ie. "discovery"
 			if(mysqli_affected_rows($mysqli) != 0){
 
 				while($row = $result->fetch_assoc()){
+
+					$row['priorityAlertLevel'] = setPriorityAlert($row['added'], $row['priority']);
 					 
 					$pid = $row['id'];
 					$issue = customQuery("SELECT * FROM issues WHERE pid = '$pid' ORDER BY id DESC LIMIT 0, 1");
@@ -150,6 +152,41 @@ value: *category - ie. "discovery"
 
 	}
 
+	function setPriorityAlert($added, $priority){
+		$currentTime = time();
+		$day = 86400; // seconds in 1 day
+		$hour = 3600; // seconds in 1 hour
+
+		$packageAge = $currentTime - $added;
+
+
+		switch($priority){
+			case 'High':
+				$timeLimit = $day * 3;
+				$warning = $day * 1;
+				break;
+
+			case 'Medium':
+				$timeLimit = $day * 5;
+				$warning = $day * 3;
+				break;
+
+			case 'Low':
+				$timeLimit = $day * 7;
+				$warning = $day * 5;
+				break;
+		}
+
+		if($packageAge > $warning && $packageAge < $timeLimit){
+			$alertLever = 'warning';
+		}else if($packageAge >= $timeLimit){
+			$alertLever = 'expired';
+		}else{
+			$alertLever = 'none';
+		}
+
+		return $alertLever;
+	}
 
 
 
