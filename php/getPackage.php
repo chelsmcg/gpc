@@ -49,7 +49,7 @@ value: *category - ie. "discovery"
 		$search = !empty($_GET['search']) ? $_GET['search'] : '';
 
 		$packages = queryMultiplePackages($orderBy, $page, $sortDirection, $limit, $category, $search);
-
+		$packagesStats = getPackageStats($page, $limit);
 	}
 
 	if(!$packages){
@@ -60,8 +60,29 @@ value: *category - ie. "discovery"
 		$packageData = array();
 		$packageData['userData'] = $_SESSION['user'];
 		$packageData['package'] = $packages['package'];
+		$packageData['packagesStats'] = $packagesStats;
 
 		format_response(true, 'Retrieved packages', $packageData);
+	}
+
+	function getPackageStats($page, $limit){
+		$stats = [];
+		$numPackages = (int)customQuery("SELECT COUNT(id) as numPackages FROM packages")[0]['numPackages'];
+		$stats['currentPage'] = $page;
+		$stats['numPackages'] = $numPackages; 
+		
+		$showFrom = ($page - 1) * $limit + 1;
+		$showTo = $showFrom + $limit - 1;
+		$showTo = $showTo > $stats['numPackages'] ? $stats['numPackages'] : $showTo;
+
+		$stats['showFrom'] = $showFrom;
+		$stats['showTo'] = $showTo;
+		$stats['numPages'] = ceil($numPackages / $limit);
+		$stats['limit'] = $limit;
+
+		$stats['showingPackages'] = "Showing $showFrom - $showTo of $numPackages";
+
+		return $stats;
 	}
 
 	function querySinglePackage($rowId){
@@ -73,21 +94,23 @@ value: *category - ie. "discovery"
 		$offset = ($page - 1) * $limit;
 
 		// SELECT * FROM packages
-		$sql = "SELECT * FROM packages ";
+		$sql = "SELECT * FROM packages p ";
 		// WHERE
 		$sql .= $category != 'all' || $search != '' ? "WHERE " : "";
 		// Category = 'Discovery'
 		$sql .= $category == 'all' ? "" : "category = '$category' ";
 		// AND
-		$sql .= $category == 'all' && $search == '' ? "" : "AND ";
+		$sql .= $category == 'all' || $search == "" && $search == '' ? "" : "AND ";
 		// name LIKE %xbox%
 		$sql .= $search == '' ? "" : "name LIKE '%$search%' ";
 		// ORDER BY id ASC
-		$sql .= "ORDER BY $orderBy $sortDirection ";
+		$sql .= "ORDER BY p.$orderBy $sortDirection ";
 		// LIMIT 0, 4
 		$sql .= "LIMIT $offset, $limit ";
-
-		return runPackgeQuery($sql);
+		// echo $sql;
+		$packages = runPackgeQuery($sql);
+		
+		return $packages;
 
 	}
 
@@ -112,9 +135,28 @@ value: *category - ie. "discovery"
 					$packages['package'][] = $row;
 
 				}
-				return $packages;
+				// return $packages;
+			}else{
+				$packages['package'] = false;
 			}
 
-			return false;
+			// return false;
 		}
+
+		return $packages;
+		
+
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+

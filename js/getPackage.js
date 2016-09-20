@@ -15,6 +15,7 @@ var GetPackage = {
 	events: function() {
 		$('body').on('click', '#nextPageBtn', GetPackage.nextPage)
 		$('body').on('click', '#prevPageBtn', GetPackage.prevPage)
+		$('body').on('click', '#packageTableFooter #lastPageBtn, #packageTableFooter #firstPageBtn, #packageTableFooter .pageNums', GetPackage.selectPage)
 	},
 
 	updatePackageFilter: function(key, value){
@@ -30,21 +31,23 @@ var GetPackage = {
 	nextPage: function(){
 		var currentPage = GetPackage.getPackageFilterVal('page');
 		var nextPage = currentPage + 1;
-		GetPackage.updatePackageFilter('page', nextPage);
-		GetPackage.getPackages(function(response){
-			console.log(response);
-			if(response.data == 'get_failed'){
-				GetPackage.updatePackageFilter('page', currentPage);
-			}
-		});
+		GetPackage.paginate(nextPage);
 	},
 
 	prevPage: function(){
 		var currentPage = GetPackage.getPackageFilterVal('page');
 		var nextPage = currentPage - 1;
+		GetPackage.paginate(nextPage);
+	},
+
+	selectPage: function(){
+		var pageNum = parseInt($(this).attr('data-page'));
+		GetPackage.paginate(pageNum);
+	},
+
+	paginate: function(nextPage){
 		GetPackage.updatePackageFilter('page', nextPage);
 		GetPackage.getPackages(function(response){
-			console.log(response);
 			if(response.data == 'get_failed'){
 				GetPackage.updatePackageFilter('page', currentPage);
 			}
@@ -61,9 +64,41 @@ var GetPackage = {
 				GetPackage.populateTable(response.data.package);
 				GetPackage.userDetails(response.data.userData);
 				GetPackage.restrictUser();
+				GetPackage.populatePaginationInfo(response.data.packagesStats);
 			}
 			typeof callback == 'function' ? callback(response) : null;
 		});
+	},
+
+	populatePaginationInfo: function(stats){
+		
+		$('.table-pagination #showingPageNumber').text(stats.showFrom + ' - ' + stats.showTo);
+		$('.table-pagination #showingAllPages').text(stats.numPackages);
+		
+		var html = '';
+		var activeClass = '';
+		var start = 0; 
+
+		if(stats.currentPage <= 3){
+			start = 1;
+		}else if(stats.numPages - stats.currentPage < 2){
+			start = stats.numPages - 4;
+		}else{
+			start = stats.currentPage - 2;
+		}
+
+		var limit = stats.numPages < 5 ? stats.numPages : start + 4;
+
+		for(var i = start; i <= limit; i++){
+			activeClass = i == stats.currentPage ? 'active' : '';
+			html += '<div id="paginationPages" class="pagination-pages pageNums '+activeClass+'" data-page="'+i+'">'+i+'</div>';	
+		}
+
+		$('#packageTableFooter .pageNums').remove();
+		$('#packageTableFooter #prevPageBtn').after(html);
+		$('#packageTableFooter #lastPageBtn').attr('data-page', stats.numPages);
+		$('#packageTableFooter #firstPageBtn').attr('data-page', 1);
+
 	},
 
 	packageAjax: function(data, callback){
