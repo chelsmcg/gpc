@@ -298,10 +298,10 @@ p {
       padding-left: 0; } }
 
 .warning-color {
-  color: #bf8d31; }
+  color: #bf8d31 !important; }
 
 .expired-color {
-  color: #bf3131; }
+  color: #bf3131 !important; }
 
 .formContainer {
   background: #000; }
