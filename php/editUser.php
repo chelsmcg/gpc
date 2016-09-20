@@ -19,7 +19,7 @@
 			updateSession('fName', $firstName);
 			updateSession('lName', $lastName);
 
-			if(empty($_GET['type']) && $_GET['type'] == ""){
+			if(empty($_GET['type']) || $_GET['type'] == ""){
 
 				format_response(true, 'user data updated');	
 			}
