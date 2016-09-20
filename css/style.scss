@@ -117,6 +117,14 @@ p {
 		margin-bottom: 0;
 		min-width: 300px;
 
+		tr {
+			color: #ffffff;
+
+			td {
+				color: inherit;
+			}
+		}
+
 		th {
 			display: none;
 		}

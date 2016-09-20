@@ -112,6 +112,10 @@ p {
 #dashboard #dashboardTable {
   margin-bottom: 0;
   min-width: 300px; }
+  #dashboard #dashboardTable tr {
+    color: #ffffff; }
+    #dashboard #dashboardTable tr td {
+      color: inherit; }
   #dashboard #dashboardTable th {
     display: none; }
   @media (max-width: 640px) {
