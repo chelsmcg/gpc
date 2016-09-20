@@ -14,6 +14,8 @@
 
 }
 
+$small-breakpoint: 640px;
+
 html, body {
 	font-family: helvetica, arial, sans-serif;
 }
@@ -82,6 +84,11 @@ p {
 		width: 40%;
 		margin-top: 5px;
 		cursor: pointer;
+
+		@media (max-width: $small-breakpoint) {
+			width: 90%;
+			margin-top: 10px;
+		}
 	}
 }
 
@@ -108,6 +115,49 @@ p {
 
 	#dashboardTable {
 		margin-bottom: 0;
+		min-width: 300px;
+
+		th {
+			display: none;
+		}
+
+		td.tableIcon {
+			
+
+			@media (max-width: $small-breakpoint) {
+				display: inline-block;
+				vertical-align: middle;
+				width: 20%;
+			}
+
+			&:before {
+				content: '';
+			}
+		}
+
+		td {
+			display: block;
+
+			&:before {
+				content: attr(data-th)": ";
+				font-weight: bold;
+				width: 6.5em;
+				display: inline-block;
+
+				@media (min-width: $small-breakpoint) {
+					display: none;
+				}
+			}
+		}
+
+		th, td {
+	    text-align: left;
+	    
+		    @media (min-width: $small-breakpoint) {
+			      display: table-cell;
+		    }
+
+	  }
 	}
 
 	.table-pagination {
@@ -293,6 +343,10 @@ p {
 		&:hover {
 			color: rgba(255,255,255,0.8);
 		}
+
+		@media (max-width: $small-breakpoint) {
+			margin-bottom: 20px;
+		}
 	}
 
 	.btnHeader {
@@ -314,6 +368,23 @@ p {
 	}
 }
 
+.roles-column-one {
+	padding-left: 50px;
+
+	@media (max-width: $small-breakpoint) {
+		padding-left: 0;
+	}
+}
+
+.roles-column-two {
+	margin-top: 38px;
+
+	@media (max-width: $small-breakpoint) {
+		margin-top: 0;
+		padding-left: 0;
+	}
+}
+
 .formContainer {
 	background: #000;
 
@@ -324,13 +395,22 @@ p {
 		letter-spacing: 0.5px;
 	}
 
-	#addPackageForm {
+	.pageContainer {
 		padding: 40px;
 		overflow: auto;
+
+		@media (max-width: $small-breakpoint) {
+			padding: 15px;
+		}
 
 		.large-6 {
 			padding-left: 2.9375rem !important;
 			padding-right: 3.9375rem !important;
+
+			@media (max-width: $small-breakpoint) {
+				padding-left: 0 !important;
+				padding-right: 0 !important;
+			}
 		}
 
 		input {
@@ -368,6 +448,10 @@ p {
 	.btnContainer, .settingsBtnContainer {
 		clear: both;
 		padding: 50px 62px 20px 47px;
+
+		@media (max-width: $small-breakpoint) {
+			padding: 30px 15px 20px 15px;
+		}
 
 		button {
 			background: #00738E;
@@ -502,10 +586,16 @@ p {
 }
 
 .loginContainer {
-	width: 766px;
-    margin: 0 auto;
-    height: 100%;
     position: relative;
+    width: 100%;
+    height: 100%;
+
+    .row-center {
+    	position: absolute;
+    	top: 50%;
+    	left: 50%;
+    	transform: translate(-50%, -50%);
+    }
 
     .loginBox {
     	background: rgba(255,255,255,0.5);
@@ -513,31 +603,28 @@ p {
     	padding: 20px 25px;
     	height: auto;
     	width: 100%;
-    	position: absolute;
-    	top: 50%;
-    	margin-top: -150px;
     }
 
     .logoColumn {
     	padding-left: 0px;
-    	height: 100%;
+    	padding-right: 0px;
+    	height: 252px;
     	text-align: center;
-    	position: absolute;
-    	border-right: 1px solid #f1f1f1;
 
     	.logoImg {
     		height: auto;
-    		margin-top: 105px;
+    		position: relative;
+    		top: 50%;
+    		transform: translateY(-50%);
 
     		img {
-    			width: 215px;
+    			max-width: 215px;
     		}
     	}
     }
 
     .loginColumn {
     	text-align: center;
-    	padding: 0 20px 0 40px;
 
     	input {
     		background-color: #f1f1f1;
@@ -616,7 +703,6 @@ p {
 }
 
 #assignList {
-	width: 350px;
 	background-color: #ccc;
 	position: relative;
 	-webkit-transition: all 300ms ease-out 300ms;

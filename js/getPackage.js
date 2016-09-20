@@ -198,7 +198,7 @@ var GetPackage = {
 
 			packageName = Global.createPackageName(vendor, appName, appVersion, revision);
 
-			row_html = '<tr class="packageRow" data-rowid="' + id + '"><td class="packageID">'+ appID +'</td><td class="packageName ' + category + 'PageBtn">'+ packageName + '<td class="packageType">'+ packageType + '</td><td class="packagePriority">' + priority + '</td><td class="packageCategory">' + category + '</td><td class="packageStatus">' + status + '</td><td class="tableIcon edit">M</td><td class="tableIcon issue ' + disableIssue + ' ' + issueAlert + '" data-issueid="'+issueId+'">g</td><td class="tableIcon documents"><a  href="' + Global.docLink + '/' + doc + '">H</a></td><td class="tableIcon source" data-source="' + source + '">T</td></tr>';
+			row_html = '<tr class="packageRow" data-rowid="' + id + '"><td class="packageID" data-th="ID">'+ appID +'</td><td data-th="Package Name" class="packageName ' + category + 'PageBtn">'+ packageName + '</td><td data-th="Type" class="packageType">'+ packageType + '</td><td data-th="Priority" class="packagePriority">' + priority + '</td><td data-th="Category" class="packageCategory">' + category + '</td><td data-th="Status" class="packageStatus">' + status + '</td><td class="tableIcon edit">M</td><td class="tableIcon issue ' + disableIssue + ' ' + issueAlert + '" data-issueid="'+issueId+'">g</td><td class="tableIcon documents"><a  href="' + Global.docLink + '/' + doc + '">H</a></td><td class="tableIcon source" data-source="' + source + '">T</td></tr>';
 
 			$('#dashboardTable tbody').append(row_html);
 		}
