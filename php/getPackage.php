@@ -60,7 +60,9 @@ value: *category - ie. "discovery"
 		$packageData = array();
 		$packageData['userData'] = $_SESSION['user'];
 		$packageData['package'] = $packages['package'];
-		$packageData['packagesStats'] = $packagesStats;
+		if(isset($packagesStats)){
+			$packageData['packagesStats'] = $packagesStats;
+		}
 
 		format_response(true, 'Retrieved packages', $packageData);
 	}
