@@ -5,7 +5,7 @@ var AssignUser = {
 	},
 
 	events: function(){
-		$('#assignList').on('change', '.assigned', AssignUser.selectedAssignee);
+		$('body').on('change', '#assignList', AssignUser.selectedAssignee);
 		$('body').on('click touch', '.assignUserBtn', AssignUser.updateAssignedUser);
 	},
 
@@ -34,16 +34,8 @@ var AssignUser = {
 	},
 
 	selectedAssignee: function() {
-		alert('MEOW!');
-
 		var personName = $(this).text();
 		var userId = $(this).attr('data-id');
-
-		$('#person').remove();
-
-		var assignedText = '<span id="person" data-id="'+userId+'">ASSIGNED TO:' + ' ' + personName + '</span>';
-
-		$('#assignedToText').append(assignedText);
 
 		$('.updateBtn').show();
 	},
@@ -68,13 +60,21 @@ var AssignUser = {
 
 	renderAssignList: function(users){
 
+		var assignedId = null;
+		var selected;
+
+		if(EditPackage.packageData.category == 'Packaging'){
+			assignedId = parseInt(EditPackage.packageData.assignedPackager);
+		}
+
 		$.each(users, function(i, user){
-			$('#assignList').append('<option class="assigned" data-id="'+user.id+'">'+user.fName+' '+user.lName+'</option>');
+			selected = assignedId == user.id ? 'selected' : '';
+			$('#assignList').append('<option '+selected+' class="assigned" data-id="'+user.id+'" value="'+user.fName+' '+user.lName+'">'+user.fName+' '+user.lName+'</option>');
 		});
 	},
 
 	updateAssignedUser: function(){
-		var user_id = $('#assignedToText #person').attr('data-id');
+		var user_id = $('#assignList option:selected').attr('data-id');
 		var dbFieldCategory = "";
 
 			if(EditPackage.packageData.category == 'Discovery'){
@@ -106,6 +106,7 @@ var AssignUser = {
   			success: function(response) {
   				if(response.success){
   					console.log('nice');
+  					$('.updateBtn').fadeOut();
   				}else{
   					alert('lame');
   				}
