@@ -293,6 +293,12 @@ p {
       margin-top: 0;
       padding-left: 0; } }
 
+.warning-color {
+  color: #bf8d31; }
+
+.expired-color {
+  color: #bf3131; }
+
 .formContainer {
   background: #000; }
   .formContainer .formHeader {
