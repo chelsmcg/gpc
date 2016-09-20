@@ -285,11 +285,11 @@ p {
 	}
 
 	.disabled {
-		color: rgba(0,189,255,0.1);
+		color: rgba(0,189,255,0.1) !important;
 		cursor: default;
 
 		&:hover {
-			color: rgba(0,189,255,0.1);
+			color: rgba(0,189,255,0.1) !important;
 		}
 	}
 

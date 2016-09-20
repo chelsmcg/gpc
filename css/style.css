@@ -220,10 +220,10 @@ p {
   #dashboard .tableIcon:hover {
     color: rgba(0, 189, 255, 0.2); }
 #dashboard .disabled {
-  color: rgba(0, 189, 255, 0.1);
+  color: rgba(0, 189, 255, 0.1) !important;
   cursor: default; }
   #dashboard .disabled:hover {
-    color: rgba(0, 189, 255, 0.1); }
+    color: rgba(0, 189, 255, 0.1) !important; }
 #dashboard .issue {
   position: relative; }
 #dashboard .reply-unread:after {
