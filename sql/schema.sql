@@ -100,7 +100,7 @@ CREATE TABLE ftpConfig (
 );
 
 INSERT INTO `ftpconfig` (`id`, `hostName`, `username`, `password`) VALUES
-(1, 'ftp2.success-systems.com.au', 'data3', 'dAtA3');
+(1, 'ftp2.success-systems.com.au', 'PortalTest', 'PortalTest');
 
 
 insert into packages (name, type, category, priority, status, vendor, version, operatingSystem, appID, added, addedBy, revision) values ('Quo Lux', 'ThinApp', 'UAT', 'Low', 'New', 'Gigabox', 3, 'Windows 10', 'fTCgCQiyf', 1474380813, 1, 3);

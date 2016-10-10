@@ -218,6 +218,7 @@
 		error_log($type1.$type2);
 
 		global $mysqli;
+		// echo "UPDATE $table SET $updateField=? WHERE $whereField=?";
 		$stmt = $mysqli->prepare("UPDATE $table SET $updateField=? WHERE $whereField=?");
 		$stmt->bind_param($type1.$type2, $newValue, $whereValue);
 		$stmt->execute();

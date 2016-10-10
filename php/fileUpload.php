@@ -64,13 +64,14 @@
 	}
 
 	function createExtension($fileType){
+		// echo $fileType;
 		if($fileType == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' || $fileType == 'application/octet-stream'){
 			$extension = 'docx';
 
 		}else if($fileType == 'application/msword'){
 			$extension = 'doc';
 
-		}else if($fileType == 'application/x-zip-compressed'){
+		}else if($fileType == 'application/x-zip-compressed' || $fileType == 'application/zip'){
 			$extension = 'zip';
 		}
 

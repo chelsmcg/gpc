@@ -74,7 +74,8 @@ var AssignUser = {
 	},
 
 	updateAssignedUser: function(){
-		var user_id = $('#assignList option:selected').attr('data-id');
+		console.log('nicedwdwe')
+		var user_id = parseInt($('#assignList option:selected').attr('data-id'));
 		var dbFieldCategory = "";
 
 			if(EditPackage.packageData.category == 'Discovery'){
@@ -88,7 +89,7 @@ var AssignUser = {
 			}
 		var data = {
 				assigneeId: user_id,
-				packageId: EditPackage.packageData.id,
+				packageId: parseInt(EditPackage.packageData.id),
 				dbFieldCategory: dbFieldCategory
 
 			};
@@ -97,6 +98,7 @@ var AssignUser = {
 
 
 	updateAssigneeAjax: function(data){
+		console.log(data)
 		$.ajax({
   			type: 'post',
   			async: false,
