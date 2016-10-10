@@ -34,6 +34,8 @@ var Load = {
 		$('#loadContainer').load('components.html #dashboard', function(){
 			$('#loadContainer').removeClass('loginBackground');
 			
+			Graphs.init();
+			
 			Load.loadModals(function(){
 
 				Global.getUserDetails(function(response){
