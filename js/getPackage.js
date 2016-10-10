@@ -166,7 +166,7 @@ var GetPackage = {
 			comments = package.comments;
 			issueId = package.issue != null ? package.issue.id : null;
 			disableIssue = package.issue == null ? 'disabled' : '';
-			
+
 			if(package.priorityAlertLevel == 'warning'){
 				priorityAlertClass = 'warning-color';
 			}else if(package.priorityAlertLevel == 'expired'){
@@ -190,7 +190,10 @@ var GetPackage = {
 
 			var docLinkHtml = GetPackage.createDocLinkHtml(doc);
 
-			row_html = '<tr class="packageRow '+priorityAlertClass+'" data-rowid="' + id + '"><td class="packageID" data-th="ID">'+ appID +'</td><td data-th="Package Name" class="packageName ' + category + 'PageBtn">'+ packageName + '</td><td data-th="Type" class="packageType">'+ packageType + '</td><td data-th="Priority" class="packagePriority">' + priority + '</td><td data-th="Category" class="packageCategory">' + category + '</td><td data-th="Status" class="packageStatus">' + status + '</td><td class="tableIcon edit">M</td><td class="tableIcon issue ' + disableIssue + ' ' + issueAlert + '" data-issueid="'+issueId+'">g</td>'+docLinkHtml+'<td class="tableIcon source" data-source="' + source + '">T</td></tr>';
+			var sourceLinkHtml = GetPackage.createSourceLinkHtml(source, category);
+			console.log(sourceLinkHtml)
+
+			row_html = '<tr class="packageRow '+priorityAlertClass+'" data-rowid="' + id + '"><td class="packageID" data-th="ID">'+ appID +'</td><td data-th="Package Name" class="packageName ' + category + 'PageBtn">'+ packageName + '</td><td data-th="Type" class="packageType">'+ packageType + '</td><td data-th="Priority" class="packagePriority">' + priority + '</td><td data-th="Category" class="packageCategory">' + category + '</td><td data-th="Status" class="packageStatus">' + status + '</td><td class="tableIcon edit">M</td><td class="tableIcon issue ' + disableIssue + ' ' + issueAlert + '" data-issueid="'+issueId+'">g</td>'+docLinkHtml+''+sourceLinkHtml+'</tr>';
 
 			$('#dashboardTable tbody').append(row_html);
 		}
@@ -205,6 +208,17 @@ var GetPackage = {
 			html = '<td class="tableIcon documents"><a  href="' + Global.docLink + '/' + doc + '">H</a></td>';
 		}else{
 			html = '<td class="tableIcon documents">H</td>';
+		}
+
+		return html;
+	},
+
+	createSourceLinkHtml: function(source, category){
+		var html = '';
+		if(category == 'Completed' && source){
+			html = '<td class="tableIcon source" data-source="' +Global.completeLink + '/' + source + '"><a href="' +Global.completeLink + '/' + source + '">T</a></td>';
+		}else{
+			html = '<td class="tableIcon source" data-source="' +Global.completeLink + '/' + source + '">T</td>'
 		}
 
 		return html;
