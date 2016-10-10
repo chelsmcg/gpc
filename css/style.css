@@ -260,12 +260,15 @@ p {
   width: 100%;
   height: 400px;
   background: #000; }
+#dashboard #pieGraph {
+  margin-top: -15px; }
 #dashboard .dashboardBtn {
   background: rgba(0, 0, 0, 0.8);
   color: #fff;
   text-align: center;
-  height: 185px;
-  cursor: pointer; }
+  height: 192.5px;
+  cursor: pointer;
+  margin-bottom: 15px; }
   #dashboard .dashboardBtn:hover {
     color: rgba(255, 255, 255, 0.8); }
   @media (max-width: 640px) {

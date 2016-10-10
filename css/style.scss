@@ -341,12 +341,17 @@ p {
 		background: #000;
 	}
 
+	#pieGraph {
+		margin-top: -15px;
+	}
+
 	.dashboardBtn {
 		background: rgba(0,0,0,0.8);
 		color: #fff;
 		text-align: center;
-		height: 185px;
+		height: 192.5px;
 		cursor: pointer;
+		margin-bottom: 15px;
 
 		&:hover {
 			color: rgba(255,255,255,0.8);
