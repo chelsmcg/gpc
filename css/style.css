@@ -50,11 +50,13 @@ p {
   color: #ffffff;
   font-size: 14px; }
 
-.padding-left-0 {
-  padding-left: 0px !important; }
+@media (min-width: 1024px) {
+  .padding-left-0 {
+    padding-left: 0px !important; } }
 
-.padding-right-0 {
-  padding-right: 0px !important; }
+@media (min-width: 1024px) {
+  .padding-right-0 {
+    padding-right: 0px !important; } }
 
 .margin-top-neg-30 {
   margin-top: -30px; }
@@ -258,10 +260,12 @@ p {
   right: 12px; }
 #dashboard .graph {
   width: 100%;
-  height: 400px;
-  background: #000; }
-#dashboard #pieGraph {
-  margin-top: -15px; }
+  height: auto;
+  background: #000000;
+  padding: 20px 20px 20px 10px; }
+@media (max-width: 1024px) {
+  #dashboard #lineGraph {
+    margin-bottom: 30px; } }
 #dashboard .dashboardBtn {
   background: rgba(0, 0, 0, 0.8);
   color: #fff;
