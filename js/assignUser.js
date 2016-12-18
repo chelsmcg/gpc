@@ -74,9 +74,10 @@ var AssignUser = {
 	},
 
 	updateAssignedUser: function(){
-		console.log('nicedwdwe')
 		var user_id = parseInt($('#assignList option:selected').attr('data-id'));
 		var dbFieldCategory = "";
+
+		$(this).text('Loading...');
 
 			if(EditPackage.packageData.category == 'Discovery'){
 				dbFieldCategory = 'Client';
@@ -98,7 +99,6 @@ var AssignUser = {
 
 
 	updateAssigneeAjax: function(data){
-		console.log(data)
 		$.ajax({
   			type: 'post',
   			async: false,
@@ -109,8 +109,10 @@ var AssignUser = {
   				if(response.success){
   					console.log('nice');
   					$('.updateBtn').fadeOut();
+  					$('.assignUserBtn').text('UPDATE');
   				}else{
   					alert('lame');
+  					$('.assignUserBtn').text('UPDATE');
   				}
   			}
 		});
