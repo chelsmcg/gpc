@@ -189,7 +189,8 @@ p {
   background-color: #000000;
   color: #ffffff;
   padding: 10px 20px;
-  font-size: 14px; }
+  font-size: 14px;
+  z-index: 10; }
   #dashboard .dropdown:before {
     content: '';
     width: 5px;
