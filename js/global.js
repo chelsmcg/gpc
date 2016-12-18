@@ -14,7 +14,7 @@ var Global = {
 	},
 
 	createPackageName: function(vendor, appName, appVersion, revision){
-		var packageName = vendor + '-' + appName + '-' + appVersion + '-' + revision;
+		var packageName = vendor + '_' + appName + '_' + appVersion + '_' + revision;
 		packageName = packageName.replace(/\s+/g, '');
 		return packageName;
 	},
