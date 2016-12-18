@@ -111,6 +111,31 @@ p {
   margin-left: 10px;
   letter-spacing: 0.5px; }
 
+#dashboard .searchBarContainer {
+  width: 200px;
+  float: right;
+  margin-bottom: -30px;
+  margin-right: -14px; }
+  #dashboard .searchBarContainer .search {
+    display: inline-block;
+    vertical-align: top;
+    border: none;
+    background: rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+    width: 150px;
+    padding: 10px 10px;
+    height: auto; }
+  #dashboard .searchBarContainer .searchBtn {
+    font-family: icon-font-5;
+    display: inline-block;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.6);
+    vertical-align: top;
+    margin-left: -4px;
+    padding: 6px 10px;
+    cursor: pointer; }
+    #dashboard .searchBarContainer .searchBtn:hover {
+      color: #e6e6e6; }
 #dashboard #dashboardTable {
   margin-bottom: 0;
   min-width: 300px; }

@@ -119,6 +119,39 @@ p {
 
 #dashboard {
 
+	.searchBarContainer {
+		width: 200px;
+		float: right;
+		margin-bottom: -30px;
+		margin-right: -14px;
+
+		.search {
+			display: inline-block;
+			vertical-align: top;
+			border: none;
+			background: rgba(0,0,0,0.6);
+			color: #ffffff;
+			width: 150px;
+			padding: 10px 10px;
+			height: auto;
+		}
+
+		.searchBtn {
+			font-family: icon-font-5;
+			display: inline-block;
+			color: #ffffff;
+			background: rgba(0,0,0,0.6);
+			vertical-align: top;
+			margin-left: -4px;
+			padding: 6px 10px;
+			cursor: pointer;
+
+			&:hover {
+				color: darken(#ffffff, 10%);
+			}
+		}
+	}
+
 	#dashboardTable {
 		margin-bottom: 0;
 		min-width: 300px;
