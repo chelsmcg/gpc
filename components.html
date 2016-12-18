@@ -30,8 +30,8 @@
         <div class="dialogContainer">
             <div class="dialogBox">
                 <div class="dialogHeader">
-                    <div class="dialogHeading">Please enter your email address</div> <!-- populated in editPackage.js -->
-                    <div class="dialogText">A generated password will be sent to your email address provided.</div> <!-- populated in editPackage.js -->
+                    <div class="dialogHeading">Please enter your email address</div>
+                    <div class="dialogText">A generated password will be sent to your email address provided.</div>
                     <div class="userIcon">
                         <input id="forgotPasswordEmail" type="email" placeholder="email address" class="email" />
                     </div>
@@ -42,13 +42,26 @@
         </div>
     </div>
     <!-- End Forgot Password Modal -->
+    <!-- Email Sent Modal -->
+    <div class="modal" id="emailSentModal">
+        <div class="dialogContainer">
+            <div class="dialogBox">
+                <div class="dialogHeader">
+                    <div class="dialogHeading">An Email Has Been Sent</div>
+                    <div class="dialogText">Please use the password provided in the email to login.</div>
+                </div>
+                <button type="button" id="emailSentBtn">OK</button>
+            </div>
+        </div>
+    </div>
+    <!-- End Email Sent Modal -->
     <!-- Invalid Login Modal -->
     <div class="modal" id="invalidLoginModal">
         <div class="dialogContainer">
             <div class="dialogBox">
                 <div class="dialogHeader">
-                    <div class="dialogHeading">Invalid Login</div> <!-- populated in editPackage.js -->
-                    <div class="dialogText">The username or password you have entered is incorrect. Please try again.</div> <!-- populated in editPackage.js -->
+                    <div class="dialogHeading">Invalid Login</div>
+                    <div class="dialogText">The username or password you have entered is incorrect. Please try again.</div>
                 </div>
                 <button type="button" id="invalidLoginOkBtn">OK</button>
             </div>

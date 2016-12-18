@@ -11,6 +11,7 @@ var Login = {
 		$('body').on('click touch', '.forgotPasswordCancelBtn', Login.closeForgotPasswordModal);
 		$('body').on('click touch', '#invalidLoginOkBtn', Login.closeInvalidLoginModal);
 		$('body').on('click touch', '#forgotPasswordEnterBtn', Login.submitForgotPassword);
+		$('body').on('click touch', '#emailSentBtn', Login.closeEmailSentModal);
 	},
 
 	enterLogin: function(e) {
@@ -62,9 +63,33 @@ var Login = {
 
 	closeForgotPasswordModal: function() {
 		$('#forgotPasswordModal').fadeOut();
+		$('#forgotPasswordModal .dialogHeading').text('Please enter your email address');
+		$('#forgotPasswordModal .dialogText').text('A generated password will be sent to your email address provided.');
+	},
+
+	changeForgotPasswordBtnText: function() {
+		$('#forgotPasswordEnterBtn').text('Loading...');
+	},
+
+	defaultForgotPasswordBtnText: function() {
+		$('#forgotPasswordEnterBtn').text('ENTER');
+	},
+
+	errorForgotPassword: function() {
+		$('#forgotPasswordModal .dialogHeading').text('Invalid Email Address');
+		$('#forgotPasswordModal .dialogText').text('Please try again');
+	},
+
+	openEmailSentModal: function() {
+		$('#emailSentModal').fadeIn();
+	},
+
+	closeEmailSentModal: function() {
+		$('#emailSentModal').fadeOut();
 	},
 
 	submitForgotPassword: function(){
+		Login.changeForgotPasswordBtnText();
 		var email = $('#forgotPasswordEmail').val();
 		$.ajax({
   			type: 'GET',
@@ -77,8 +102,12 @@ var Login = {
   				console.log(response);
   				if(response.success){
   					Login.closeForgotPasswordModal();
+  					Login.openEmailSentModal();
+  					Login.defaultForgotPasswordBtnText();
   				}else{
   					console.log('couldnt update');
+  					Login.errorForgotPassword();
+  					Login.defaultForgotPasswordBtnText();
   				}
   			}
 		});
