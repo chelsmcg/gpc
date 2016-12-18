@@ -26,7 +26,6 @@ var AssignUser = {
 			userType = 'User Tester';
 		}
 
-		console.log(userType)
 		var data = {
 				userType: userType
 			};
@@ -50,7 +49,6 @@ var AssignUser = {
   			dataType: 'jsonp',
   			success: function(response) {
   				if(response.success){
-  					console.log(response.data);
   					AssignUser.renderAssignList(response.data);
   				}else{
   					alert('there is no one in this role to assign');
@@ -88,7 +86,7 @@ var AssignUser = {
 
 		}else if(EditPackage.packageData.category == 'Quality Assurance'){
 			dbFieldCategory = 'assignedQA';
-			
+
 		}else if(EditPackage.packageData.category == 'UAT'){
 			dbFieldCategory = 'assignedUAT';
 		}
@@ -116,7 +114,7 @@ var AssignUser = {
   					console.log('nice');
   					$('.updateBtn').fadeOut();
   				}else{
-  					alert('lame');
+  					console.log('fail');
   				}
   			}
 		});

@@ -27,7 +27,6 @@ var Graphs = {
 			dataType: 'jsonp',
 			success: function(response) {
 				if(response.success) {
-					console.log(response.data)
   					callback(response.data);
   				} else {
   					console.log('fail');
@@ -37,7 +36,6 @@ var Graphs = {
 	},
 
 	setBarGraphValues: function(data){
-		console.log(data)
 		var barChartData = {
 	        labels: ["Discovery", "Packaging", "QA", "UAT", "Completed"],
 	        datasets: [{
@@ -99,7 +97,6 @@ var Graphs = {
 	},
 
 	setLineGraphValues: function(data){
-		console.log(data)
 		var lineChartData = {
 	        labels: ["Discovery", "Packaging", "QA", "UAT", "Completed"],
 	        datasets: [{
@@ -159,7 +156,6 @@ var Graphs = {
 	},
 
 	setPieGraphValues: function(data){
-		console.log(data)
 		var lineChartData = {
 	        labels: ["Discovery", "Packaging", "QA", "UAT", "Completed"],
 	        datasets: [{

@@ -3,7 +3,7 @@ var GetPackage = {
 	packageFilter: {
 		page: 1,
 		orderBy: 'id',
-		sortDirection: 'ASC',
+		sortDirection: 'DESC',
 		limit: 5,
 		category: 'all',
 		search: ''
@@ -77,7 +77,6 @@ var GetPackage = {
 		var data = GetPackage.packageFilter;
 
 		GetPackage.packageAjax(data, function(response){
-			console.log(response)
 			if(response.success){
 				$('#dashboardTable tbody').empty();
 				GetPackage.populateTable(response.data.package);
@@ -132,10 +131,6 @@ var GetPackage = {
 				callback(response);
 			}
 		});
-	},
-
-	processPackageData: function(){
-		
 	},
 
 	restrictUser: function() {
@@ -212,7 +207,6 @@ var GetPackage = {
 			var docLinkHtml = GetPackage.createDocLinkHtml(doc);
 
 			var sourceLinkHtml = GetPackage.createSourceLinkHtml(source, category);
-			console.log(sourceLinkHtml)
 
 			row_html = '<tr class="packageRow '+priorityAlertClass+'" data-rowid="' + id + '"><td class="packageID" data-th="ID">'+ appID +'</td><td data-th="Package Name" class="packageName ' + category + 'PageBtn">'+ packageName + '</td><td data-th="Type" class="packageType">'+ packageType + '</td><td data-th="Priority" class="packagePriority">' + priority + '</td><td data-th="Category" class="packageCategory">' + category + '</td><td data-th="Status" class="packageStatus">' + status + '</td><td class="tableIcon edit">M</td><td class="tableIcon issue ' + disableIssue + ' ' + issueAlert + '" data-issueid="'+issueId+'">g</td>'+docLinkHtml+''+sourceLinkHtml+'</tr>';
 

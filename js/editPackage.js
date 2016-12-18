@@ -71,7 +71,7 @@ var EditPackage = {
             data: form_data,                         
             type: 'post',
             success: function(php_script_response){
-                console.log(php_script_response); // display response from the PHP script, if any
+                // console.log(php_script_response); // display response from the PHP script, if any
             }
 	    });
 		
@@ -152,7 +152,6 @@ var EditPackage = {
 			},
 			dataType: 'jsonp',
 			success: function(response) {
-				console.log(response);
 
 				Global.hideLoader();
 
@@ -221,7 +220,6 @@ var EditPackage = {
 			data: ajaxData,
 			dataType: 'jsonp',
 			success: function(response) {
-				console.log(response);
 
 				Global.hideLoader();
 
@@ -274,7 +272,7 @@ var EditPackage = {
 			},
 			dataType: 'jsonp',
 			success: function(response) {
-				console.log(response);
+				
 				Global.hideLoader();
 
 				if(response.success){
