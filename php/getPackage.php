@@ -46,10 +46,10 @@ value: *category - ie. "discovery"
 		$sortDirection = !empty($_GET['sortDirection']) ? $_GET['sortDirection']: 'ASC';
 		$limit = !empty($_GET['limit']) ? intval($_GET['limit']): 4;
 		$category = !empty($_GET['category']) ? $_GET['category'] : 'all';
-		$search = !empty($_GET['search']) ? $_GET['search'] : '';
+		$search = !empty($_GET['search']) && $_GET['search'] != '' && $_GET['search'] != null ? $_GET['search'] : '';
 
 		$packages = queryMultiplePackages($orderBy, $page, $sortDirection, $limit, $category, $search);
-		$packagesStats = getPackageStats($page, $limit);
+		$packagesStats = getPackageStats($page, $limit, $search);
 	}
 
 	if(!$packages){
@@ -67,9 +67,10 @@ value: *category - ie. "discovery"
 		format_response(true, 'Retrieved packages', $packageData);
 	}
 
-	function getPackageStats($page, $limit){
+	function getPackageStats($page, $limit, $search){
 		$stats = [];
-		$numPackages = (int)customQuery("SELECT COUNT(id) as numPackages FROM packages")[0]['numPackages'];
+		$searchQ = $search != '' ? " WHERE (name LIKE '%$search%' OR type LIKE '%$search%' OR category LIKE '%$search%' OR vendor LIKE '%$search%' OR version LIKE '%$search%' OR appID LIKE '%$search%' OR revision LIKE '%$search%') " : '';
+		$numPackages = (int)customQuery("SELECT COUNT(id) as numPackages FROM packages" . $searchQ)[0]['numPackages'];
 		$stats['currentPage'] = $page;
 		$stats['numPackages'] = $numPackages; 
 		

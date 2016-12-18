@@ -5,7 +5,8 @@ var GetPackage = {
 		orderBy: 'id',
 		sortDirection: 'ASC',
 		limit: 5,
-		category: 'all'
+		category: 'all',
+		search: ''
 	},
 
 	init: function() {
@@ -15,7 +16,17 @@ var GetPackage = {
 	events: function() {
 		$('body').on('click', '#nextPageBtn', GetPackage.nextPage)
 		$('body').on('click', '#prevPageBtn', GetPackage.prevPage)
+		$('body').on('click', '#tableSearchBtn', GetPackage.searchPackage)
 		$('body').on('click', '#packageTableFooter #lastPageBtn, #packageTableFooter #firstPageBtn, #packageTableFooter .pageNums', GetPackage.selectPage)
+	},
+
+	searchPackage: function(){
+
+		GetPackage.getPackages(function(response){
+			if(response.data == 'get_failed'){
+				GetPackage.updatePackageFilter('page', currentPage);
+			}
+		});
 	},
 
 	updatePackageFilter: function(key, value){
@@ -103,6 +114,9 @@ var GetPackage = {
 	},
 
 	packageAjax: function(data, callback){
+		var searchTerm = $('#tableSearch').val();
+		data.search = searchTerm;
+
 		$.ajax({
 			url: "php/getPackage.php",
 			data: data,
