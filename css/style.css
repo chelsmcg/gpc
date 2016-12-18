@@ -469,6 +469,21 @@ p {
       transform: translateY(-50%); }
       .loginContainer .logoColumn .logoImg img {
         max-width: 215px; }
+  .loginContainer #forgotPasswordModal .dialogBox {
+    padding-top: 40px; }
+  .loginContainer #forgotPasswordModal .dialogHeading {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #00738E;
+    margin-bottom: 20px; }
+  .loginContainer #forgotPasswordModal .email {
+    font-family: helvetica, sans-serif;
+    margin-top: 40px; }
+  .loginContainer #forgotPasswordModal .forgotPasswordCancelBtn {
+    text-decoration: underline;
+    color: #00738E;
+    font-size: 12px;
+    cursor: pointer; }
   .loginContainer .loginColumn {
     text-align: center; }
     .loginContainer .loginColumn input {

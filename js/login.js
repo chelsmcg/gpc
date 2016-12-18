@@ -7,7 +7,8 @@ var Login = {
 	events: function(){
 		$('body').on('click touch', '.loginBtn', Login.validateInput);
 		$('body').on('keyup', Login.enterLogin);
-		   
+		$('body').on('click touch', '#forgotPasswordBtn', Login.openForgotPasswordModal);
+		$('body').on('click touch', '.forgotPasswordCancelBtn', Login.closeForgotPasswordModal);
 	},
 
 	enterLogin: function(e) {
@@ -42,7 +43,15 @@ var Login = {
   				}
   			}
 		});
-	}
+	},
+
+	openForgotPasswordModal: function() {
+		$('#forgotPasswordModal').fadeIn();
+	},
+
+	closeForgotPasswordModal: function() {
+		$('#forgotPasswordModal').fadeOut();
+	},
 };
 
 $(function(){

@@ -19,13 +19,29 @@
                         <div class="forgotPassword">
                             <div id="forgotPasswordBtn">Forgot Password?</div>
                         </div>
-                        <button type="button" class="loginBtn">Login</button>
+                        <button type="button" class="loginBtn">LOGIN</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+    <!-- Forgot Password Modal -->
+    <div class="modal" id="forgotPasswordModal">
+        <div class="dialogContainer">
+            <div class="dialogBox">
+                <div class="dialogHeader">
+                    <div class="dialogHeading">Please enter your email address</div> <!-- populated in editPackage.js -->
+                    <div class="dialogText">A generated password will be sent to your email address provided.</div> <!-- populated in editPackage.js -->
+                    <div class="userIcon">
+                        <input type="email" placeholder="email address" class="email" />
+                    </div>
+                </div>
+                <button type="button" id="forgotPasswordEnterBtn">ENTER</button>
+                <div class="forgotPasswordCancelBtn">Cancel</div>
+            </div>
+        </div>
+    </div>
+    <!-- End Forgot Password Modal -->
 </div>
 <!-- *********** END LOGIN PAGE ************ -->
 <!-- *********** DASHBOARD PAGE ************ -->
@@ -131,47 +147,6 @@
                     <canvas id="canvas1"></canvas>
                 </div>
             </div>
-            <!-- <div class="small-12 columns">
-                <div class="large-6 columns">
-                    <div class="row">
-                        <div id="barGraph" class="graph">
-                            <canvas id="canvas1"></canvas>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div id="lineGraph" class="graph">
-                            <canvas id="canvas2"></canvas>
-                        </div>
-                    </div> 
-                </div>
-                <div class="large-6 columns padding-right-0">
-                    <div class="row">
-                        <div class="medium-4 large-6 columns">
-                            <div class="dashboardBtn" id="addPackageBtn">
-                                <div class="btnHeader">add package</div>
-                                <div class="btnIcon smallerBtn">d</div>
-                            </div>
-                        </div>
-                        <div class="medium-4 large-6 columns">
-                            <div class="dashboardBtn" id="profileBtn">
-                                <div class="btnHeader">profile</div>
-                                <div class="btnIcon">&#xe001;</div>
-                            </div>
-                        </div>
-                        <div class="medium-4 large-6 columns" style="float:left;">
-                            <div class="dashboardBtn" id="logoutBtn">
-                                <div class="btnHeader">logout</div>
-                                <div class="btnIcon">-</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div id="pieGraph" class="graph">
-                        <canvas id="canvas3"></canvas>
-                    </div>
-                   
-                </div>
-            </div> -->
         </div>
         <div class="row">
             <div class="small-12 medium-7 medium-centered large-6 large-uncentered columns">
@@ -776,7 +751,6 @@
     <!-- End Reject Error Modal -->
 </div>
 <!-- *********** END MODALS *********** -->
-
 
 
 
