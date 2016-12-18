@@ -102,8 +102,8 @@
 						$filesUpdated = updateFiles($rowId, $sourceFile, $documentation);
 
 						if($filesUpdated){
-							format_response(true, 'stage and files added successfully');
 							setupEmail($rowId, 'discoveryComplete', $currentCategory, $nextCategory);
+							format_response(true, 'stage and files added successfully');
 
 						}else{
 							format_response(false, 'file paths could not be updated in db');
@@ -219,7 +219,7 @@
 					"<p>Status: ".$packageData['status']."</p>";
 
 
-			email($body, 'mark-g-@hotmail.com', 'Mark', 'HSQ - New package in Packaging');//send to 
+			email($body, 'mark-g-@hotmail.com', 'Mark', 'New package in Packaging - Global Packaging Center');//send to 
 
 		}else if($emailType == 'stageComplete'){
 
@@ -239,9 +239,24 @@
 					"<p>Status: ".$packageData['status']."</p>";
 
 
-			email($body, 'mark-g-@hotmail.com', 'Mark', "HSQ - New package in $nextCategory");//send to 
+			email($body, 'mark-g-@hotmail.com', 'Mark', "New package in $nextCategory - Global Packaging Center");//send to 
 
 		}else if($emailType == 'rejected'){
+			
+			switch($packageData['category']){
+
+				case 'Discovery':
+					$recipientId = $packageData['addedBy'];
+					break;
+
+				case 'Packaging':
+					$recipientId = $packageData['assignedPackager'];
+					break;
+					
+			}
+
+			$recipient = getSingleRow('users', 'id', $recipientId);
+
 			$body = "<p>$loggedFName $loggedLName has rejected $packageBigName. Please see issue details below:</p>".
 					"<p>Submitted Date: $date</p>".
 					"<p>Submitted Time: $time</p>".
@@ -249,7 +264,7 @@
 					"<p>Issue Subject: $issueSubject</p>".
 					"<p>Issue Description: $issueComment</p>";
 
-			email($body, 'mark-g-@hotmail.com', 'Mark', 'HSQ - Package Rejected');//send to 
+			email($body, $recipient['email'], $recipient['fName'], 'Package Rejected - Global Packaging Center');//send to 
 		}
 	}
 
