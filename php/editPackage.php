@@ -102,7 +102,7 @@
 						$filesUpdated = updateFiles($rowId, $sourceFile, $documentation);
 
 						if($filesUpdated){
-							setupEmail($rowId, 'discoveryComplete', $currentCategory, $nextCategory);
+							setupEmail($rowId, 'stageComplete', $currentCategory, $nextCategory);
 							format_response(true, 'stage and files added successfully');
 
 						}else{
@@ -202,26 +202,37 @@
 		$date = date("d-m-Y",$t);
 		$time = date("h:ia", $t);
 
-		if($emailType == 'discoveryComplete'){
-			$body = "<p>$loggedFName $loggedLName has moved $packageBigName to packaging.</p>".
-					"<p>Added Date: $date</p>".
-					"<p>Added Time: $time</p>".
-					"<p>App Id: ".$packageData['appID']."</p>".
-					"<p>Vendor: ".$packageData['vendor']."</p>".
-					"<p>App Name: ".$packageData['name']."</p>".
-					"<p>App Version: ".$packageData['version']."</p>".
-					"<p>Revision: ".$packageData['revision']."</p>".
-					"<p>OS: ".$packageData['operatingSystem']."</p>".
-					"<p>Type: ".$packageData['type']."</p>".
-					"<p>Priority: ".$packageData['priority']."</p>".
-					"<p>Comments: ".$packageData['comments']."</p>".
-					"<p>Category: ".$packageData['category']."</p>".
-					"<p>Status: ".$packageData['status']."</p>";
+		if($emailType == 'stageComplete'){
 
+			switch($packageData['category']){
 
-			email($body, 'mark-g-@hotmail.com', 'Mark', 'New package in Packaging - Global Packaging Center');//send to 
+				case 'Packaging':
+					// packagers
+					// packaging leader
+					// Jim
 
-		}else if($emailType == 'stageComplete'){
+					$sql = "SELECT u.email FROM users u INNER JOIN roles r ON u.id = r.id WHERE type IN('Administrator', 'Packager', 'Packaging Team Leader') GROUP BY u.email ";
+					break;
+
+				case 'QA':
+					// Packaging leader
+					// all QA roles
+					// jim
+					$sql = "SELECT u.email FROM users u INNER JOIN roles r ON u.id = r.id WHERE type IN('Administrator', 'QA Tester', 'Packaging Team Leader') GROUP BY u.email ";
+					break;
+
+				case 'UAT':
+				case 'Completed':
+					// Assigned Packager
+					// Packain Leader
+					// jim
+					$assignedPackager = $packageData['assignedPackager'];
+					$sql = "SELECT u.email FROM users u INNER JOIN roles r ON u.id = r.id WHERE type IN('Administrator', 'Packaging Team Leader') OR u.id = '$assignedPackager' GROUP BY u.email ";
+					break;
+					
+			}
+
+			$emails = customQuery($sql);
 
 			$body = "<p>$loggedFName $loggedLName has moved $packageBigName to $nextCategory.</p>".
 					"<p>Added Date: $date</p>".
@@ -238,8 +249,13 @@
 					"<p>Category: ".$packageData['category']."</p>".
 					"<p>Status: ".$packageData['status']."</p>";
 
+			foreach($emails as $email){
+				// print_r($email['email']);
+				email($body, $email['email'], "Global Packaging Center", "New package in $nextCategory - Global Packaging Center");//send to 
+				
+			}
 
-			email($body, 'mark-g-@hotmail.com', 'Mark', "New package in $nextCategory - Global Packaging Center");//send to 
+
 
 		}else if($emailType == 'rejected'){
 			
