@@ -64,7 +64,9 @@
 		//send the message, check for errors
 		if (!$mail->send()) {
 		    error_log("Mailer Error: " . $mail->ErrorInfo);
+		    // print_r($mail->ErrorInfo);
 		} else {
+			// print_r("message sent");
 		    return "Message sent!";
 		}
 	}

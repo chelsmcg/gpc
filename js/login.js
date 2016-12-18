@@ -10,6 +10,7 @@ var Login = {
 		$('body').on('click touch', '#forgotPasswordBtn', Login.openForgotPasswordModal);
 		$('body').on('click touch', '.forgotPasswordCancelBtn', Login.closeForgotPasswordModal);
 		$('body').on('click touch', '#invalidLoginOkBtn', Login.closeInvalidLoginModal);
+		$('body').on('click touch', '#forgotPasswordEnterBtn', Login.submitForgotPassword);
 	},
 
 	enterLogin: function(e) {
@@ -62,6 +63,26 @@ var Login = {
 	closeForgotPasswordModal: function() {
 		$('#forgotPasswordModal').fadeOut();
 	},
+
+	submitForgotPassword: function(){
+		var email = $('#forgotPasswordEmail').val();
+		$.ajax({
+  			type: 'GET',
+  			url: "php/forgotPassword.php",
+  			data: {
+  				email: email
+  			},
+  			dataType: 'jsonp',
+  			success: function(response) {
+  				console.log(response);
+  				if(response.success){
+  					Login.closeForgotPasswordModal();
+  				}else{
+  					console.log('couldnt update');
+  				}
+  			}
+		});
+	}
 };
 
 $(function(){
