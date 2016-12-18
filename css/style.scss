@@ -702,6 +702,16 @@ p {
     		}
     	}
 
+    	.forgotPassword {
+    		font-size: 12px;
+    		color: #00738E;
+    		cursor: pointer;
+
+    		&:hover {
+    			color: darken(#00738E, 10%);
+    		}
+    	}
+
     	button {
 			background: #00738E;
 			padding: 10px 20px;

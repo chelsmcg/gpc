@@ -503,6 +503,12 @@ p {
         font-weight: normal;
         top: 3px;
         z-index: 2; }
+    .loginContainer .loginColumn .forgotPassword {
+      font-size: 12px;
+      color: #00738E;
+      cursor: pointer; }
+      .loginContainer .loginColumn .forgotPassword:hover {
+        color: #004a5b; }
     .loginContainer .loginColumn button {
       background: #00738E;
       padding: 10px 20px;
