@@ -3,7 +3,7 @@ var Global = {
 	user: null,
 	docLink: "docUploads",
 	sourecLink : "ftp://ftp2.success-systems.com.au/Source",
-	completeLink : "ftp://PortalTest:PortalTest@ftp2.success-systems.com.au/Completed",
+	completeLink : "ftp://aat:aat@ftp2.success-systems.com.au/Completed",
 
 	init: function(){
 		Global.events();
