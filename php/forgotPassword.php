@@ -69,7 +69,7 @@
 
 
 		// email($body, 'chelsea@alperecreative.com.au', 'Mark', 'Forgot Passord');//send to package.request@success-sytsems.com.au
-		email($body, 'mwganser@gmail.com', 'Mark', 'Forgot Passord');//send to package.request@success-sytsems.com.au
+		email($body, $email, '', 'Forgot Password');//send to package.request@success-sytsems.com.au
 
 	}
 
