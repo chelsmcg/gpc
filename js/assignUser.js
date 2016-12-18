@@ -12,13 +12,16 @@ var AssignUser = {
 	showAssignList: function() {
 
 		var userType = "";
-		console.log(EditPackage.packageData)
+
 		if(EditPackage.packageData.category == 'Discovery'){
 			userType = 'Client';
+
 		}else if(EditPackage.packageData.category == 'Packaging'){
 			userType = 'Packager';
+
 		}else if(EditPackage.packageData.category == 'Quality Assurance'){
 			userType = 'QA Tester';
+
 		}else if(EditPackage.packageData.category == 'UAT'){
 			userType = 'User Tester';
 		}
@@ -29,8 +32,6 @@ var AssignUser = {
 			};
 
 		AssignUser.getAssigneesAjax(data);
-
-		
 	},
 
 	selectedAssignee: function() {
@@ -43,7 +44,7 @@ var AssignUser = {
 	getAssigneesAjax: function(data){
 		$.ajax({
   			type: 'post',
-  			async: false,
+  			async: true,
   			url: "php/assignUser.php",
   			data: data,
   			dataType: 'jsonp',
@@ -79,15 +80,19 @@ var AssignUser = {
 
 		$(this).text('Loading...');
 
-			if(EditPackage.packageData.category == 'Discovery'){
-				dbFieldCategory = 'Client';
-			}else if(EditPackage.packageData.category == 'Packaging'){
-				dbFieldCategory = 'assignedPackager';
-			}else if(EditPackage.packageData.category == 'Quality Assurance'){
-				dbFieldCategory = 'assignedQA';
-			}else if(EditPackage.packageData.category == 'UAT'){
-				dbFieldCategory = 'assignedUAT';
-			}
+		if(EditPackage.packageData.category == 'Discovery'){
+			dbFieldCategory = 'Client';
+
+		}else if(EditPackage.packageData.category == 'Packaging'){
+			dbFieldCategory = 'assignedPackager';
+
+		}else if(EditPackage.packageData.category == 'Quality Assurance'){
+			dbFieldCategory = 'assignedQA';
+			
+		}else if(EditPackage.packageData.category == 'UAT'){
+			dbFieldCategory = 'assignedUAT';
+		}
+
 		var data = {
 				assigneeId: user_id,
 				packageId: parseInt(EditPackage.packageData.id),
@@ -101,18 +106,17 @@ var AssignUser = {
 	updateAssigneeAjax: function(data){
 		$.ajax({
   			type: 'post',
-  			async: false,
+  			async: true,
   			url: "php/assignUser.php",
   			data: data,
   			dataType: 'jsonp',
   			success: function(response) {
+  				$('.assignUserBtn').text('UPDATE');
   				if(response.success){
   					console.log('nice');
   					$('.updateBtn').fadeOut();
-  					$('.assignUserBtn').text('UPDATE');
   				}else{
   					alert('lame');
-  					$('.assignUserBtn').text('UPDATE');
   				}
   			}
 		});
