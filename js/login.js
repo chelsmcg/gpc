@@ -9,6 +9,7 @@ var Login = {
 		$('body').on('keyup', Login.enterLogin);
 		$('body').on('click touch', '#forgotPasswordBtn', Login.openForgotPasswordModal);
 		$('body').on('click touch', '.forgotPasswordCancelBtn', Login.closeForgotPasswordModal);
+		$('body').on('click touch', '#invalidLoginOkBtn', Login.closeInvalidLoginModal);
 	},
 
 	enterLogin: function(e) {
@@ -40,9 +41,18 @@ var Login = {
   					Load.dashboard();
   				}else{
   					console.log('login fail');
+  					Login.openInvalidLoginModal();
   				}
   			}
 		});
+	},
+
+	openInvalidLoginModal: function() {
+		$('#invalidLoginModal').fadeIn();
+	},
+
+	closeInvalidLoginModal: function() {
+		$('#invalidLoginModal').fadeOut();
 	},
 
 	openForgotPasswordModal: function() {
