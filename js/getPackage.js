@@ -18,6 +18,13 @@ var GetPackage = {
 		$('body').on('click', '#prevPageBtn', GetPackage.prevPage)
 		$('body').on('click', '#tableSearchBtn', GetPackage.searchPackage)
 		$('body').on('click', '#packageTableFooter #lastPageBtn, #packageTableFooter #firstPageBtn, #packageTableFooter .pageNums', GetPackage.selectPage)
+		$('body').on('keyup', '#tableSearch', GetPackage.keyUp)
+	},
+
+	keyUp: function(e){
+		if(e.keyCode == 13){
+			GetPackage.searchPackage();
+		}
 	},
 
 	searchPackage: function(){
