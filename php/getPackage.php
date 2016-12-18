@@ -104,7 +104,7 @@ value: *category - ie. "discovery"
 		// AND
 		$sql .= $category == 'all' || $search == "" && $search == '' ? "" : "AND ";
 		// name LIKE %xbox%
-		$sql .= $search == '' ? "" : "name LIKE '%$search%' ";
+		$sql .= $search == '' ? "" : "(name LIKE '%$search%' OR type LIKE '%$search%' OR category LIKE '%$search%' OR vendor LIKE '%$search%' OR version LIKE '%$search%' OR appID LIKE '%$search%' OR revision LIKE '%$search%') ";
 		// ORDER BY id ASC
 		$sql .= "ORDER BY p.$orderBy $sortDirection ";
 		// LIMIT 0, 4
