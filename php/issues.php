@@ -44,8 +44,54 @@
 
 		insertRow('issueReplies', 'status, replyText, timestamp, userId, iId', "'$replyStatus', '$replyText', '$time', '$userId', '$issueId'");
 		updateField('issues', 'status', $replyStatus, 'id', $issueId);
+		sendReplyEmail($issueId, $replyText, $replyStatus, $userId);
 		format_response(true, 'issue reply added');
 
 	}else{
 		format_response(false, 'missing params');
 	}
+
+
+	function sendReplyEmail($issueId, $replyText, $replyStatus, $userId){
+		$issue = getSingleRow('issues', 'id', $issueId);
+		$replier = getSingleRow('users', 'id', $userId);
+		$loggedInId = $_SESSION['user']['id'];
+
+		$sql = "SELECT u.email ".
+				"FROM issueReplies r ".
+				"INNER JOIN users u ON r.userId = u.id ".
+				"WHERE r.iId = '$issueId' AND r.userId <> '$loggedInId' ".
+				"GROUP BY u.email";
+
+		$recipients = customQuery($sql);
+
+		$body = "<p>".$replier['fName']." ".$replier['lName']." replied to your issue titled: </p>".
+				"<p>".$issue['issueSubject']."</p>".
+				"<p>who wrote: \"".$replyText."\".";
+
+		foreach($recipients as $recipient){
+			$email = $recipient['email'];
+			email($body, $email, 'Global Packaging Center', 'Issue Reply - Global Packaging Center');
+		}
+
+		
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
