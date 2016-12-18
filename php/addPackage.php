@@ -82,7 +82,7 @@
 				"<p>Status: $status</p>";
 
 
-		email($body, 'mark-g-@hotmail.com', 'Global Packaging Center', 'Package Added');//send to package.request@success-sytsems.com.au
+		email($body, 'Package.Request@success-systems.com.au', 'Global Packaging Center', 'Package Added');
 
 	}
 
