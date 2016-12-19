@@ -214,7 +214,7 @@
 					$sql = "SELECT u.email FROM users u INNER JOIN roles r ON u.id = r.id WHERE type IN('Administrator', 'Packager', 'Packaging Team Leader') GROUP BY u.email ";
 					break;
 
-				case 'QA':
+				case 'Quality Assurance':
 					// Packaging leader
 					// all QA roles
 					// jim
