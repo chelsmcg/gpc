@@ -76,11 +76,20 @@
 							insertRow('issues', 'issueSubject, issueText, timestamp, userId, pId', "'$issueSubject', '$issueComment', '$time', '$userId', '$rowId'");
 							setupEmail($rowId, 'rejected', $currentCategory, $nextCategory, $issueSubject, $issueComment);
 						}else{
+
+							$bigName = !empty($_GET['bigName']) ? $_GET['bigName'] : null;
+							// copy source files to completed
+							if($nextCategory == "Completed" && $bigName != null){
+								$ftpMoveMsg = moveFilesToCompleted($bigName);
+							}else{
+								$ftpMoveMsg = "";
+							}
+
 							//send email for next stage notification here
 							setupEmail($rowId, 'stageComplete', $currentCategory, $nextCategory);
 						}
 
-						format_response(true, 'stage updated successfully');
+						format_response(true, 'stage updated successfully.' . $ftpMoveMsg);
 
 					}else{
 						format_response(false, 'stage updated fail');
@@ -284,5 +293,25 @@
 		}
 	}
 
+	function moveFilesToCompleted($bigName){
+		$FTP = getSingleRow('ftpConfig', 'id', 1);
+		$ftp_server = $FTP['hostName'];
+		$ftp_conn = ftp_connect($ftp_server) or die("Could not connect to $ftp_server");
+		$login = ftp_login($ftp_conn, $FTP['username'], $FTP['password']);
+		
+		$old_file = "Source/".$bigName.".zip";
+		$new_file = "Completed/".$bigName.".zip";
+
+		if (ftp_rename($ftp_conn, $old_file, $new_file)){
+			// close connection
+			ftp_close($ftp_conn);
+ 			return "Renamed $old_file to $new_file";
+
+  		}else{
+  			// close connection
+			ftp_close($ftp_conn);
+  			return "Problem renaming $old_file to $new_file";
+  		}
+	}
 
 	

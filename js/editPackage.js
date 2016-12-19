@@ -177,15 +177,21 @@ var EditPackage = {
 		Global.showLoader();
 		$('body').addClass('overflow-hidden');
 
+		var vendor = $('#vendor').val();
+		var appName = $('#appName').val();
+		var appVersion = $('#appVersion').val();
+		var revision = $('#revision').val();
 		var status = $('#status').val();
 		var rowID = EditPackage.packageData.id;
 		var category = EditPackage.packageData.category;
 		var nextCategory = EditPackage.nextCategory(category);
+
 		var ajaxData = {
 			rowId: rowID,
 			status: status,
 			currentCategory: category,
 			nextCategory: nextCategory,
+			bigName: Global.createPackageName(vendor, appName, appVersion, revision),
 			type: 'completedStage'
 		};
 
