@@ -40,7 +40,6 @@ var Load = {
 
 				Global.getUserDetails(function(response){
 
-					console.log(response)
 					Global.user = response.success ? response.data : Global.user;
 
 					if(!Global.user.hasLoggedIn){
