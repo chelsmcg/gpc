@@ -80,7 +80,8 @@
 							$bigName = !empty($_GET['bigName']) ? $_GET['bigName'] : null;
 							// copy source files to completed
 							if($nextCategory == "Completed" && $bigName != null){
-								$ftpMoveMsg = moveFilesToCompleted($bigName);
+								// $ftpMoveMsg = moveFilesToCompleted($bigName);
+								$ftpMoveMsg = "";
 							}else{
 								$ftpMoveMsg = "";
 							}
