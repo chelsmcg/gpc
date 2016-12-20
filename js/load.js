@@ -192,9 +192,9 @@ var Load = {
 		var hasPermission = false;
 		$quality = $(this);
 		$('#mainContainer').load('components.html #addPackage', function(){
-			$('.dashTitle').text('QAT - PACKAGE NAME');
+			$('.dashTitle').text('UAT - PACKAGE NAME');
 			$('#pageIcon').text('T');
-			$('.formHeader').text('QAT - PACKAGE DETAILS');
+			$('.formHeader').text('UAT - PACKAGE DETAILS');
 
 			$('#addPackageForm input, #addPackageForm select, #addPackageForm textarea').css('background', '#919191').prop('disabled', 'true');
 
