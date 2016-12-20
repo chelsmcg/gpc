@@ -230,7 +230,7 @@ var GetPackage = {
 
 	createSourceLinkHtml: function(source, category){
 		var html = '';
-		if(category == 'Completed' && source){
+		if(category == 'Quality Assurance' || category == 'UAT' || category == 'Completed' && source){
 			html = '<td class="tableIcon source" data-source="' +Global.completeLink + '/' + source + '"><a href="' +Global.completeLink + '/' + source + '">T</a></td>';
 		}else{
 			html = '<td class="tableIcon source" data-source="' +Global.completeLink + '/' + source + '">T</td>'
