@@ -64,6 +64,12 @@ var AssignUser = {
 
 		if(EditPackage.packageData.category == 'Packaging'){
 			assignedId = parseInt(EditPackage.packageData.assignedPackager);
+		} else if(EditPackage.packageData.category == 'Quality Assurance'){
+			assignedId = parseInt(EditPackage.packageData.assignedQA);
+		} else if(EditPackage.packageData.category == 'UAT'){
+			assignedId = parseInt(EditPackage.packageData.assignedUAT);
+		} else {
+			assignedId = null;
 		}
 
 		$.each(users, function(i, user){
