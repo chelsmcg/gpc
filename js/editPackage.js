@@ -17,6 +17,8 @@ var EditPackage = {
 		$('body').on('click touch', '#nextCategoryErrorBtn', EditPackage.nextCategoryErrorBtn);
 		$('body').on('click touch', '#rejectSuccessBtn', EditPackage.rejectSuccessBtn);
 		$('body').on('click touch', '#rejectErrorBtn', EditPackage.rejectErrorBtn);
+		$('body').on('click touch', '#noDocFileBtn', EditPackage.hideDocErrorModal);
+		$('body').on('click touch', '#noSourceFileBtn', EditPackage.hideSourceErrorModal);
 		$('body').on('change', ':file', EditPackage.fileAdded);
 		
 	},
@@ -203,8 +205,8 @@ var EditPackage = {
 				ajaxData.documentation = EditPackage.docFile.newName;
 
 			}else{
-				console.log('missing documentation file');
 				return;
+				EditPackage.loadDocErrorModal();
 			}
 
 			//check source added or checkbox ticked else stop
@@ -241,6 +243,22 @@ var EditPackage = {
 
 			}
 		});
+	},
+
+	loadDocErrorModal: function() {
+		$('#noDocFileModal').fadeIn();
+	},
+
+	hideDocErrorModal: function() {
+		$('noDocFileModal').hide();
+	},
+
+	loadSourceErrorModal: function() {
+		$('#noSourceFileModal').fadeIn();
+	},
+
+	hideSourceErrorModal: function() {
+		$('noSourceFileModal').hide();
 	},
 
 	rejectClicked: function(){

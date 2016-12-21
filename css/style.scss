@@ -600,7 +600,7 @@ p {
 			background: #fff;
 			border-radius: 4px;
 			box-sizing: border-box;
-			padding: 15px 20px;
+			padding: 40px 20px 15px 20px;
 			height: auto;
 			width: 100%;
 			position: absolute;
@@ -628,6 +628,25 @@ p {
 				width: auto;
 				margin-top: 30px;
 			}
+
+	    	.dialogHeading {
+	    		text-transform: uppercase;
+	    		letter-spacing: 0.5px;
+	    		color: #00738E;
+	    		margin-bottom: 20px;
+	    	}
+
+	    	.email {
+	    		font-family: helvetica, sans-serif;
+	    		margin-top: 40px;
+	    	}
+
+	    	.forgotPasswordCancelBtn {
+	    		text-decoration: underline;
+	    		color: #00738E;
+	    		font-size: 12px;
+	    		cursor: pointer;
+	    	}
 		}
 	}
 }
@@ -689,34 +708,6 @@ p {
     	}
     }
 
-    #forgotPasswordModal,
-    #invalidLoginModal,
-    #emailSentModal {
-
-    	.dialogBox {
-    		padding-top: 40px;
-    	}
-
-    	.dialogHeading {
-    		text-transform: uppercase;
-    		letter-spacing: 0.5px;
-    		color: #00738E;
-    		margin-bottom: 20px;
-    	}
-
-    	.email {
-    		font-family: helvetica, sans-serif;
-    		margin-top: 40px;
-    	}
-
-    	.forgotPasswordCancelBtn {
-    		text-decoration: underline;
-    		color: #00738E;
-    		font-size: 12px;
-    		cursor: pointer;
-    	}
-    }
-
     .loginColumn {
     	text-align: center;
 
@@ -724,8 +715,9 @@ p {
     		background-color: #f1f1f1;
 			border: none;
 			box-shadow: none;
-			padding: 23px 50px;
+			padding-left: 50px;
 			font-family: helvetica, sans-serif;
+			height: 46px;
     	}
 
     	.username {

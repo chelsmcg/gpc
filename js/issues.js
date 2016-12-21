@@ -7,6 +7,11 @@ var Issues = {
 
 	events: function(){
 		$('body').on('click touch', '#displayIssuePage #submitIssueReply', Issues.submitReply);
+		$('body').on('click touch', '#issueCancelBtn', Issues.cancelIssue);
+	},
+
+	cancelIssue: function() {
+		Load.dashboard();
 	},
 
 	getIssueData: function(issueId){
